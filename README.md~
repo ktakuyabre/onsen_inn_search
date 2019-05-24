@@ -1,0 +1,21 @@
+#onsen_inn_search
+
+
+##Docker
+
+Download Docker on your Mac or Windows : https://hub.docker.com/editions/community/docker-ce-desktop-mac (Mac), https://hub.docker.com/editions/community/docker-ce-desktop-windows (Windows)
+Open Docker.
+
+
+##Setup
+
+```
+$ docker-compose up
+```
+
+
+When you shut down jaran\_api
+
+```
+$ docker-compose down
+```
