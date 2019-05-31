@@ -3,7 +3,10 @@
 
 ##Docker
 
-Download Docker on your Mac or Windows : https://hub.docker.com/editions/community/docker-ce-desktop-mac (Mac), https://hub.docker.com/editions/community/docker-ce-desktop-windows (Windows)
+Download Docker on your Mac or Windows <br />
+Mac : https://hub.docker.com/editions/community/docker-ce-desktop-mac <br />
+Windows : https://hub.docker.com/editions/community/docker-ce-desktop-windows (Windows)
+
 Open Docker.
 
 
@@ -19,3 +22,110 @@ When you shut down jaran\_api
 ```
 $ docker-compose down
 ```
+
+
+##Development
+
+When you want to work on the docker container
+
+```
+$ docker exec -it <container id of the onsen_inn_search_web> bash
+```
+
+or 
+
+```
+$ docker exec -it $(docker ps | grep onsen_inn_search_web | awk {'print $1'}) bash
+```
+
+When you run a command on the docker container
+
+```
+$ docker exec -i <container id of the onsen_inn_search_web> <command>
+```
+
+or
+
+```
+$ docker exec -i $(docker ps | grep onsen_inn_search_web | awk {'print $1'}) <command>
+```
+
+
+##Backup and restore database
+
+Back up
+
+```
+$ docker exec <container id of the onsen_inn_search_web> pg_dump -U postgres postgres > db_data.sql
+```
+
+or 
+
+```
+$ docker exec $(docker ps | grep postgres | awk '{print $1}') pg_dump -U postgres postgres > db_data.sql
+```
+
+Restore
+
+```
+$ docker exec -i <container id of the onsen_inn_search_web> psql -U postgres -d postgres < db_data.sql
+```
+
+or 
+
+```
+$ docker exec -i $(docker ps | grep postgres | awk '{print $1}') psql -U postgres -d postgres < db_data.sql
+```
+
+
+##DB Schema
+
+Onsen_Model 
+    onsen_id Int(Not Null)
+    onsen_name Char(max_length=20, Not Null)
+    onsen_name_kana Char(max_length=30, Not Null)
+    onsen_address Char(max_length=30, Not Null)
+    region Char(max_length=10, Not Null)
+    prefecture Char(max_length=10, Not Null)
+    large_area Char(max_length=10, Not Null)
+    small_area Char(max_length=10, Not Null)
+    nature_of_onsen Char(max_length=10, Not Null)
+    onsen_area_name Char(max_length=20)
+    onsen_area_name_kana Char(max_length=30)
+    onsen_area_id Int()
+    onsen_area_caption Text()
+
+onsenInnModel
+    inn_id Int(Not Null) 
+    inn_name Char(max_length=100, Not Null)
+    inn_photo Image()
+    inn_min_price Int(Not Null)
+    review_room Decimal(max_digits=2, decimal_places=1)
+    review_bath Decimal(max_digits=2, decimal_places=1)
+    review_breakfast Decimal(max_digits=2, decimal_places=1)
+    review_dinner Decimal(max_digits=2, decimal_places=1)
+    review_service Decimal(max_digits=2, decimal_places=1)
+    review_cleanes Decimal(max_digits=2, decimal_places=1)
+    rooms_total Int(Not Null)
+    baths_total Int(Not Null)
+
+    free_wifi Bool()
+    convenience_store Bool()
+    hand_towel Bool()
+    dental_amenities Bool()
+    bath_towel Bool()
+    shampoo Bool()
+    conditoner Bool()
+    body_wash Bool()
+    bar_soap Bool()
+    yukata Bool()
+    pajamas Bool()
+    bathrobe Bool()
+    dryer Bool()
+    duvet Bool()
+    razor Bool()
+    shower_cap Bool()
+    cotton_swab Bool()
+    onsui_toilet Bool()
+    hair_brush Bool()
+    onsen ForeignKey(onsenModel)
