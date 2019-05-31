@@ -80,7 +80,7 @@ $ docker exec -i $(docker ps | grep postgres | awk '{print $1}') psql -U postgre
 
 ##DB Schema
 
-Onsen_Model<br />
+Onsen:<br />
     onsen_id Int(Not Null)<br />
     onsen_name Char(max_length=20, Not Null)<br />
     onsen_name_kana Char(max_length=30, Not Null)<br />
@@ -95,7 +95,7 @@ Onsen_Model<br />
     onsen_area_id Int()<br />
     onsen_area_caption Text()<br />
 
-onsenInnModel<br />
+OnsenInn: <br />
     inn_id Int(Not Null)<br />
     inn_name Char(max_length=100, Not Null)<br />
     inn_photo Image()<br />
@@ -108,7 +108,6 @@ onsenInnModel<br />
     review_cleanes Decimal(max_digits=2, decimal_places=1)<br />
     rooms_total Int(Not Null)<br />
     baths_total Int(Not Null)<br />
-
     free_wifi Bool()<br />
     convenience_store Bool()<br />
     hand_towel Bool()<br />
@@ -128,4 +127,4 @@ onsenInnModel<br />
     cotton_swab Bool()<br />
     onsui_toilet Bool()<br />
     hair_brush Bool()<br />
-    onsen ForeignKey(onsenModel)<br />
+    onsen ForeignKey(Onsen)<br />
