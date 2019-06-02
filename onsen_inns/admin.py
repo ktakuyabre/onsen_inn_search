@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Onsen, OnsenInn
 
-# Register your models here.
+admin.site.register(Onsen)
+admin.site.register(OnsenInn)

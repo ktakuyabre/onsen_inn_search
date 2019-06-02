@@ -7,7 +7,7 @@ SECRET_KEY = '3cbps^1de2$ln=vx0-iuk4+1thcl(dst+eymv@wj=mg*e4lncf'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -19,7 +19,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'jaran_onsen',
+<<<<<<< HEAD
+    'onsen_inns',
+    'rest_framework',
+=======
+    'rest_framework',
+    'onsen_inns',
+>>>>>>> refs/remotes/origin/master
 ]
 
 MIDDLEWARE = [
@@ -86,9 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
