@@ -15,7 +15,9 @@ import sys, getopt
 import urllib.request
 from bs4 import BeautifulSoup
 from xml.dom.minidom import parseString
-from scrape_onsen_html import scrapeOnsenHtml
+import random
+#from scrape_onsen_html import scrapeOnsenHtml
+from scrape_onsen_html_sub import scrapeOnsenHtml
 
 sys.path.append("..")
 sys.path.append("../..")
@@ -85,37 +87,37 @@ def storeInnData(onsen, inn_data):
             onsen_inn.inn_name = data[0]
             #onsen_inn.inn_photo = data[2]
             onsen_inn.inn_min_price = 10000
-            onsen_inn.review_room = 4.5
-            onsen_inn.review_bath = 3.3
-            onsen_inn.review_breakfast = 4.8
-            onsen_inn.review_dinner = 5.0
-            onsen_inn.review_service = 4.3
-            onsen_inn.review_cleaness = 2.0
+            onsen_inn.review_room = round(random.uniform(0,5), 1)
+            onsen_inn.review_bath = round(random.uniform(0,5), 1)
+            onsen_inn.review_breakfast = round(random.uniform(0,5), 1)
+            onsen_inn.review_dinner = round(random.uniform(0,5), 1)
+            onsen_inn.review_service = round(random.uniform(0,5), 1)
+            onsen_inn.review_cleaness = round(random.uniform(0,5), 1)
             if data[1] != '':
                 onsen_inn.rooms_total = int(data[1])
             else:
                 onsen_inn.rooms_total = None
-            onsen_inn.baths_total = 10
-            onsen_inn.free_wifi = True
-            onsen_inn.convenience_store = True
-            onsen_inn.hand_towel = True
-            onsen_inn.dental_amenities = True
-            onsen_inn.bath_towel = True
-            onsen_inn.shampoo = False
-            onsen_inn.conditioner = True
-            onsen_inn.body_wash = False
-            onsen_inn.bar_soap = True
-            onsen_inn.yukata = False
-            onsen_inn.pajamas = True
-            onsen_inn.bathrobe = False
-            onsen_inn.hairdryer = True
-            onsen_inn.duvet = False
-            onsen_inn.razor = False
-            onsen_inn.shower_cap = True
-            onsen_inn.cotton_swab = True
-            onsen_inn.onsui_toilet = True 
-            onsen_inn.hair_brush = True
-            onsen_inn.category = 1
+            onsen_inn.baths_total = random.randint(1,100)
+            onsen_inn.free_wifi = bool(random.getrandbits(1))
+            onsen_inn.convenience_store = bool(random.getrandbits(1))
+            onsen_inn.hand_towel = bool(random.getrandbits(1))
+            onsen_inn.dental_amenities = bool(random.getrandbits(1))
+            onsen_inn.bath_towel = bool(random.getrandbits(1))
+            onsen_inn.shampoo = bool(random.getrandbits(1))
+            onsen_inn.conditioner = bool(random.getrandbits(1))
+            onsen_inn.body_wash = bool(random.getrandbits(1))
+            onsen_inn.bar_soap = bool(random.getrandbits(1))
+            onsen_inn.yukata = bool(random.getrandbits(1))
+            onsen_inn.pajamas = bool(random.getrandbits(1))
+            onsen_inn.bathrobe = bool(random.getrandbits(1))
+            onsen_inn.hairdryer = bool(random.getrandbits(1))
+            onsen_inn.duvet = bool(random.getrandbits(1))
+            onsen_inn.razor = bool(random.getrandbits(1))
+            onsen_inn.shower_cap = bool(random.getrandbits(1))
+            onsen_inn.cotton_swab = bool(random.getrandbits(1))
+            onsen_inn.onsui_toilet = bool(random.getrandbits(1)) 
+            onsen_inn.hair_brush = bool(random.getrandbits(1))
+            onsen_inn.category = random.randint(1,15)
             onsen_inn.onsen = onsen
             onsen_inn.save()
         inn_count+=1

@@ -4,13 +4,13 @@ from django.db import models
 class Onsen(models.Model):
 
     onsen_id = models.IntegerField()       
-    onsen_name = models.CharField(max_length=20)
-    onsen_name_kana = models.CharField(max_length=30)
-    onsen_address = models.CharField(max_length=30)
+    onsen_name = models.CharField(max_length=30)
+    onsen_name_kana = models.CharField(max_length=40)
+    onsen_address = models.CharField(blank=True, null=True, max_length=40)
     region = models.CharField(max_length=10)
     prefecture = models.CharField(max_length=10)
-    large_area = models.CharField(max_length=10)
-    small_area = models.CharField(max_length=10)
+    large_area = models.CharField(max_length=30)
+    small_area = models.CharField(max_length=30)
     nature_of_onsen = models.CharField(max_length=10)
     onsen_area_name = models.CharField(blank=True, null=True, max_length=20)
     onsen_area_name_kana = models.CharField(blank=True, null=True, max_length=30)

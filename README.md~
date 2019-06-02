@@ -127,4 +127,4 @@ OnsenInn: <br />
     cotton_swab Bool()<br />
     onsui_toilet Bool()<br />
     hair_brush Bool()<br />
-    onsen ForeignKey(onsenModel)<br />
+    onsen ForeignKey(Onsen)<br />
