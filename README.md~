@@ -82,13 +82,13 @@ $ docker exec -i $(docker ps | grep postgres | awk '{print $1}') psql -U postgre
 
 Onsen:<br />
     onsen_id Int(Not Null)<br />
-    onsen_name Char(max_length=20, Not Null)<br />
-    onsen_name_kana Char(max_length=30, Not Null)<br />
-    onsen_address Char(max_length=30, Not Null)<br />
+    onsen_name Char(max_length=30, Not Null)<br />
+    onsen_name_kana Char(max_length=40, Not Null)<br />
+    onsen_address Char(max_length=40)<br />
     region Char(max_length=10, Not Null)<br />
     prefecture Char(max_length=10, Not Null)<br />
-    large_area Char(max_length=10, Not Null)<br />
-    small_area Char(max_length=10, Not Null)<br />
+    large_area Char(max_length=30, Not Null)<br />
+    small_area Char(max_length=30, Not Null)<br />
     nature_of_onsen Char(max_length=10, Not Null)<br />
     onsen_area_name Char(max_length=20)<br />
     onsen_area_name_kana Char(max_length=30)<br />

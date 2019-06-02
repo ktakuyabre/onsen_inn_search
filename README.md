@@ -35,7 +35,7 @@ $ docker exec -it <container id of the onsen_inn_search_web> bash
 or 
 
 ```
-$ docker exec -it $(docker ps | grep onsen_inn_search_web | awk {'print $1'}) bash
+$ docker exec -it $(docker ps | grep onsen_inn_search_web_1 | awk {'print $1'}) bash
 ```
 
 When you run a command on the docker container
@@ -47,7 +47,7 @@ $ docker exec -i <container id of the onsen_inn_search_web> <command>
 or
 
 ```
-$ docker exec -i $(docker ps | grep onsen_inn_search_web | awk {'print $1'}) <command>
+$ docker exec -i $(docker ps | grep onsen_inn_search_web_1 | awk {'print $1'}) <command>
 ```
 
 
@@ -56,7 +56,7 @@ $ docker exec -i $(docker ps | grep onsen_inn_search_web | awk {'print $1'}) <co
 Back up
 
 ```
-$ docker exec <container id of the onsen_inn_search_web> pg_dump -U postgres postgres > db_data.sql
+$ docker exec <container id of postgres> pg_dump -U postgres postgres > db_data.sql
 ```
 
 or 
@@ -68,7 +68,7 @@ $ docker exec $(docker ps | grep postgres | awk '{print $1}') pg_dump -U postgre
 Restore
 
 ```
-$ docker exec -i <container id of the onsen_inn_search_web> psql -U postgres -d postgres < db_data.sql
+$ docker exec -i <container id of postgres> psql -U postgres -d postgres < db_data.sql
 ```
 
 or 
