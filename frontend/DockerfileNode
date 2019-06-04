@@ -12,6 +12,6 @@ COPY ./frontend/ .
 
 EXPOSE 8080
 
-RUN npm run dev
+RUN npm run build
 
-# CMD [ "http-server", "dist" ]
+CMD [ "http-server", "dist" ]

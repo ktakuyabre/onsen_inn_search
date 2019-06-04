@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
+    <div>
+      <v-btn small>Tinder</v-btn>
+    </div>
   </div>
 </template>
 
