@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'jaran_onsen',
+    'onsen_inns',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -83,12 +84,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 # Internationalization
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -101,5 +106,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_ROOT = (
-	os.path.join(BASE_DIR, "static"),
+	os.path.join(BASE_DIR, 'static'),
 )

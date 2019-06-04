@@ -1,0 +1,5 @@
+from django.contrib import admin
+from .models import onsenModel, onsenInnModel
+
+admin.site.register(onsenModel)
+admin.site.register(onsenInnModel)

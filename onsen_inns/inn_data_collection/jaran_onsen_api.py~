@@ -1,54 +1,68 @@
+'''
+input : api parameters
+
+function : 
+1. to create api query, post it and recieve a xml response
+2. to get area IDs and other necessary data from the response, create onsen page urls and call a function from scrape_onsen_html.py at each url to get multiple inns' data
+3. add necesary onsen data to inns' data
+
+output : inns' data, like, (innA(a, b, c..), innB(a, b, c..), innC(\
+a, b, c)..)
+'''
+
 import sys, getopt
+from .models import Onsen, OnsenInn
 import urllib.request
 from bs4 import BeautifulSoup
 from xml.dom.minidom import parseString
-import MeCab
 
 api_key = "peg16a7c976570"
-yad_id = ""
-keyword = ""
-keyword_flg = False
-jaran_inn_data = []
-
-def usage():
-    print("NAME: jaran_get_data.py -- scrape data from jaran web pages")
-    print("USAGE: python3 jaran_get_data.py <yad-id>")
-    print("-h --help - show the usage of jaran_get_data.py")
-    print("-w --word - show the total number of the word appearing in the reviews. ")
-    print("")
-    print("EXAMPLES: ")
-    print("python3 jaran_get_data.py 321542")
-    print("python3 jaran_get_data.py -w 温泉 321542")
-    print("")
-    sys.exit(2)
     
 def main():
-    global yad_id
-    global keyword
-    global keyword_flg
-    
+
+    url = "http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=" + api_key
+    url = url + "&l_area=280200" 
+    storeJaranOnsens(url)
+
+def storeJaranOnsens(url):
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hw:", ["help", "id", "keyword"])
-        yad_id = args[0]
-    except:
-        usage()
+        xml = urllib.request.urlopen(url)
+        dom = parseString(xml.read())
+        num_of_rlts = int(dom.getElementsByTagName('NumberOfResults')[0])
+        onsen_names = dom.getElementsByTagName('OnsenName')
+        onsen_name_kanas = dom.getElementsByTagName('OnsenNameKana')
+        onsen_ids = dom.getElementsByTagName('OnsenID')
+        onsen_addresses = dom.getElementsByTagName('OnsenAddress')
+        regions = dom.getElementsByTagName('Region')
+        prefectures = dom.getElementsByTagName('Prefecture')
+        large_areas = dom.getElementsByTagName('LargeArea')
+        small_areas = dom.getElementsByTagName('SmallArea')
+        nature_of_onsens = dom.getElementsByTagName('NatureOfOnsen')
+        onsen_area_names = dom.getElementsByTagName('OnsenAreaName')
+        onsen_area_name_kanas = dom.getElementsByTagName('OnsenAreaNameKana')
+        onsen_area_ids = dom.getElementsByTagName('OnsenAreaID')
+        onsen_area_captions = dom.getElementsByTagName('OnsenAreaCaption')
 
-    for opt, arg in opts:
-        if opt == "-h":
-            usage()
-        if opt in ("-w", "--word"):
-            keyword = arg
-            keyword_flg = True
+        for i in range(0, num_of_rlts):
+            onsen = Onsen()
+            onsen.onsen_name = onsen_names[i]
+            onsen.onsen_name_kana = onsen_name_kanas[i]
+            onsen.onsen_id = onsen_ids[i]
+            onsen.onsen_address = onsen_addresses[i]
+            onsen.regions = regions[i]
+            onsen.prefectures = prefectures[i]
+            onsen.large_area = large_areas[i]
+            onsen.small_area = small_areas[i]
+            onsen.nature_of_onsen = nature_of_onsens[i]
+            onsen.onsen_area_name = onsen_area_names[i]
+            onsen.onsen_area_name_kana = onsen_area_name_kanas[i]
+            onsen.onsen_area_id = onsen_area_ids[i]
+            onsen.onsen_area_caption = onsen_area_captions[i]
 
-    getJaranInnData()
-
-def getJaranInnData():
-
-    try:
-        url_main = "https://www.jalan.net/yad" + yad_id
-        url_reviews = "https://www.jalan.net/yad" + yad_id +"/kuchikomi/"
-        getJaranMainData(url_main)
-        getJaranReviewsData(url_reviews)
+            if Onsen.objects.filter(onsen_id=onsen.onsen_id).exists():
+                continue
+            onsens.append(onsen)
+            onsen.save()
 
     except urllib.error.HTTPError as error:
         pass
@@ -63,54 +77,6 @@ def jaranHtmlParser(url):
 
     except urllib.error.HTTPError as error:
         pass
-
-def getJaranMainData(url):
-
-    try:
-       soup = jaranHtmlParser(url)
-       capas = soup.find("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}).find_all("td", {"class": "jlnpc-td06"})
-       leisures = soup.find("div", {"class": "shisetsu-main03 shisetsu-amenityservice_body_wrap"}).find_all("td", {"class": "jlnpc-td03 s12_30"})
-
-       global jaran_inn_data
-       jaran_inn_data.append(removeBadChars(capas[-1].get_text()))
-       jaran_inn_data.append(leisures[1].get_text())
-       print(jaran_inn_data)
-   
-    except urllib.error.HTTPError as error:
-        pass
-
-def getJaranReviewsData(url):
-
-    try:
-        soup = jaranHtmlParser(url)
-        divs = soup.find_all("div", {"class": "user-kuchikomi"})
-        dict = {}
-        for div in divs:
-            reviews = div.findChildren("p", {"class": "text"})
-            for review in reviews:
-                jaranStrParser(review.get_text(), dict)
-        print(dict)
-        if keyword_flg:
-            if dict.get(keyword):
-                print("keyword '" + keyword + "' appears " + str(dict[keyword]) + " times in the reviews.")
-            else:
-                print("keyword '" + keyword + "' doen't appear in the reviews.")
-                #print(review.get_text()) 
-
-    except urllib.error.HTTPError as error:
-        pass
-
-def jaranStrParser(str, dict):
-
-    mt = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
-    parsed = mt.parseToNode(removeBadChars(str))
-    while parsed:
-        word = parsed.surface
-        if word not in dict:
-            dict.setdefault(word, 1)
-        else:
-            dict[word] += 1
-        parsed = parsed.next
 
 def removeBadChars(str):
     bad_chars = [",", ".", "、","。","*", ";", " ", "&nbsp", "\n"]    

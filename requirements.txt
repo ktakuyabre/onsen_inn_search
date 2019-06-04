@@ -1,6 +1,8 @@
 Django
+Pillow
 psycopg2
 numpy
 pandas
 sklearn
 beautifulsoup4
+djangorestframework
