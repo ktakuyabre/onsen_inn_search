@@ -131,14 +131,177 @@ OnsenInn: <br />
 
 ##API
 
-to get onsen data
+Get onsen data(10 entries per page)
 
-endpoint:
+Endpoint:
 
+'''
+/api/onsens/
+'''        
 
-to get onsen inn data
+Response:
 
-endpoint:
-        
+'''
+{
+    "count": 3255,
+    "next": "http://localhost:8000/api/onsens/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "onsen_id": 1,
+            "onsen_name": "èåææ",
+            "onsen_name_kana": "とよとみおんせん",
+            "onsen_address": "åæéååéèåçèåææ",
+            "region": "",
+            "prefecture": "",
+            "large_area": "çå・çè",
+            "small_area": "çå",
+            "nature_of_onsen": "ååçæ",
+            "onsen_area_name": null,
+            "onsen_area_name_kana": null,
+            "onsen_area_id": 50651,
+            "onsen_area_caption": null
+        },
+        {
+            "id": 2,
+            "onsen_id": 2,
+            "onsen_name": "çåææ",
+            "onsen_name_kana": "わっかないおんせん",
+            "onsen_address": "åæéçååååè",
+            "region": "",
+            "prefecture": "",
+            "large_area": "çå・çè",
+            "small_area": "稚内",
+            "nature_of_onsen": "塩化物泉",
+            "onsen_area_name": null,
+            "onsen_area_name_kana": null,
+            "onsen_area_id": 50653,
+            "onsen_area_caption": null
+        },
+        ...
+'''
+
+Get onsen inn data(10 entries per page)
+
+Endpoint:
+
+'''
+/api/onsen_inns/
+'''
+
+Response:
+
+'''
+{
+    "count": 12638,
+    "next": "http://localhost:8000/api/onsen_inns/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "onsen": {
+                "id": 1,
+                "onsen_id": 1,
+                "onsen_name": "豊富温泉",
+                "onsen_name_kana": "とよとみおんせん",
+                "onsen_address": "北海道天塩郡豊富町豊富温泉",
+                "region": "",
+                "prefecture": "",
+                "large_area": "稚内・留萌",
+                "small_area": "稚内",
+                "nature_of_onsen": "塩化物泉",
+                "onsen_area_name": null,
+                "onsen_area_name_kana": null,
+                "onsen_area_id": 50651,
+                "onsen_area_caption": null
+            },
+            "inn_id": 0,
+            "inn_name": "とよとみ温泉川島旅館",
+            "inn_photo": null,
+            "inn_min_price": 10000,
+            "review_room": "4.2",
+            "review_bath": "3.6",
+            "review_breakfast": "3.5",
+            "review_dinner": "2.7",
+            "review_service": "0.5",
+            "review_cleaness": "4.1",
+            "rooms_total": 15,
+            "baths_total": 39,
+            "free_wifi": false,
+            "convenience_store": true,
+            "hand_towel": true,
+            "dental_amenities": true,
+            "bath_towel": false,
+            "shampoo": false,
+            "conditioner": true,
+            "body_wash": true,
+            "bar_soap": true,
+            "yukata": true,
+            "pajamas": true,
+            "bathrobe": false,
+            "hairdryer": false,
+            "duvet": false,
+            "razor": true,
+            "shower_cap": false,
+            "cotton_swab": true,
+            "onsui_toilet": false,
+            "hair_brush": true,
+            "category": 3
+        },
+        {
+            "id": 2,
+            "onsen": {
+                "id": 1,
+                "onsen_id": 1,
+                "onsen_name": "豊富温泉",
+                "onsen_name_kana": "とよとみおんせん",
+                "onsen_address": "北海道天塩郡豊富町豊富温泉",
+                "region": "",
+                "prefecture": "",
+                "large_area": "稚内・留萌",
+                "small_area": "稚内",
+                "nature_of_onsen": "塩化物泉",
+                "onsen_area_name": null,
+                "onsen_area_name_kana": null,
+                "onsen_area_id": 50651,
+                "onsen_area_caption": null
+            },
+            "inn_id": 1,
+            "inn_name": "ホテルニュー幸林",
+            "inn_photo": null,
+            "inn_min_price": 10000,
+            "review_room": "4.0",
+            "review_bath": "2.9",
+            "review_breakfast": "4.2",
+            "review_dinner": "4.6",
+            "review_service": "4.5",
+            "review_cleaness": "0.6",
+            "rooms_total": 59,
+            "baths_total": 63,
+            "free_wifi": true,
+            "convenience_store": false,
+            "hand_towel": true,
+            "dental_amenities": true,
+            "bath_towel": false,
+            "shampoo": true,
+            "conditioner": true,
+            "body_wash": true,
+            "bar_soap": false,
+            "yukata": false,
+            "pajamas": true,
+            "bathrobe": true,
+            "hairdryer": true,
+            "duvet": false,
+            "razor": false,
+            "shower_cap": true,
+            "cotton_swab": true,
+            "onsui_toilet": false,
+            "hair_brush": true,
+            "category": 14
+        },
+        ...
+'''
+
 
 

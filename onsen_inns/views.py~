@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from django.urls import include, path
 from .models import Onsen, OnsenInn
-from rest_framwork import viewsets
+from rest_framework import viewsets
 from .serializers import OnsenSerializer, OnsenInnSerializer
 
-class OnsenViewset(viewsets.ModelViewSet):
+class OnsenViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows onsens to be viewed or edited.
     """
     queryset = Onsen.objects.all()
     serializer_class = OnsenSerializer
 
-class OnsenViewset(viewsets.ModelViewSet):
+class OnsenInnViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows onsen inns to be viewed or edited.
     """

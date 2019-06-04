@@ -7,8 +7,11 @@ class OnsenSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OnsenInnSerializer(serializers.ModelSerializer):
+
+    onsen = OnsenSerializer()
+
     class Meta:
-        model = OnsenInn
-        onsen = OnsenSerializer()
-        #fields = '__all__'
-        fields = ('onsen')
+        model = OnsenInn        
+        filter_fields = ('id', 'category')
+        fields = '__all__'
+        

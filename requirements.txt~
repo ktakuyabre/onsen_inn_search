@@ -6,4 +6,3 @@ pandas
 sklearn
 beautifulsoup4
 djangorestframework
-django-filter

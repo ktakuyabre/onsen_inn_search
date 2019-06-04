@@ -190,6 +190,10 @@ Endpoint:
 /api/onsen_inns/
 '''
 
+Paramters:
+id: return the onsen inn that has the specified id as its primary key
+category: return onsen inns that belong to the specified category
+
 Response:
 
 '''
