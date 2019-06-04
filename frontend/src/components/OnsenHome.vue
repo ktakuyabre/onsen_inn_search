@@ -2,7 +2,7 @@
   <div>
     <h1>{{ msg }}</h1>
     <div>
-      <v-btn small>Tinder</v-btn>
+      <v-btn small href='/#/tinder/'>Tinder</v-btn>
     </div>
   </div>
 </template>
