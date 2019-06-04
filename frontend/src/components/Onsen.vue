@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'OnsenHome',
+  name: 'Onsen',
   data () {
     return {
-      msg: 'Onsen Home Page',
+      msg: 'Onsen Page',
     }
   },
 }

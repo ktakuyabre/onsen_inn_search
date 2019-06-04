@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'OnsenHome',
+  name: 'Tinder',
   data () {
     return {
-      msg: 'Onsen Home Page',
+      msg: 'Tinder Page',
     }
   },
 }
