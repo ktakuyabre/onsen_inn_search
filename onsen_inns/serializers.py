@@ -12,6 +12,5 @@ class OnsenInnSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OnsenInn        
-        #filter_fields = ('id', 'category')
         fields = '__all__'
         
