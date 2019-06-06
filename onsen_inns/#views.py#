@@ -5,7 +5,8 @@ from rest_framework import viewsets
 from .serializers import OnsenSerializer, OnsenInnSerializer
 
 class OnsenViewSet(viewsets.ModelViewSet):
-    """    API endpoint that allows onsens to be viewed or edited.
+    """
+    API endpoint that allows onsens to be viewed or edited.
     """
     queryset = Onsen.objects.all()
     serializer_class = OnsenSerializer

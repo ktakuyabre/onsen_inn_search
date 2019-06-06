@@ -105,7 +105,7 @@ OnsenInn: <br />
     review_breakfast Decimal(max_digits=2, decimal_places=1)<br />
     review_dinner Decimal(max_digits=2, decimal_places=1)<br />
     review_service Decimal(max_digits=2, decimal_places=1)<br />
-    review_cleanes Decimal(max_digits=2, decimal_places=1)<br />
+    review_cleaness Decimal(max_digits=2, decimal_places=1)<br />
     rooms_total Int(Not Null)<br />
     baths_total Int(Not Null)<br />
     free_wifi Bool()<br />
@@ -114,13 +114,13 @@ OnsenInn: <br />
     dental_amenities Bool()<br />
     bath_towel Bool()<br />
     shampoo Bool()<br />
-    conditoner Bool()<br />
+    conditioner Bool()<br />
     body_wash Bool()<br />
     bar_soap Bool()<br />
     yukata Bool()<br />
     pajamas Bool()<br />
     bathrobe Bool()<br />
-    dryer Bool()<br />
+    hairdryer Bool()<br />
     duvet Bool()<br />
     razor Bool()<br />
     shower_cap Bool()<br />
@@ -139,8 +139,8 @@ Endpoint:
 /api/onsens/
 '''        
 
-Parameters:
-page: specify the page <br />
+Parameters:<br />
+page: specify the page<br />
 
 Response:
 
@@ -193,7 +193,7 @@ Endpoint:
 /api/onsen_inns/
 '''
 
-Paramters:
+Paramters:<br />
 id: return the onsen inn that has the specified id as its primary key<br />
 category: return onsen inns that belong to the specified category<br />
 page: specify the page<br />
