@@ -4,7 +4,6 @@ psycopg2
 numpy
 pandas
 sklearn
-matplotlib
 beautifulsoup4
 djangorestframework
 django-filter

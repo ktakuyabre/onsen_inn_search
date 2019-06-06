@@ -105,7 +105,7 @@ OnsenInn: <br />
     review_breakfast Decimal(max_digits=2, decimal_places=1)<br />
     review_dinner Decimal(max_digits=2, decimal_places=1)<br />
     review_service Decimal(max_digits=2, decimal_places=1)<br />
-    review_cleanes Decimal(max_digits=2, decimal_places=1)<br />
+    review_cleaness Decimal(max_digits=2, decimal_places=1)<br />
     rooms_total Int(Not Null)<br />
     baths_total Int(Not Null)<br />
     free_wifi Bool()<br />
@@ -114,13 +114,13 @@ OnsenInn: <br />
     dental_amenities Bool()<br />
     bath_towel Bool()<br />
     shampoo Bool()<br />
-    conditoner Bool()<br />
+    conditioner Bool()<br />
     body_wash Bool()<br />
     bar_soap Bool()<br />
     yukata Bool()<br />
     pajamas Bool()<br />
     bathrobe Bool()<br />
-    dryer Bool()<br />
+    hairdryer Bool()<br />
     duvet Bool()<br />
     razor Bool()<br />
     shower_cap Bool()<br />
@@ -138,6 +138,9 @@ Endpoint:
 '''
 /api/onsens/
 '''        
+
+Parameters:<br />
+page: specify the page<br />
 
 Response:
 
@@ -190,12 +193,22 @@ Endpoint:
 /api/onsen_inns/
 '''
 
+Paramters:<br />
+id: return the onsen inn that has the specified id as its primary key<br />
+category: return onsen inns that belong to the specified category<br />
+page: specify the page<br />
+
+Example: 
+'''
+/api/onsen_inns/?id=1
+'''
+
 Response:
 
 '''
 {
-    "count": 12638,
-    "next": "http://localhost:8000/api/onsen_inns/?page=2",
+    "count": 1,
+    "next": null,
     "previous": null,
     "results": [
         {
@@ -248,59 +261,146 @@ Response:
             "onsui_toilet": false,
             "hair_brush": true,
             "category": 3
-        },
+        }
+    ]
+}
+'''
+
+Example: 
+
+'''
+/api/onsen_inns/?category=1&page=3
+'''
+
+Response:
+
+'''
+{
+    "count": 849,
+    "next": "http://localhost:8000/api/onsen_inns/?category=1&page=4",
+    "previous": "http://localhost:8000/api/onsen_inns/?category=1&page=2",
+    "results": [
         {
-            "id": 2,
+            "id": 259,
             "onsen": {
-                "id": 1,
-                "onsen_id": 1,
-                "onsen_name": "豊富温泉",
-                "onsen_name_kana": "とよとみおんせん",
-                "onsen_address": "北海道天塩郡豊富町豊富温泉",
+                "id": 54,
+                "onsen_id": 54,
+                "onsen_name": "十勝岳温泉",
+                "onsen_name_kana": "とかちだけおんせん",
+                "onsen_address": "北海道空知郡上富良野町十勝岳温泉",
                 "region": "",
                 "prefecture": "",
-                "large_area": "稚内・留萌",
-                "small_area": "稚内",
-                "nature_of_onsen": "塩化物泉",
+                "large_area": "富良野・美瑛・トマム",
+                "small_area": "富良野",
+                "nature_of_onsen": "単純温泉",
                 "onsen_area_name": null,
                 "onsen_area_name_kana": null,
-                "onsen_area_id": 50651,
+                "onsen_area_id": 50015,
                 "onsen_area_caption": null
             },
-            "inn_id": 1,
-            "inn_name": "ホテルニュー幸林",
+            "inn_id": 258,
+            "inn_name": "大雪山白金観光ホテル",
             "inn_photo": null,
             "inn_min_price": 10000,
-            "review_room": "4.0",
-            "review_bath": "2.9",
-            "review_breakfast": "4.2",
-            "review_dinner": "4.6",
-            "review_service": "4.5",
-            "review_cleaness": "0.6",
-            "rooms_total": 59,
-            "baths_total": 63,
+            "review_room": "0.6",
+            "review_bath": "3.7",
+            "review_breakfast": "2.0",
+            "review_dinner": "3.8",
+            "review_service": "2.1",
+            "review_cleaness": "3.3",
+            "rooms_total": 74,
+            "baths_total": 31,
             "free_wifi": true,
-            "convenience_store": false,
+            "convenience_store": true,
             "hand_towel": true,
-            "dental_amenities": true,
+            "dental_amenities": false,
             "bath_towel": false,
-            "shampoo": true,
+            "shampoo": false,
             "conditioner": true,
             "body_wash": true,
-            "bar_soap": false,
-            "yukata": false,
-            "pajamas": true,
+            "bar_soap": true,
+            "yukata": true,
+            "pajamas": false,
             "bathrobe": true,
             "hairdryer": true,
             "duvet": false,
             "razor": false,
+            "shower_cap": false,
+            "cotton_swab": false,
+            "onsui_toilet": false,
+            "hair_brush": false,
+            "category": 1
+        },
+        {
+            "id": 270,
+            "onsen": {
+                "id": 68,
+                "onsen_id": 68,
+                "onsen_name": "十勝川温泉",
+                "onsen_name_kana": "とかちがわおんせん",
+                "onsen_address": "北海道河東郡音更町十勝川温泉",
+                "region": "",
+                "prefecture": "",
+                "large_area": "帯広・十勝",
+                "small_area": "帯広・十勝川",
+                "nature_of_onsen": "塩化物泉",
+                "onsen_area_name": null,
+                "onsen_area_name_kana": null,
+                "onsen_area_id": 50025,
+                "onsen_area_caption": null
+            },
+            "inn_id": 269,
+            "inn_name": "十勝川温泉第一ホテル",
+            "inn_photo": null,
+            "inn_min_price": 10000,
+            "review_room": "2.0",
+            "review_bath": "3.6",
+            "review_breakfast": "4.1",
+            "review_dinner": "0.3",
+            "review_service": "2.2",
+            "review_cleaness": "1.1",
+            "rooms_total": 111,
+            "baths_total": 82,
+            "free_wifi": true,
+            "convenience_store": false,
+            "hand_towel": false,
+            "dental_amenities": true,
+            "bath_towel": false,
+            "shampoo": false,
+            "conditioner": true,
+            "body_wash": false,
+            "bar_soap": true,
+            "yukata": false,
+            "pajamas": true,
+            "bathrobe": false,
+            "hairdryer": true,
+            "duvet": false,
+            "razor": true,
             "shower_cap": true,
-            "cotton_swab": true,
+            "cotton_swab": false,
             "onsui_toilet": false,
             "hair_brush": true,
-            "category": 14
+            "category": 1
         },
-        ...
+        {
+            "id": 274,
+            "onsen": {
+                "id": 68,
+                "onsen_id": 68,
+                "onsen_name": "十勝川温泉",
+                "onsen_name_kana": "とかちがわおんせん",
+                "onsen_address": "北海道河東郡音更町十勝川温泉",
+                "region": "",
+                "prefecture": "",
+                "large_area": "帯広・十勝",
+                "small_area": "帯広・十勝川",
+                "nature_of_onsen": "塩化物泉",
+                "onsen_area_name": null,
+                "onsen_area_name_kana": null,
+                "onsen_area_id": 50025,
+                "onsen_area_caption": null
+            },
+            ...
 '''
 
 

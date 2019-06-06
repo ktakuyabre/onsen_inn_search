@@ -117,7 +117,7 @@ def storeInnData(onsen, inn_data):
             onsen_inn.cotton_swab = bool(random.getrandbits(1))
             onsen_inn.onsui_toilet = bool(random.getrandbits(1)) 
             onsen_inn.hair_brush = bool(random.getrandbits(1))
-            onsen_inn.category = random.randint(1,15)
+            #onsen_inn.category = random.randint(1,15)
             onsen_inn.onsen = onsen
             onsen_inn.save()
         inn_count+=1
