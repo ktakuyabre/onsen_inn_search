@@ -1,18 +1,15 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <div>
-      <v-btn small href='/#/tinder/'>Tinder</v-btn>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OnsenHome',
+  name: 'NotFound',
   data () {
     return {
-      msg: 'Onsen Home Page',
+      msg: 'Page NotFound',
     }
   },
 }
