@@ -3,6 +3,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler, normalize
 
 sys.path.append("..")
 sys.path.append("../..")
@@ -22,19 +23,33 @@ def main():
     # data processing
 
     # fetch data from our database and convert it into numpy array
-    data_set = []
     onsen_inns = OnsenInn.objects.all()
-    for entry in data_list:
-        data_set.append(onsen_inns.values_list(entry))
 
-    data_set = np.array(data_set, dtype=np.float)
-    #data_set = np.array(data_set)
-    data_set = data_set.transpose()
-    data_set = data_set[0]
+    # create a dummy numpy array to make it possible to cocatanate
+    data_set = np.empty([len(onsen_inns), 1])
+    for entry in data_list:        
+        data_column = np.array(onsen_inns.values_list(entry), np.float)
+
+        # replace nan values with column mean
+        col_mean = np.nanmean(data_column, axis=0)
+        inds = np.where(np.isnan(data_column))
+        data_column[inds] = np.take(col_mean, inds[1])
+
+        # normalization
+        data_column = normalize(data_column)
+
+        # concatenate data_set and data_column
+        data_set = np.concatenate((data_set, data_column), axis=1)  
+        
+    # remove the dummy numpy array created in the beginning
+    data_set = data_set[:,1:]
     print(data_set.dtype)
-    #print(data_set)
-    # remove nan values from the data_set 
-    data_set = data_set[:, ~np.isnan(data_set).any(axis=0)]
+    print(data_set)
+    
+    # standardlize the data_set
+    scaler = StandardScaler()
+    scaler.fit(data_set)
+    data_set = scaler.transform(data_set)
     
     # apply k-means clustering
     kmeans = KMeans(n_clusters=15)
@@ -64,3 +79,5 @@ def store_clustering_result(result):
 if __name__ == "__main__":
 
     main()
+
+
