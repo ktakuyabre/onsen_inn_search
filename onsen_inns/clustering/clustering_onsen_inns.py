@@ -3,7 +3,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler, normalize
+from sklearn.preprocessing import StandardScaler, normalize, OneHotEncoder
 
 sys.path.append("..")
 sys.path.append("../..")
@@ -41,10 +41,23 @@ def main():
         # concatenate data_set and data_column
         data_set = np.concatenate((data_set, data_column), axis=1)  
         
+    # create the nature_of_onsen column
+    data_column = np.array(onsen_inns.values_list("onsen__nature_of_onsen"))
+
+    # transform the nature_of_onsen column into one-hot encoded numpy arrays
+    enc = OneHotEncoder(handle_unknown='ignore')
+    enc.fit(data_column)
+    data_column = enc.transform(data_column).toarray()
+
+    # concatenate the transformed one-hot encoded numpys arrays with data_set
+    data_set = np.concatenate((data_set, data_column), axis=1)  
+        
     # remove the dummy numpy array created in the beginning
     data_set = data_set[:,1:]
     print(data_set.dtype)
+    print(len(data_set[0]))
     print(data_set)
+
     
     # standardlize the data_set
     scaler = StandardScaler()
