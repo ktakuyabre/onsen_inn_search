@@ -29,13 +29,19 @@ def scrapeOnsenHtml(url):
     url = "https://www.jalan.net/onsen/OSN_50350.html"
     res = req.urlopen(url)
     soup = BeautifulSoup(res, "html.parser")
+    page_num = soup.find_all("td",{"class":"hotel-name"}),
+    soup.find_all("td",{"class":"pagelink"})
+        page_num = link[0].get_text()
+        page_num.get("href")
+        page.get_text()
+        print()
     for link in zip(soup.find_all("td",{"class":"hotel-name"}), soup.find_all("td",{"class":"charge"})):
-        yad_num = link[0].find("a")
+        yad_num = link[1].find("a")
         yad_num.get("href")
         #print(yad_num.get("href"))
         yad_num.get_text()
         #print(yad_num.get_text())
-        yad_price = link[1].get_text()
+        yad_price = link[2].get_text()
         yad_price = yad_price[3:-13]
         #print("https://www.jaran.net"+yad_num.get("href"))
         inn_one = [removeBadChars(yad_num.get_text()),yad_num.get("href"), yad_price]
