@@ -25,7 +25,7 @@ def scrapeInnHtml(url):
     return inn_data
 
 if __name__ == "__main__":
-    
+
     url = "https://www.jalan.net/yad321542/"
     inn_data = scrapeInnHtml(url)
     print(inn_data)
