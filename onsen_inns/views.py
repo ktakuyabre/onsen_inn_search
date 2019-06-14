@@ -16,5 +16,6 @@ class OnsenInnViewSet(viewsets.ModelViewSet):
     API endpoint that allows onsen inns to be viewed or edited.
     """
     queryset = OnsenInn.objects.all()
+    filter_fields = ('id', 'category')
     serializer_class = OnsenInnSerializer
 

@@ -33,11 +33,11 @@ def scrapeInnHtml(url):
     for link in soup.find_all("td", {"class": "jlnpc-td05 s12_30 fb"}):
         inn_data.append(link.get_text())
 
-    '''for link in soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}).find_all("td", {"class": "jlnpc-td06"}):
-        removeBadChars(inn_data)
-        inn_data.append(link.get_text())
+    '''for link in soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}):
+        for link in soup.find_all("td", {"class": "jlnpc-td06"}):
+            inn_data.append(link.get_text())'''
 
-    for link in soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}):
+    '''for link in soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}):
         for link in soup.find_all("td",{"class":"jlnpc-td03"}):
             inn_data.append(link.get_text())
             #removeBadChars(inn_data)
