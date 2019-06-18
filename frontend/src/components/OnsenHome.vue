@@ -4,11 +4,7 @@
     <div>
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
     </div>
-    <div>
-    styleItem = {
-     'backgroundImage' : 'url(' + require("https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg") + ')'
-}
-    </div>
+    <div style="background-image: url('https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg');" />
   </div>
 </template>
 
