@@ -4,7 +4,7 @@
     <div>
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
     </div>
-    <div style="background-image: url('https://github.com/ktakuyabre/onsen_inn_search/blob/master/frontend/static/UNADJUSTEDNONRAW_thumb_1.jpg');" />
+    <div style="background-image: url('https://raw.githubusercontent.com/ktakuyabre/onsen_inn_search/master/frontend/static/UNADJUSTEDNONRAW_thumb_1.jpg');" />
   </div>
 </template>
 
