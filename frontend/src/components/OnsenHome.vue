@@ -8,9 +8,7 @@
       background-image : url("https://github.com/ktakuyabre/onsen_inn_search/blob/master/frontend/static/UNADJUSTEDNONRAW_thumb_1.jpg?raw=true")
     </img>
   </div>
-</template>
 
-<template>
   <div class="hello">
     <h3>background sample</h3>
     <p class="desc">
