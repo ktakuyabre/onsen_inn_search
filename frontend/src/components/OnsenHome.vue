@@ -4,9 +4,6 @@
     <div>
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
     </div>
-    <img>
-      background-image : url("https://github.com/ktakuyabre/onsen_inn_search/blob/master/frontend/static/UNADJUSTEDNONRAW_thumb_1.jpg?raw=true")
-    </img>
   </div>
 
   <div class="hello">
