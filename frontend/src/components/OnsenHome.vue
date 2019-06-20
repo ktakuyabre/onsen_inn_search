@@ -2,13 +2,13 @@
   <div>
   <body background="https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg">
   背景に指定した画像が繰り返し並びます。
-  </body>
     <h1>{{ msg }}</h1>
     <div>
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
     </div>
   </div>
+  </body>
 </template>
 
 <script>
