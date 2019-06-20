@@ -6,11 +6,25 @@
   width: 1000px;
   height:1000px;
 }
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h1>{{ msg }}</h1>
     <div>
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
   </div>
   </body>
 </template>
