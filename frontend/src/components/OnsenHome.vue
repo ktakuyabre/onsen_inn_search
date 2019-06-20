@@ -6,9 +6,12 @@
       <div class="bg" />
     </div>
   </div>
-  <div>
-    <img src="UNADJUSTEDNONRAW_thumb_1.jpg" alt="ホーム写真" title="温泉">
-  </div>
+</template>
+
+<template>
+  <ul>
+    <li><img src="UNADJUSTEDNONRAW_thumb_1"/></li>
+  </ul>
 </template>
 
 
