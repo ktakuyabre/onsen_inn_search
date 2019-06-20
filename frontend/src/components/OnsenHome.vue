@@ -5,7 +5,7 @@
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
       <ul>
-        <li><img src="/Users/admin/Documents/GitHub/onsen_inn_search/frontend/src/assets/onsen_woman.png"/></li>
+        <li>h('img', { attrs: { src: require('./image.png') }})</li>
       </ul>
     </div>
   </div>
