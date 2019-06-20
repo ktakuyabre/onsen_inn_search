@@ -5,7 +5,7 @@
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
       <ul>
-        <li>h('img', { attrs: { src: require('./image.png') }})</li>
+        <li><img src="/Users/admin/Public/image/onsen_woman.png"/></li>
       </ul>
     </div>
   </div>
