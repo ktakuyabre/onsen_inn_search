@@ -5,7 +5,7 @@
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
       <ul>
-        <li><img src="/Users/admin/Public/image/onsen_woman.png"/></li>
+        <li><img src="/src/assets/onsen_woman.png"/></li>
       </ul>
     </div>
   </div>
