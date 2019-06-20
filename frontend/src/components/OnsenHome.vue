@@ -1,5 +1,10 @@
 <template>
   <div>
+  parent {
+  /*親要素のwidthを100pxに*/
+  width: 1000px;
+  height:1000px;	
+}
   <body background="https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg">
     <h1>{{ msg }}</h1>
     <div>
