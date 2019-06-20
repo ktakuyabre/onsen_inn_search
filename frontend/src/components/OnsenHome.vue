@@ -5,12 +5,14 @@
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
     </div>
-    <ul>
-      <li><img src="frontend/src/components/UNADJUSTEDNONRAW_thumb_1.jpg"/></li>
-    </ul>
   </div>
 </template>
 
+<template>
+  <ul>
+    <li><img src="UNADJUSTEDNONRAW_thumb_1"/></li>
+  </ul>
+</template>
 
 
 <script>
