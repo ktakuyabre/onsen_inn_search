@@ -5,14 +5,9 @@
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
     </div>
-    <div>
-      <style>
-      .bg{
-      background-image: url("UNADJUSTEDNONRAW_thumb_1.jpg")
-      }
-      </style>
-      <div class="img" />
-    </div>
+  </div>
+  <div>
+    <img src="UNADJUSTEDNONRAW_thumb_1.jpg" alt="ホーム写真" title="温泉">
   </div>
 </template>
 
