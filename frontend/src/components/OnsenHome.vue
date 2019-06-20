@@ -14,7 +14,7 @@
       <div class="img" />
     </div>
   </div>
-
+</template>
 
 
 <script>
