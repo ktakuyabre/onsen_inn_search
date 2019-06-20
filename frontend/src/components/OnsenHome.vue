@@ -1,7 +1,8 @@
 <template>
   <div>
-  body {
-  background-image: url("https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg");
+  <body background="https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg">
+  parent {
+  /*親要素のwidthを100pxに*/
   width: 1000px;
   height:1000px;
 }
