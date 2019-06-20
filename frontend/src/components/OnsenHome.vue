@@ -9,7 +9,11 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
     <h1><font size="7">{{ msg }}</h1>
+    <br>
+    <br>
     <br>
     <br>
     <br>
@@ -19,6 +23,8 @@
       <v-btn large href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
     </div>
+    <br>
+    <br>
     <br>
     <br>
     <br>
