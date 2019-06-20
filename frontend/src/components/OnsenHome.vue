@@ -8,7 +8,7 @@
   </div>
   <div>
     <ul>
-      <li><img src="UNADJUSTEDNONRAW_thumb_1"/></li>
+      <li><img src="/Users/admin/Documents/GitHub/onsen_inn_search/frontend/src/components/UNADJUSTEDNONRAW_thumb_1.jpg"/></li>
     </ul>
   </div>
 </template>
