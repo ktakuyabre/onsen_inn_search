@@ -8,7 +8,7 @@
     <div>
       <style>
       .bg{
-      background-image: url("https://github.com/ktakuyabre/onsen_inn_search/blob/master/frontend/static/UNADJUSTEDNONRAW_thumb_1.jpg?raw=true")
+      background-image: url("UNADJUSTEDNONRAW_thumb_1.jpg")
       }
       </style>
       <div class="img" />
