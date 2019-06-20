@@ -6,14 +6,12 @@
       <div class="bg" />
     </div>
   </div>
+  <div>
+    <ul>
+      <li><img src="UNADJUSTEDNONRAW_thumb_1"/></li>
+    </ul>
+  </div>
 </template>
-
-<template>
-  <ul>
-    <li><img src="UNADJUSTEDNONRAW_thumb_1"/></li>
-  </ul>
-</template>
-
 
 <script>
 export default {
