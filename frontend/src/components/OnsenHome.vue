@@ -5,7 +5,7 @@
       <v-btn small href='/#/tinder/'>Tinder</v-btn>
       <div class="bg" />
       <ul>
-        <li><img src="/src/assets/onsen_woman.png"/></li>
+        <li><img src="https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg"/></li>
       </ul>
     </div>
   </div>
