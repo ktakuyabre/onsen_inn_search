@@ -47,7 +47,7 @@ export default {
   name: 'OnsenHome',
   data () {
     return {
-      msg: 'Onsen Home Page',
+      msg: 'Onsender♨️',
     }
   },
 }
