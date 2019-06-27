@@ -1,12 +1,9 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-<<<<<<< HEAD
     <div>
       <v-btn small href='/#/onsenlist/'>OnsenList</v-btn>
     </div>
-=======
->>>>>>> 90a8f55e8af8750d409e95510f64ea870510008d
   </div>
 </template>
 
