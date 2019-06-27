@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'onsen_inns',
     'rest_framework',
     'django_filters',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -32,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'onsen_inn_search.urls'
@@ -54,6 +56,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'onsen_inn_search.wsgi.application'
 
+# The configuration of CORS(Cross Origin Resource Sharing)
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+# Add IP addresses to enable them to bypass the Same Origin Policy
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+)
 
 # Database
 
