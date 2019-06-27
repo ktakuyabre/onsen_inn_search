@@ -8,3 +8,4 @@ matplotlib
 beautifulsoup4
 djangorestframework
 django-filter
+django-cors-headers
