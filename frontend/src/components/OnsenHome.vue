@@ -42,11 +42,6 @@
     <br>
     <br>
 
-    <h1>{{ msg }}</h1>
-    <div>
-      <v-btn small href='/#/tinder/'>Tinder</v-btn>
-    </div>
-
   </div>
   </body>
 </template>
