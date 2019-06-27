@@ -1,9 +1,43 @@
 <template>
-  <div>
+  <div id='home'>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h1>{{ msg }}</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div>
-      <v-btn small href='/#/tinder/'>Tinder</v-btn>
+      <v-btn large href='/#/tinder/'>Tinder</v-btn>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -12,15 +46,20 @@ export default {
   name: 'OnsenHome',
   data () {
     return {
-      msg: 'Onsen Home Page',
+      msg: 'Onsender♨️',
     }
   },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add "scoped" attribute to limit CSS to this component honly -->
 <style scoped>
 h1 {
   font-weight: normal;
+  font-size: 64px;
+}
+
+#home {
+  background-image: url('../assets/onei.jpg');
 }
 </style>
