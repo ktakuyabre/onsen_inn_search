@@ -7,17 +7,14 @@
     <br>
     <br>
     <br>
-    <template>
       <div>
         <h1>{{ msg }}</h1>
       </div>
-    </template>
     <br>
     <br>
     <br>
     <br>
     <br>
-    <template>
       <v-layout row>
         <v-flex xs12 sm6 offset-sm3>
           <v-card>
@@ -68,7 +65,6 @@
       </v-card>
     </v-flex>
   </v-layout>
-</template>
 <script>
   export default {
     data () {
