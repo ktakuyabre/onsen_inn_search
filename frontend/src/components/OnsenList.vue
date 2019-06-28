@@ -3,7 +3,11 @@
     <h1>{{ msg }}</h1>
   </div>
 </template>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <template>
   <v-layout row>
     <v-flex xs12 sm6 offset-sm3>
