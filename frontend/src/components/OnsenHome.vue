@@ -38,10 +38,6 @@
     <br>
     <br>
     <br>
-<<<<<<< HEAD
-
-=======
->>>>>>> 207f3ab8228b98705f846a7e283328e7681629d8
   </div>
 </template>
 
@@ -56,7 +52,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component honly -->
 <style scoped>
 h1 {
   font-weight: normal;
