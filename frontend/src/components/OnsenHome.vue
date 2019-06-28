@@ -59,6 +59,6 @@ h1 {
 }
 
 #home {
-  background-image: url('../assets/onei.jpg');
+  background-image: url('./assets/onei.jpg');
 }
 </style>
