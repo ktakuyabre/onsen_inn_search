@@ -1,5 +1,6 @@
 <template>
   <div　id='list'>
+  <br>
     <h1>{{ msg }}</h1>
   <br>
   <br>
@@ -41,6 +42,14 @@
     </v-flex>
   </v-layout>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </template>
 
 <script>
@@ -74,7 +83,7 @@ h1 {
   font-size: 32px;
 }
 
-#home {
+#list {
   background-image: url('https://www.pakutaso.com/shared/img/thumb/kusatuIMG_3514_TP_V.jpg');
 }
 </style>
