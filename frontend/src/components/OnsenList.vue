@@ -68,9 +68,13 @@ export default {
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1 {
   font-weight: normal;
+  font-size: 32px;
+}
+
+#home {
+  background-image: url('https://www.pakutaso.com/shared/img/thumb/kusatuIMG_3514_TP_V.jpg');
 }
 </style>
