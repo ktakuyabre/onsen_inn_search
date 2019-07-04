@@ -32,20 +32,24 @@ from onsen_inns.models import Onsen, OnsenInn
 inn_count = 0
 
 def main():
-    
-    onsens = Onsen.objects.all()
-    for onsen in onsens:
-        inn_data = []
-        onsen_area_id = onsen.onsen_area_id
+    try:
+        onsens = Onsen.objects.all()
+        for onsen in onsens:
+            inn_data = []
+            onsen_area_id = onsen.onsen_area_id
 
-        if onsen_area_id is None:
-            continue
+            if onsen_area_id is None:
+                continue
 
-        url = "https://www.jalan.net/onsen/OSN_" + str(onsen_area_id) + ".html"
-        print(url)
-        inn_data = scrapeOnsenHtml(url)
-        print(onsen.onsen_name)
-        storeInnData(onsen, inn_data)
+            url = "https://www.jalan.net/onsen/OSN_" + str(onsen_area_id) + ".html"
+            print(url)
+            inn_data = scrapeOnsenHtml(url)
+            print(onsen.onsen_name)
+            storeInnData(onsen, inn_data)
+    except urllib.error.HTTPError as error:
+        pass
+    except Exception as e:
+        print("Error(store_inn_data.py, main) URL:" + url)
 
 def storeInnData(onsen, inn_data):
     global inn_count
@@ -133,6 +137,8 @@ def saveInnImage(model, url):
         model.inn_photo.save("inn_image_"+str(model.inn_id)+".jpg", File(img_temp), save=True)
     except urllib.error.HTTPError as error:
         pass
+    except Exception as e:
+        print("Error(store_inn_data.py, saveInnImage) URL:" + url)
 
 if __name__ == "__main__":
 
