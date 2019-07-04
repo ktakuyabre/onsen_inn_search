@@ -59,11 +59,6 @@ export default {
     return {
       msg: 'OnsenList Page',
     }
-  },
-}
-
-    data () {
-      return {
         items: [
           { title: 'ニセコ五色温泉旅館', avatar: 'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png' },
           { title: '高湯温泉旅館　玉子湯', avatar: 'https://2.bp.blogspot.com/-8SXUjho2Q3A/WTd5IbXcdeI/AAAAAAABEtU/lLMy-W__SCol746jtdzKntgpQ4yNw9ggwCLcB/s800/stand_onsen_woman.png' },
