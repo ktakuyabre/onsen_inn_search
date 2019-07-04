@@ -16,6 +16,8 @@ import urllib.request
 from bs4 import BeautifulSoup
 from xml.dom.minidom import parseString
 import random
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 #from scrape_onsen_html import scrapeOnsenHtml
 from scrape_onsen_html_sub import scrapeOnsenHtml
 
@@ -30,20 +32,24 @@ from onsen_inns.models import Onsen, OnsenInn
 inn_count = 0
 
 def main():
-    
-    onsens = Onsen.objects.all()
-    for onsen in onsens:
-        inn_data = []
-        onsen_area_id = onsen.onsen_area_id
+    try:
+        onsens = Onsen.objects.all()
+        for onsen in onsens:
+            inn_data = []
+            onsen_area_id = onsen.onsen_area_id
 
-        if onsen_area_id is None:
-            continue
+            if onsen_area_id is None:
+                continue
 
-        url = "https://www.jalan.net/onsen/OSN_" + str(onsen_area_id) + ".html"
-        print(url)
-        inn_data = scrapeOnsenHtml(url)
-        print(onsen.onsen_name)
-        storeInnData(onsen, inn_data)
+            url = "https://www.jalan.net/onsen/OSN_" + str(onsen_area_id) + ".html"
+            print(url)
+            inn_data = scrapeOnsenHtml(url)
+            print(onsen.onsen_name)
+            storeInnData(onsen, inn_data)
+    except urllib.error.HTTPError as error:
+        pass
+    except Exception as e:
+        print("Error(store_inn_data.py, main) URL:" + url)
 
 def storeInnData(onsen, inn_data):
     global inn_count
@@ -86,6 +92,7 @@ def storeInnData(onsen, inn_data):
             onsen_inn.inn_id = inn_count
             onsen_inn.inn_name = data[0]
             #onsen_inn.inn_photo = data[2]
+            #saveInnImage(data[0])
             onsen_inn.inn_min_price = 10000
             onsen_inn.review_room = round(random.uniform(0,5), 1)
             onsen_inn.review_bath = round(random.uniform(0,5), 1)
@@ -121,6 +128,17 @@ def storeInnData(onsen, inn_data):
             onsen_inn.onsen = onsen
             onsen_inn.save()
         inn_count+=1
+
+def saveInnImage(model, url):
+    try:
+        img_tmp = NamedTemporaryFile(delete = True)
+        img_tmp.write(urllib.request.urlopen(url))
+        img_tmp.flush()
+        model.inn_photo.save("inn_image_"+str(model.inn_id)+".jpg", File(img_temp), save=True)
+    except urllib.error.HTTPError as error:
+        pass
+    except Exception as e:
+        print("Error(store_inn_data.py, saveInnImage) URL:" + url)
 
 if __name__ == "__main__":
 

@@ -12,7 +12,7 @@
 
           <v-toolbar-title>Inbox</v-toolbar-title>
 
-          <v-spacer></v-spacer>
+              <v-spacer></v-spacer>
 
           <v-btn icon>
             <v-icon>more_vert</v-icon>
