@@ -1,7 +1,7 @@
 <template>
   <div　id='list'>
   <br>
-    <h1>{{ msg }}</h1>
+  <h1>{{ msg }}</h1>
   <br>
   <br>
   <v-layout row>
@@ -61,8 +61,6 @@ export default {
     }
   },
 }
-</script>
-<script>
   export default {
     data () {
       return {
