@@ -31,41 +31,46 @@ def scrapeInnHtml(url):
     html = urllib.request.urlopen("https://www.jalan.net/yad321542")
     soup = BeautifulSoup(html, "html.parser")
     for link in soup.find_all("td", {"class": "jlnpc-td05 s12_30 fb"}):
-        inn_data.append(link.get_text())
+        text = link.get_text()
+        text = float(text)
+        inn_data.append(text)
 
-    for link in soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}):
-        for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td06"})):
-            text = l.get_text()
-            text = removeBadChars(text)
-            try:
-                text = text[:-1]
-                text = int(text)
-            except Exception as e:
-                print(text)
-            if i == 4:
-                inn_data.append(text)
-
-
-
-    for link in soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"}):
-        for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
-            text = l.get_text()
-            text = removeBadChars(text)
-            text = int(text)
-            if i==0 or i==3 or i==6:
-                text += text
-                inn_data.append(text)
-
-    for link in soup.find_all("table", {"class": "s12_30 shisetsu-amenityspec_body jlnpc-table-basic-layout"}):
-        for l in link.find_all("td", {"class":"jlnpc-td01"}):
-            text = l.get_text()
-            text = removeBadChars(text)
-            #特定のアメニティあるなら0を、そうでないと1を返す
-            if text=='○':
-                text = 0
-            elif text=='×':
-                text = 1
+    link = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
+    link = link[0]
+    for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td06"})):
+        text = l.get_text()
+        text = removeBadChars(text)
+        text = text[:-1]
+        text = int(text)
+        if i == 4:
             inn_data.append(text)
+
+
+
+    links = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
+    link = links[2]
+    num = 0
+    for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
+        text = l.get_text()
+        text = removeBadChars(text)
+        text = int(text)
+        if i==0 or i==3 or i==6:
+            num = num + text
+    inn_data.append(num)
+
+    links = soup.find_all("table", {"class": "s12_30 shisetsu-amenityspec_body jlnpc-table-basic-layout"})
+    link = links[0]
+    for l in link.find_all("td", {"class":"jlnpc-td01"}):
+        text = l.get_text()
+        text = removeBadChars(text)
+        #特定のアメニティあるなら0を、そうでないと1を返す
+        if text=='○':
+            text = 0
+        elif text=='×':
+            text = 1
+        else:
+            continue
+        inn_data.append(text)
 
     #サービス、レジャー
     for link in soup.find_all("div", {"class": "shisetsu-main03 shisetsu-amenityservice_body_wrap"}):
