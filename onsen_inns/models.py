@@ -25,7 +25,7 @@ class OnsenInn(models.Model):
     
     inn_id = models.IntegerField()
     inn_name = models.CharField(max_length=100)
-    inn_photo = models.ImageField(blank=True, null=True)
+    inn_photo = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
     inn_min_price = models.IntegerField()
     review_room = models.DecimalField(blank=True, null=True, max_digits=2, decimal_places=1)
     review_bath = models.DecimalField(blank=True, null=True, max_digits=2, decimal_places=1)

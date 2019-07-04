@@ -2,6 +2,10 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Media Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 SECRET_KEY = '3cbps^1de2$ln=vx0-iuk4+1thcl(dst+eymv@wj=mg*e4lncf'
 
 
