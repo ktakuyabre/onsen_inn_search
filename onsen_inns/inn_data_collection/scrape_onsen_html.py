@@ -21,19 +21,19 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'onsen_inn_search.setting\
 s')
 import django
 django.setup()
-
+inn_data = []
 
 
 def scrapeOnsenHtml(url):
-    inn_data = []
-    url = "https://www.jalan.net/onsen/OSN_50350.html"
+    #inn_data = []
+    #url = "https://www.jalan.net/onsen/OSN_50350.html"
     res = req.urlopen(url)
     soup = BeautifulSoup(res, "html.parser")
     link = soup.find("td",{"class":"pagelink"})
     link.a.get("href")
-    #page_num.get("href")
-    #page.get_text()
-    print(link.a.get("href"))
+    next_link = "https://www.jaran.net"+link.a.get("href")
+    #print(link.a.get("href"))
+    #print(next_link)
 
     #for link in zip(soup.find_all("div",{"class":"main_ph"}),soup.find("img src"))
 
@@ -56,6 +56,11 @@ def scrapeOnsenHtml(url):
          yad_pic,yad_price]
         inn_one = inn_one + scrapeInnHtml("https://www.jaran.net"+yad_num.get("href"))
         inn_data.append(inn_one)
+
+        '''link = soup.find("td",{"class":"pagelink"})
+        if link.find("a") != None:
+            next_link = "https://www.jaran.net"+link.a.get("href")
+            scrapeOnsenHtml(next_link)'''
     return inn_data
 
 def removeBadChars(str):
