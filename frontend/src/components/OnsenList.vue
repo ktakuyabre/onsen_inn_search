@@ -1,98 +1,56 @@
 <template>
-  <div id='OnsenList'>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-      <div>
-        <h1>{{ msg }}</h1>
-      </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-      <v-layout row>
-        <v-flex xs12 sm6 offset-sm3>
-          <v-card>
-            <v-toolbar color="cyan" dark>
-              <v-toolbar-side-icon></v-toolbar-side-icon>
+  <div　id='list'>
+  <br>
+  <h1>{{ msg }}</h1>
+  <br>
+  <br>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card>
+        <v-toolbar color="indigo" dark>
+          <v-toolbar-side-icon></v-toolbar-side-icon>
 
-              <v-toolbar-title>Inbox</v-toolbar-title>
+          <v-toolbar-title>Inbox</v-toolbar-title>
 
               <v-spacer></v-spacer>
 
-              <v-btn icon>
-                <v-icon>search</v-icon>
-              </v-btn>
-            </v-toolbar>
+          <v-btn icon>
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+        </v-toolbar>
+        <v-list>
+          <v-list-tile
+            v-for="item in items"
+            :key="item.title"
+            avatar
+            @click=""
+          >
+            <v-list-tile-action>
+              <v-icon v-if="item.icon" color="pink">star</v-icon>
+            </v-list-tile-action>
 
-          <v-list two-line>
-            <template v-for="(item, index) in items">
-              <v-subheader
-                v-if="item.header"
-                :key="item.header"
-                >
-                  {{ item.header }}
-                </v-subheader>
+            <v-list-tile-content>
+              <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            </v-list-tile-content>
 
-              <v-divider
-                v-else-if="item.divider"
-                :key="index"
-                :inset="item.inset"
-                ></v-divider>
-
-              <v-list-tile
-                v-else
-                :key="item.title"
-                avatar
-                @click=""
-              >
-              <v-list-tile-avatar>
-                <img :src="item.avatar">
-              </v-list-tile-avatar>
-
-              <v-list-tile-content>
-                <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </template>
+            <v-list-tile-avatar>
+              <img :src="item.avatar">
+            </v-list-tile-avatar>
+          </v-list-tile>
         </v-list>
       </v-card>
     </v-flex>
   </v-layout>
-<script>
-  export default {
-    data () {
-      return {
-        items: [
-          { header: 'Today' },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-            title: 'Brunch this weekend?',
-            subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-          },
-          { divider: true, inset: true },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-            title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-            subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend."
-          },
-          { divider: true, inset: true },
-          {
-            avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-            title: 'Oui oui',
-            subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?"
-          }
-        ]
-      }
-    }
-  }
-</script>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</template>
 
 <script>
 export default {
@@ -101,20 +59,29 @@ export default {
     return {
       msg: 'OnsenList Page',
     }
-  },
+  }
 }
+    export default {
+    data () {
+      return {
+        items: [
+          { title: 'ニセコ五色温泉旅館', avatar: 'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png' },
+          { title: '高湯温泉旅館　玉子湯', avatar: 'https://2.bp.blogspot.com/-8SXUjho2Q3A/WTd5IbXcdeI/AAAAAAABEtU/lLMy-W__SCol746jtdzKntgpQ4yNw9ggwCLcB/s800/stand_onsen_woman.png' },
+          { title: '湯治のふるさと　玉川温泉', avatar: 'https://2.bp.blogspot.com/-w2cc5PFxpDY/WTd5F-_HDcI/AAAAAAABEtE/hLef7WMLdt8Vvugs3Jr4Xkg1uHDxAp6HQCLcB/s800/stand_onsen_girl.png' },
+          { title: '日本三秘湯　谷次温泉', avatar: 'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png' }
+        ]
+      }
+    }
+  }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-
 
 <style scoped>
 h1 {
   font-weight: normal;
-  font-size: 64px;
+  font-size: 32px;
 }
 
-#home {
-  background-image: url('https://www.pakutaso.com/shared/img/thumb/HOTE86_rotenburotobijyo15103631_TP_V.jpg');
+#list {
+  background-image: url('https://www.pakutaso.com/shared/img/thumb/kusatuIMG_3514_TP_V.jpg');
 }
 </style>
