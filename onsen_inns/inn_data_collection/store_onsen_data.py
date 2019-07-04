@@ -220,6 +220,8 @@ def storeJaranOnsens(url):
 
     except urllib.error.HTTPError as error:
         pass
+    except Exception as e:
+        print("Error URL:" + url)
 
 def readParameterFile(file):
     global params
