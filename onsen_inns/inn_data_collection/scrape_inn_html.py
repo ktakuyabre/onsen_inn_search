@@ -27,89 +27,93 @@ def removeBadChars(str):
    return str
 
 def scrapeInnHtml(url):
-    inn_data = []
-    html = urllib.request.urlopen("https://www.jalan.net/yad321542")
-    soup = BeautifulSoup(html, "html.parser")
-    for link in soup.find_all("td", {"class": "jlnpc-td05 s12_30 fb"}):
-        text = link.get_text()
-        text = float(text)
-        inn_data.append(text)
-
-    link = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
-    link = link[0]
-    for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td06"})):
-        text = l.get_text()
-        text = removeBadChars(text)
-        text = text[:-1]
-        text = int(text)
-        if i == 4:
+    try:
+        inn_data = []
+        html = urllib.request.urlopen("https://www.jalan.net/yad321542")
+        soup = BeautifulSoup(html, "html.parser")
+        for link in soup.find_all("td", {"class": "jlnpc-td05 s12_30 fb"}):
+            text = link.get_text()
+            text = float(text)
             inn_data.append(text)
 
+        link = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
+        link = link[0]
+        for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td06"})):
+            text = l.get_text()
+            text = removeBadChars(text)
+            text = text[:-1]
+            text = int(text)
+            if i == 4:
+                inn_data.append(text)
 
 
-    links = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
-    link = links[2]
-    num = 0
-    for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
-        text = l.get_text()
-        text = removeBadChars(text)
-        text = int(text)
-        if i==0 or i==3 or i==6:
-            num = num + text
-    inn_data.append(num)
 
-    links = soup.find_all("table", {"class": "s12_30 shisetsu-amenityspec_body jlnpc-table-basic-layout"})
-    link = links[0]
-    for l in link.find_all("td", {"class":"jlnpc-td01"}):
-        text = l.get_text()
-        text = removeBadChars(text)
-        #特定のアメニティあるなら0を、そうでないと1を返す
-        if text=='○':
-            text = 0
-        elif text=='×':
-            text = 1
-        else:
-            continue
-        inn_data.append(text)
-
-    #サービス、レジャー
-    for link in soup.find_all("div", {"class": "shisetsu-main03 shisetsu-amenityservice_body_wrap"}):
+        links = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
+        link = links[2]
+        num = 0
         for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
+            text = l.get_text()
+            text = removeBadChars(text)
+            text = int(text)
+            if i==0 or i==3 or i==6:
+                num = num + text
+        inn_data.append(num)
+
+        #サービス、レジャー
+        for i, l in enumerate(soup.find("div", {"class": "shisetsu-main03 shisetsu-amenityservice_body_wrap"}).find_all("td", {"class": "jlnpc-td03"})):
             text = l.get_text()
             text = removeBadChars(text)
             if i==2:
                 p = [x.strip() for x in text.split('・')]
                 inn_data.append(p)
 
+        links = soup.find("div", {"class": "jlnpc-table-row-layout"}).find_all("td", {"class":"jlnpc-td03 s12_30"})
+        text = links[-1].get_text()
+        text = removeBadChars(text)
+        text2 = "インターネット"
+        #ネット無料なら0を、そうでないと1を返す
+        if text2 in text:
+            text = 1
+        else:
+            text = 0
+        inn_data.append(text)
 
+        imgs = soup.find("div",{"class":"iconbox"}).find_all("img")
+        konbini = False
+        for img in imgs:
+            text = img["alt"]
+            text2 = "コンビニ"
+            #コンビニまで5分以内なら0を、そうでないと1を返す
+            if text2 in text:
+                #text = 0
+                konbini = True
+            '''else:
+                text = 1'''
+        if konbini:
+            text = 1
+        else:
+            text = 0
+        inn_data.append(text)
 
-
-    for link in soup.find_all("div", {"class": "jlnpc-table-row-layout"}):
-        for l in link.find_all("td", {"class":"jlnpc-td03 s12_30"}):
+        links = soup.find_all("table", {"class": "s12_30 shisetsu-amenityspec_body jlnpc-table-basic-layout"})
+        link = links[0]
+        for i, l in enumerate(link.find_all("td", {"class":"jlnpc-td01"})):
             text = l.get_text()
             text = removeBadChars(text)
-            text2 = "インターネット"
-            #ネット無料なら0を、そうでないと1を返す
-            if text2 in text:
+            #特定のアメニティあるなら0を、そうでないと1を返す
+            if text=='○':
+                text = 1
+            elif text=='×':
                 text = 0
             else:
-                text = 1
-            inn_data.append(text)
+                continue
 
+            if i != 11 and i != 15 and i <= 18:
+                inn_data.append(text)
 
-
-    #for link in soup.find("div",{"class":"iconbox"}):
-        #text = link.get_text()
-        #text2 = "コンビニ"
-        #コンビニまで5分以内なら0を、そうでないと1を返す
-        #if text2 in text:
-            #text = 0
-        #else:
-            #text = 1
-        #inn_data.append(text)
-
-
-
+    except Exception as e:
+        print("Error URL: ", url)
+        print("Error Message(scrape_inn_html.py): ", e )
 
     return inn_data
 

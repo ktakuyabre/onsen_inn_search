@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django_mysql.models import ListCharField
 
 class Onsen(models.Model):
 
@@ -35,26 +36,41 @@ class OnsenInn(models.Model):
     review_cleaness = models.DecimalField(blank=True, null=True, max_digits=2, decimal_places=1)
     rooms_total = models.IntegerField(blank=True, null=True)
     baths_total = models.IntegerField(blank=True, null=True)
+
+    service_leisure = ListCharField(
+       base_field=models.CharField(max_length=20),
+       size = 30,
+       max_length=(30*21),
+       blank=True,
+       null=True
+    )
     
     free_wifi = models.BooleanField(blank=True, null=True)
     convenience_store = models.BooleanField(blank=True, null=True)
+
     hand_towel = models.BooleanField(blank=True, null=True)
-    dental_amenities = models.BooleanField(blank=True, null=True)
-    bath_towel = models.BooleanField(blank=True, null=True)
-    shampoo = models.BooleanField(blank=True, null=True)
-    conditioner = models.BooleanField(blank=True, null=True)
     body_wash = models.BooleanField(blank=True, null=True)
-    bar_soap = models.BooleanField(blank=True, null=True)
-    yukata = models.BooleanField(blank=True, null=True)
-    pajamas = models.BooleanField(blank=True, null=True)
-    bathrobe = models.BooleanField(blank=True, null=True)
     hairdryer = models.BooleanField(blank=True, null=True)
-    duvet = models.BooleanField(blank=True, null=True)
-    razor = models.BooleanField(blank=True, null=True)
-    shower_cap = models.BooleanField(blank=True, null=True)
-    cotton_swab = models.BooleanField(blank=True, null=True)
     onsui_toilet = models.BooleanField(blank=True, null=True)
+
+    dental_amenities = models.BooleanField(blank=True, null=True)
+    bar_soap = models.BooleanField(blank=True, null=True)
+    duvet = models.BooleanField(blank=True, null=True)
     hair_brush = models.BooleanField(blank=True, null=True)
+
+    bath_towel = models.BooleanField(blank=True, null=True)
+    yukata = models.BooleanField(blank=True, null=True)
+    razor = models.BooleanField(blank=True, null=True)
+
+    #separate_toilet = models.BooleanField(blank=True, null=True)
+    shampoo = models.BooleanField(blank=True, null=True)
+    pajamas = models.BooleanField(blank=True, null=True)
+    shower_cap = models.BooleanField(blank=True, null=True)
+
+    conditioner = models.BooleanField(blank=True, null=True)
+    bathrobe = models.BooleanField(blank=True, null=True)
+    cotton_swab = models.BooleanField(blank=True, null=True)
+    
     category = models.IntegerField(blank=True, null=True)
     onsen = models.ForeignKey(Onsen, on_delete=models.CASCADE)
 

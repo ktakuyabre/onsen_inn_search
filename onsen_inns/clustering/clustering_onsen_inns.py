@@ -51,6 +51,19 @@ def main():
 
     # concatenate the transformed one-hot encoded numpys arrays with data_set
     data_set = np.concatenate((data_set, data_column), axis=1)  
+
+    '''# create the service_leisure column
+    #data_column = np.array(onsen_inns.values_list("service_leisure"))
+    data_column = onsen_inns.values_list("service_leisure")
+    print(data_column)
+    # transform the service_leisure column into one-hot encoded numpy arrays
+    enc = OneHotEncoder(handle_unknown='ignore')
+    enc.fit(data_column)
+    data_column = enc.transform(data_column).toarray()
+    print(data_column)'''
+
+    # concatenate the transformed one-hot encoded numpys arrays with data_set
+    data_set = np.concatenate((data_set, data_column), axis=1)  
         
     # remove the dummy numpy array created in the beginning
     data_set = data_set[:,1:]
