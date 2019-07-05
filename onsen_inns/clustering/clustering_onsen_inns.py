@@ -52,18 +52,24 @@ def main():
     # concatenate the transformed one-hot encoded numpys arrays with data_set
     data_set = np.concatenate((data_set, data_column), axis=1)  
 
-    '''# create the service_leisure column
-    #data_column = np.array(onsen_inns.values_list("service_leisure"))
-    data_column = onsen_inns.values_list("service_leisure")
-    print(data_column)
+    # create the service_leisure column
+    data_column = np.array(onsen_inns.values_list("service_leisure", flat=True))
+    
     # transform the service_leisure column into one-hot encoded numpy arrays
     enc = OneHotEncoder(handle_unknown='ignore')
     enc.fit(data_column)
     data_column = enc.transform(data_column).toarray()
-    print(data_column)'''
+    print(data_column)
 
-    # concatenate the transformed one-hot encoded numpys arrays with data_set
-    data_set = np.concatenate((data_set, data_column), axis=1)  
+  # create bow_vec and word2id from the service_leisure column
+    '''data_column = onsen_inns.values_list("service_leisure", flat=True)
+    print(data_column)
+    service_leisure_bow_vec, service_leisure_word2id = bowVectorizer(data_column)
+    print(service_leisure_bow_vec)
+    print(service_leisure_word2id)
+    print(len(service_leisure_word2id))
+    # concatenate the service_leisure_bow_vec  with data_set
+    data_set = np.concatenate((data_set, service_leisure_bow_vec), axis=1)  '''
         
     # remove the dummy numpy array created in the beginning
     data_set = data_set[:,1:]
@@ -76,16 +82,21 @@ def main():
     scaler = StandardScaler()
     scaler.fit(data_set)
     data_set = scaler.transform(data_set)
-    
-    # apply k-means clustering
-    kmeans = KMeans(n_clusters=15)
-    kmeans.fit(data_set)
-    centroids = kmeans.cluster_centers_
-    #print(centroids)
-    result = kmeans.labels_
-    print(result)
-    print(len(result))
 
+    # apply kmeans clustering, k = 1 ~ 30, using Elbow Method to evaluate each result at each k
+    sse = {}
+    for k in range(18, 19):
+        kmeans = KMeans(n_clusters=k, random_state = 0)
+        #kmeans.fit(data_set)
+        clusters = kmeans.fit_predict(data_set)
+        sse[k] = kmeans.inertia_    
+        centroids = kmeans.cluster_centers_
+        #print(centroids)
+        result = kmeans.labels_
+        print(result)
+        print(len(result))
+
+    #plotSseValues("cluster_sse_values_2.pdf", sse)
     # store the result into our database
     store_clustering_result(result)
 
@@ -99,8 +110,36 @@ def store_clustering_result(result):
         if onsen_inn.inn_id < 6:
             print("category(after): {0}, {1}".format(onsen_inn.inn_name, onsen_inn.category))
 
-    
+def bowVectorizer(preprocessed_docs):
 
+    word2id = {}
+    for tokens in preprocessed_docs:
+        for token in tokens:
+            if token not in word2id:
+                word2id[token] = len(word2id)
+            else:
+                continue
+
+    bow_vec = []
+    for tokens in preprocessed_docs:
+        bow = [0] * len(word2id)
+        for token in tokens:
+            try:
+                bow[word2id[token]] += 1
+            except:
+                pass
+        bow_vec.append(bow)
+
+    return bow_vec, word2id
+
+def plotSseValues(filename, sse):
+    # plot the sse values 
+    plt.figure()
+    plt.plot(list(sse.keys()), list(sse.values()))
+    plt.xlabel("Number of clusters")
+    plt.ylabel("SSE")
+    plt.show()
+    plt.savefig(filename)
 
 if __name__ == "__main__":
 

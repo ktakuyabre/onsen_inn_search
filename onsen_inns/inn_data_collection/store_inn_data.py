@@ -32,12 +32,12 @@ from onsen_inns.models import Onsen, OnsenInn
 inn_count = 0
 
 def main():
-    #onsens = Onsen.objects.all()
-    #onsen = onsens[3]
+    onsens = Onsen.objects.all()
+    onsen = onsens[3]
     #onsen_area_id = onsen.onsen_area_id
     #url = "https://www.jalan.net/onsen/OSN_" + str(onsen_area_id) + ".html"
-    #url = "https://www.jalan.net/onsen/OSN_50350.html"
-    '''print(url)
+    '''url = "https://www.jalan.net/onsen/OSN_50137.html"
+    print(url)
     inn_data = scrapeOnsenHtml(url)
     print(onsen.onsen_name)
     storeInnData(onsen, inn_data)'''

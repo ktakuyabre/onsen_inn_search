@@ -87,7 +87,7 @@ def removeBadChars(str):
 
 if __name__ == "__main__":
 
-    url = "https://www.jalan.net/onsen/OSN_50350.html"
+    url = "https://www.jalan.net/onsen/OSN_50137.html"
     inn_data = scrapeOnsenHtml(url)
     print(inn_data)
     print(len(inn_data))
