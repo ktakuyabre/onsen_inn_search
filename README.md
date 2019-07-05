@@ -111,7 +111,6 @@ OnsenInn: <br />
     service_leisure = List(Char)<br />
     free_wifi Bool()<br />
     convenience_store Bool()<br />
-
     hand_towel Bool()<br />
     body_wash Bool()<br />
     hairdryer Bool()<br />
@@ -129,6 +128,7 @@ OnsenInn: <br />
     conditioner Bool()<br />
     bathrobe Bool()<br />
     cotton_swab Bool()<br />
+    category Int(0~17)<br />
     onsen ForeignKey(Onsen)<br />
 
 ##API
@@ -197,7 +197,7 @@ Endpoint:
 
 Paramters:<br />
 id: return the onsen inn that has the specified id as its primary key<br />
-category: return onsen inns that belong to the specified category<br />
+category: return onsen inns that belong to the specified category(18 categories in total)<br />
 page: specify the page<br />
 
 Example: 
