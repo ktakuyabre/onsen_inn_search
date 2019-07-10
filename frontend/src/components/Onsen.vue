@@ -8,7 +8,7 @@
         <v-card>
           <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-3">{{ inn.inn_name }}</h3>
+            <h3 class="headline mb-3">{{ innname }}</h3>
             <div> {{ inn }} </div>
           </div>
           </v-card-title>
@@ -30,14 +30,20 @@ export default {
     return {
       msg: 'Onsen Page',
       inn: null,
+      innname: '',
       icon: require('../assets/onsen_ashi_ganbanyoku.png'),
     }
   },
   created () {
-    axios.get('http://localhost:8000/api/onsen_inns/?id=1')
+    axios.get('http://localhost:8000/api/onsen_inns/',{
+      params: {
+        id: this.$route.params.id
+      }
+    })
       .then(response => {
-        console.log(response)
+        console.log(response.data)
         this.inn = response.data.results[0]
+        this.innname = response.data.results[0].inn_name
       })
       .catch(err => {
         console.error(err)

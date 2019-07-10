@@ -26,13 +26,14 @@
               :key="item.inn_name"
               avatar
             >
+            <router-link v-bind:to="{ name: 'Onsen', params: { id: item.id }}" >
               <v-list-tile-content>
                 <v-list-tile-title v-text="item.inn_name"></v-list-tile-title>
               </v-list-tile-content>
-
               <v-list-tile-avatar>
                 <img :src="oneimages[0]">
               </v-list-tile-avatar>
+            </router-link>
             </v-list-tile>
           </v-list>
           <v-pagination
@@ -42,14 +43,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
   </div>
 </template>
 
@@ -60,9 +53,6 @@ export default {
   name: 'OnsenList',
   data () {
     return {
-      msg: 'OnsenList Page',
-      category: 1,
-      page: 1,
       oneimages: [
         'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png',
         'https://2.bp.blogspot.com/-8SXUjho2Q3A/WTd5IbXcdeI/AAAAAAABEtU/lLMy-W__SCol746jtdzKntgpQ4yNw9ggwCLcB/s800/stand_onsen_woman.png',
@@ -73,22 +63,23 @@ export default {
     }
   },
   created () {
-    axios.get('http://localhost:8000/api/onsen_inns/', {
-        Category: this.category,
-        Page: this.page,
-    })
-    .then(response => {
-        console.log(response)
-        this.items = response.data.results
-    })
-    .catch(err => {
-        console.error(err)
-    })
-    // this.getList()
+      this.getList(this.page)
   },
   methods: {
-    getList: function() {
-        this.items = []
+    getList (page) {
+      axios.get('http://localhost:8000/api/onsen_inns/', {
+          params: {
+            category: this.category,
+            page: page,
+          }
+      })
+      .then(response => {
+          console.log(response.data)
+          this.items = response.data.results
+      })
+      .catch(err => {
+          console.error(err)
+      })
     },
   },
 }
