@@ -8,8 +8,8 @@
         <v-card>
           <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-3">{{ onsenname }}</h3>
-            <div> {{ onsentext }} </div>
+            <h3 class="headline mb-3">{{ inn.inn_name }}</h3>
+            <div> {{ inn }} </div>
           </div>
           </v-card-title>
           <v-card-actions>
@@ -22,15 +22,26 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Onsen',
   data () {
     return {
       msg: 'Onsen Page',
-      onsenname: 'ほげ温泉',
-      onsentext: '肩こりによく効きます。こんにちは。ほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげ',
+      inn: null,
       icon: require('../assets/onsen_ashi_ganbanyoku.png'),
     }
+  },
+  created () {
+    axios.get('http://localhost:8000/api/onsen_inns/?id=1')
+      .then(response => {
+        console.log(response)
+        this.inn = response.data.results[0]
+      })
+      .catch(err => {
+        console.error(err)
+      })
   },
 }
 </script>
