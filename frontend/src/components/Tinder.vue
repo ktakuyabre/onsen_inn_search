@@ -2,7 +2,7 @@
   <div>
     <h1>{{ msg }}</h1>
     <div style="position: absolute;" v-drag>
-      <img :src="tests[count]"/>
+      <img :src="items[count]"/>
     </div>
     <v-btn @click=increment color="error">Nope</v-btn>
     <v-btn @click=increment color="info">Like</v-btn>
@@ -11,6 +11,7 @@
 
 <script>
 import drag from '@branu-jp/v-drag'
+import axios from 'axios'
 
 export default {
   name: 'Tinder',
@@ -26,7 +27,11 @@ export default {
         require('../assets/onei.jpg'),
         require('../assets/logo.png'),
       ],
+      items: [],
     }
+  },
+  created () {
+    this.getTwenty()
   },
   methods: {
     // ボタンをクリックしたときのハンドラ
@@ -37,6 +42,30 @@ export default {
       console.log(x)
       console.log(y)
     },
+
+    getRandomInt: function (max) {
+      return Math.floor(Math.random() * Math.floor(max))
+    },
+
+    getTwenty () {
+      for (var i = 0; i < 20; i++) {
+        var randId = this.getRandomInt(10)
+        console.log(randId)
+        axios.get('http://localhost:8000/api/onsen_inns/', {
+          params: {
+            id: randId,
+          },
+        })
+          .then(response => {
+            console.log(response.data)
+            this.items = response.data.results
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
+    },
+
   },
 }
 
