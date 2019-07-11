@@ -35,10 +35,10 @@ export default {
     }
   },
   created () {
-    axios.get('http://localhost:8000/api/onsen_inns/',{
+    axios.get('http://localhost:8000/api/onsen_inns/', {
       params: {
-        id: this.$route.params.id
-      }
+        id: this.$route.params.id,
+      },
     })
       .then(response => {
         console.log(response.data)

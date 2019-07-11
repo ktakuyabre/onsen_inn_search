@@ -63,23 +63,23 @@ export default {
     }
   },
   created () {
-      this.getList(this.page)
+    this.getList(this.page)
   },
   methods: {
     getList (page) {
       axios.get('http://localhost:8000/api/onsen_inns/', {
-          params: {
-            category: this.category,
-            page: page,
-          }
+        params: {
+          category: this.category,
+          page: page,
+        },
       })
-      .then(response => {
+        .then(response => {
           console.log(response.data)
           this.items = response.data.results
-      })
-      .catch(err => {
+        })
+        .catch(err => {
           console.error(err)
-      })
+        })
     },
   },
 }
