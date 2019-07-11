@@ -84,6 +84,17 @@ export default {
   },
 }
 </script>
+<script>
+  export default {
+    data () {
+      return {
+        items: [
+          {title: '日本三秘湯谷次温泉', avatar: 'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png' }
+        ]
+      }
+    }
+  }
+</script>
 
 <style scoped>
 h1 {
