@@ -76,24 +76,35 @@ export default {
       ],
       items ,
   created () {
-      this.getList(this.page)
+    this.getList(this.page)
   },
   methods: {
     getList (page) {
       axios.get('http://localhost:8000/api/onsen_inns/', {
-          params: {
-            category: this.category,
-            page: page,
-          }
+        params: {
+          category: this.category,
+          page: page,
+        },
       })
-      .then(response => {
+        .then(response => {
           console.log(response.data)
           this.items = response.data.results
-      })
-      .catch(err => {
+        })
+        .catch(err => {
           console.error(err)
-      })
+        })
     },
+  }
+</script>
+<script>
+  export default {
+    data () {
+      return {
+        items: [
+          {title: '日本三秘湯谷次温泉', avatar: 'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png' }
+        ]
+      }
+    }
   }
 </script>
 
