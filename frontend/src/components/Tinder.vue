@@ -21,12 +21,6 @@ export default {
     return {
       msg: 'Onsender Page',
       count: 0,
-      test: require('../assets/onsen_woman.png'),
-      pathes: {
-        p1: require('../assets/onsen_woman.png'),
-        p2: require('../assets/onei.jpg'),
-        p3: require('../assets/logo.png'),
-      },
       tests: [
         require('../assets/onsen_woman.png'),
         require('../assets/onei.jpg'),
@@ -37,7 +31,11 @@ export default {
   methods: {
     // ボタンをクリックしたときのハンドラ
     increment: function () {
-      this.count += 1 // 処理は再代入するだけでOK！
+      this.count += 1
+      var x = event.screenX
+      var y = event.screenY
+      console.log(x)
+      console.log(y)
     },
   },
 }
