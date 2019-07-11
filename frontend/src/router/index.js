@@ -15,7 +15,8 @@ export default new Router({
       component: OnsenHome,
     },
     {
-      path: '/onsen',
+      path: '/onsen/:id',
+      name: 'Onsen',
       component: Onsen,
     },
     {
@@ -24,6 +25,7 @@ export default new Router({
     },
     {
       path: '/onsenlist',
+      name: 'OnsenList',
       component: OnsenList,
     },
     {
