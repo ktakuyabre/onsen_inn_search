@@ -1,6 +1,8 @@
 __pycache__
 *~
 #*#
+#*
 *.swp
 *.swo
 .DS_Store
+/media/images/*

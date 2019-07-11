@@ -1,66 +1,67 @@
 <template>
-  <div　id='list'>
-  <br>
-  <h1>{{ msg }}</h1>
-  <br>
-  <br>
-  <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-toolbar color="indigo" dark>
-          <v-toolbar-side-icon></v-toolbar-side-icon>
+  <div id='list'>
+    <br>
+    <h1>{{ msg }}</h1>
+    <br>
+    <br>
+    <v-layout row>
+      <v-flex xs12 sm6 offset-sm3>
+        <v-card>
+          <!--
+          <v-toolbar color="indigo" dark>
+            <v-toolbar-side-icon></v-toolbar-side-icon>
 
-          <v-toolbar-title>Inbox</v-toolbar-title>
+            <v-toolbar-title>Inbox</v-toolbar-title>
 
+<<<<<<< HEAD
           <v-spacer></v-spacer>
 
           <v-btn icon>
             <v-icon>search</v-icon>
           </v-btn>
+=======
+                <v-spacer></v-spacer>
+>>>>>>> b3f8c0fa6b00e194c31e34fc51489072be974f31
 
-          <v-btn icon>
-            <v-icon>more_vert</v-icon>
-          </v-btn>
-        </v-toolbar>
-        <v-list>
-          <v-list-tile
-            v-for="item in items"
-            :key="item.title"
-            avatar
-            @click=""
-          >
-            <v-list-tile-action>
-              <v-icon v-if="item.icon" color="pink">star</v-icon>
-            </v-list-tile-action>
-
-            <v-list-tile-content>
-              <v-list-tile-title v-text="item.title"></v-list-tile-title>
-            </v-list-tile-content>
-
-            <v-list-tile-avatar>
-              <img :src="item.avatar">
-            </v-list-tile-avatar>
-          </v-list-tile>
-        </v-list>
-      </v-card>
-    </v-flex>
-  </v-layout>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+            <v-btn icon>
+              <v-icon>more_vert</v-icon>
+            </v-btn>
+          </v-toolbar>
+          -->
+          <v-list>
+            <v-list-tile
+              v-for="item in items"
+              :key="item.inn_name"
+              avatar
+            >
+            <router-link v-bind:to="{ name: 'Onsen', params: { id: item.id }}" >
+              <v-list-tile-content>
+                <v-list-tile-title v-text="item.inn_name"></v-list-tile-title>
+              </v-list-tile-content>
+              <v-list-tile-avatar>
+                <img :src="oneimages[0]">
+              </v-list-tile-avatar>
+            </router-link>
+            </v-list-tile>
+          </v-list>
+          <v-pagination
+            v-model="page"
+            :length="6"
+          ></v-pagination>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'OnsenList',
   data () {
     return {
+<<<<<<< HEAD
       msg: 'OnsenList Page',
         items: [
           { title: 'ニセコ五色温泉旅館', avatar: 'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png' },
@@ -71,6 +72,38 @@ export default {
       }
     }
   }
+=======
+      oneimages: [
+        'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png',
+        'https://2.bp.blogspot.com/-8SXUjho2Q3A/WTd5IbXcdeI/AAAAAAABEtU/lLMy-W__SCol746jtdzKntgpQ4yNw9ggwCLcB/s800/stand_onsen_woman.png',
+        'https://2.bp.blogspot.com/-w2cc5PFxpDY/WTd5F-_HDcI/AAAAAAABEtE/hLef7WMLdt8Vvugs3Jr4Xkg1uHDxAp6HQCLcB/s800/stand_onsen_girl.png',
+        'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png',
+      ],
+      items: [],
+    }
+  },
+  created () {
+      this.getList(this.page)
+  },
+  methods: {
+    getList (page) {
+      axios.get('http://localhost:8000/api/onsen_inns/', {
+          params: {
+            category: this.category,
+            page: page,
+          }
+      })
+      .then(response => {
+          console.log(response.data)
+          this.items = response.data.results
+      })
+      .catch(err => {
+          console.error(err)
+      })
+    },
+  },
+}
+>>>>>>> b3f8c0fa6b00e194c31e34fc51489072be974f31
 </script>
 
 <style scoped>

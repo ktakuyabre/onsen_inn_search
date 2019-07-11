@@ -15,6 +15,8 @@ import sys, getopt
 import urllib.request
 from bs4 import BeautifulSoup
 from xml.dom.minidom import parseString
+from store_inn_data import storeInnData
+from scrape_onsen_html import scrapeOnsenHtml
 
 sys.path.append("..")
 sys.path.append("../..")
@@ -191,8 +193,8 @@ def storeJaranOnsens(url):
         for i in range(0, len(onsen_ids)):
             onsen = Onsen()
             onsen.onsen_id = nodeValueNoneCheck(onsen_ids[i])
-            if Onsen.objects.filter(onsen_id=onsen.onsen_id).exists():
-                continue
+            #if Onsen.objects.filter(onsen_id=onsen.onsen_id).exists():
+            #    continue
             onsen.onsen_name = nodeValueNoneCheck(onsen_names[i])
             onsen.onsen_name_kana = nodeValueNoneCheck(onsen_name_kanas[i])
             
@@ -207,8 +209,19 @@ def storeJaranOnsens(url):
             onsen.onsen_area_id = nodeValueNoneCheck(onsen_area_ids[i])
             #onsen.onsen_area_caption = nodeValueNoneCheck(onsen_area_captions[i])
             #onsens.append(onsen)
-            onsen.save()
-            print("[*] Storing {0} onsen data".format(onsen.onsen_name))
+            #onsen.save()
+            #print("[*] Storing {0} onsen data".format(onsen.onsen_name))
+            onsen = Onsen.objects.filter(onsen_id=onsen.onsen_id).first()
+            print(onsen)
+            onsen_area_id = onsen.onsen_area_id
+            print(onsen_area_id)
+            if onsen_area_id != None:
+                inn_data = []
+                url = "https://www.jalan.net/onsen/OSN_" + str(onsen_area_id) + ".html"
+                print(url)
+                inn_data = scrapeOnsenHtml(url)
+                print(onsen.onsen_name)
+                storeInnData(onsen, inn_data)
 
         start_tmp = start_tmp + int(count)
         if num_of_rlts > start_tmp:
@@ -222,6 +235,7 @@ def storeJaranOnsens(url):
         pass
     except Exception as e:
         print("Error URL:" + url)
+        print("Error(store_onsen_data.py): ", e)
 
 def readParameterFile(file):
     global params

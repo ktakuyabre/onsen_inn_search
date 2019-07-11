@@ -108,25 +108,27 @@ OnsenInn: <br />
     review_cleaness Decimal(max_digits=2, decimal_places=1)<br />
     rooms_total Int(Not Null)<br />
     baths_total Int(Not Null)<br />
+    service_leisure = List(Char)<br />
     free_wifi Bool()<br />
     convenience_store Bool()<br />
     hand_towel Bool()<br />
-    dental_amenities Bool()<br />
-    bath_towel Bool()<br />
-    shampoo Bool()<br />
-    conditioner Bool()<br />
     body_wash Bool()<br />
-    bar_soap Bool()<br />
-    yukata Bool()<br />
-    pajamas Bool()<br />
-    bathrobe Bool()<br />
     hairdryer Bool()<br />
-    duvet Bool()<br />
-    razor Bool()<br />
-    shower_cap Bool()<br />
-    cotton_swab Bool()<br />
     onsui_toilet Bool()<br />
+    dental_amenities Bool()<br />
+    bar_soap Bool()<br />
+    duvet Bool()<br />
     hair_brush Bool()<br />
+    bath_towel Bool()<br />
+    yukata Bool()<br />
+    razor Bool()<br />
+    shampoo Bool()<br />
+    pajamas Bool()<br />
+    shower_cap Bool()<br />
+    conditioner Bool()<br />
+    bathrobe Bool()<br />
+    cotton_swab Bool()<br />
+    category Int(0~17)<br />
     onsen ForeignKey(Onsen)<br />
 
 ##API
@@ -195,7 +197,7 @@ Endpoint:
 
 Paramters:<br />
 id: return the onsen inn that has the specified id as its primary key<br />
-category: return onsen inns that belong to the specified category<br />
+category: return onsen inns that belong to the specified category(18 categories in total)<br />
 page: specify the page<br />
 
 Example: 

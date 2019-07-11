@@ -10,7 +10,9 @@ RUN npm install
 
 COPY ./frontend/ .
 
+RUN npm run build
+
 EXPOSE 8080
 
-RUN npm run dev
+CMD ["http-server", "dist"]
 
