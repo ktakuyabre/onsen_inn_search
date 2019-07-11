@@ -39,8 +39,7 @@ export default {
       params: {
         id: this.$route.params.id,
       },
-    },
-  })
+    })
       .then(response => {
         console.log(response.data)
         this.inn = response.data.results[0]
