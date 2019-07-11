@@ -13,7 +13,6 @@
 
             <v-toolbar-title>Inbox</v-toolbar-title>
 
-<<<<<<< HEAD
           <v-spacer></v-spacer>
 
           <v-btn icon>
@@ -21,7 +20,6 @@
           </v-btn>
 =======
                 <v-spacer></v-spacer>
->>>>>>> b3f8c0fa6b00e194c31e34fc51489072be974f31
 
             <v-btn icon>
               <v-icon>more_vert</v-icon>
@@ -61,7 +59,6 @@ export default {
   name: 'OnsenList',
   data () {
     return {
-<<<<<<< HEAD
       msg: 'OnsenList Page',
         items: [
           { title: 'ニセコ五色温泉旅館', avatar: 'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png' },
@@ -103,7 +100,6 @@ export default {
     },
   },
 }
->>>>>>> b3f8c0fa6b00e194c31e34fc51489072be974f31
 </script>
 
 <style scoped>
