@@ -14,12 +14,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@branu-jp/v-drag": "^0.1.0",
     "@mdi/font": "^3.6.95",
     "ajv": "^6.10.0",
     "axios": "^0.19.0",
     "material-design-icons-iconfont": "^5.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vuedraggable": "^2.23.0",
     "vuetify": "^1.5.14"
   },
   "devDependencies": {
