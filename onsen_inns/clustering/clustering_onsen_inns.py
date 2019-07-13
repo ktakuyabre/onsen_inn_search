@@ -95,10 +95,13 @@ def main():
         result = kmeans.labels_
         print(result)
         print(len(result))
+    
+    for i, centroid in enumerate(centroids):
+        print("category ",i, centroid)
 
     #plotSseValues("cluster_sse_values_2.pdf", sse)
     # store the result into our database
-    store_clustering_result(result)
+    #store_clustering_result(result)
 
 def store_clustering_result(result):
     for onsen_inn, category in zip(OnsenInn.objects.all(), result):       
