@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler, normalize, OneHotEncoder
+from sklearn import decomposition
 
 sys.path.append("..")
 sys.path.append("../..")
@@ -27,6 +28,7 @@ def main():
 
     # create a dummy numpy array to make it possible to cocatanate
     data_set = np.empty([len(onsen_inns), 1])
+    print("initial", data_set)
     for entry in data_list:        
         data_column = np.array(onsen_inns.values_list(entry), np.float)
 
@@ -36,7 +38,9 @@ def main():
         data_column[inds] = np.take(col_mean, inds[1])
 
         # normalization
+        print("before normalization", data_column)
         data_column = normalize(data_column)
+        print("after normalization", data_column)
 
         # concatenate data_set and data_column
         data_set = np.concatenate((data_set, data_column), axis=1)  
@@ -53,13 +57,13 @@ def main():
     data_set = np.concatenate((data_set, data_column), axis=1)  
 
     # create the service_leisure column
-    data_column = np.array(onsen_inns.values_list("service_leisure", flat=True))
+    #data_column = np.array(onsen_inns.values_list("service_leisure", flat=True))
     
     # transform the service_leisure column into one-hot encoded numpy arrays
-    enc = OneHotEncoder(handle_unknown='ignore')
+    '''enc = OneHotEncoder(handle_unknown='ignore')
     enc.fit(data_column)
     data_column = enc.transform(data_column).toarray()
-    print(data_column)
+    print(data_column)'''
 
   # create bow_vec and word2id from the service_leisure column
     '''data_column = onsen_inns.values_list("service_leisure", flat=True)
@@ -76,12 +80,14 @@ def main():
     print(data_set.dtype)
     print(len(data_set[0]))
     print(data_set)
+    print("test", data_set[0])
 
     
     # standardlize the data_set
     scaler = StandardScaler()
     scaler.fit(data_set)
     data_set = scaler.transform(data_set)
+    print("after standarlizing", data_set[0])
 
     # apply kmeans clustering, k = 1 ~ 30, using Elbow Method to evaluate each result at each k
     sse = {}
@@ -93,12 +99,17 @@ def main():
         centroids = kmeans.cluster_centers_
         #print(centroids)
         result = kmeans.labels_
-        print(result)
-        print(len(result))
+        #print(result)
+        #print(len(result))
 
-    #plotSseValues("cluster_sse_values_2.pdf", sse)
+    #plotSseValues("cluster_sse_values_4.pdf", sse)
     # store the result into our database
-    store_clustering_result(result)
+    #store_clustering_result(result)
+
+    # bring cluster centers back to original scale and show them
+    centroids = scaler.inverse_transform(centroids)
+    '''for centroid in centroids:
+        print(centroid)'''
 
 def store_clustering_result(result):
     for onsen_inn, category in zip(OnsenInn.objects.all(), result):       
@@ -140,6 +151,9 @@ def plotSseValues(filename, sse):
     plt.ylabel("SSE")
     plt.show()
     plt.savefig(filename)
+
+#def showClusterCenterValues(centroids):
+    #  centroids = scal
 
 if __name__ == "__main__":
 
