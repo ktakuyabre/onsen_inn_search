@@ -17,16 +17,31 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'onsen_inns',
+    'django.contrib.sites',
+
+    # Third-Party Apps
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
     'django_filters',
     'corsheaders',
+    'vote',
+    #'votes',
+
+    # Local Apps
+    'api',
+    'users',
+    'onsen_inns',
 ]
 
 MIDDLEWARE = [
@@ -60,9 +75,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'onsen_inn_search.wsgi.application'
 
+#The configuration of djnago.contrib.sites
+
+SITE_ID = 1
+
 # The configuration of CORS(Cross Origin Resource Sharing)
 
 CORS_ORIGIN_ALLOW_ALL = False
+
+# The configuration of rest_auth.registration
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp/email')
 
 # Add IP addresses to enable them to bypass the Same Origin Policy
 CORS_ORIGIN_WHITELIST = (
@@ -81,6 +105,8 @@ DATABASES = {
     }
 }
 
+# User Model
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Password validation
 
@@ -107,7 +133,8 @@ REST_FRAMEWORK = {
 
 # Internationalization
 
-LANGUAGE_CODE = 'ja'
+#LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Tokyo'
 

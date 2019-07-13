@@ -101,6 +101,9 @@ def main():
         result = kmeans.labels_
         #print(result)
         #print(len(result))
+    
+    '''for i, centroid in enumerate(centroids):
+        print("category ",i, centroid)'''
 
     #plotSseValues("cluster_sse_values_4.pdf", sse)
     # store the result into our database

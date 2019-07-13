@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.3 (Debian 11.3-1.pgdg90+1)
--- Dumped by pg_dump version 11.3 (Debian 11.3-1.pgdg90+1)
+-- Dumped from database version 11.4 (Debian 11.4-1.pgdg90+1)
+-- Dumped by pg_dump version 11.4 (Debian 11.4-1.pgdg90+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -237,6 +237,19 @@ ALTER TABLE public.auth_user_user_permissions_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.auth_user_user_permissions_id_seq OWNED BY public.auth_user_user_permissions.id;
 
+
+--
+-- Name: authtoken_token; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.authtoken_token (
+    key character varying(40) NOT NULL,
+    created timestamp with time zone NOT NULL,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.authtoken_token OWNER TO postgres;
 
 --
 -- Name: django_admin_log; Type: TABLE; Schema: public; Owner: postgres
@@ -477,6 +490,120 @@ ALTER SEQUENCE public.onsen_inns_onsenmodel_id_seq OWNED BY public.onsen_inns_on
 
 
 --
+-- Name: users_customuser; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_customuser (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    is_superuser boolean NOT NULL,
+    username character varying(150) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(150) NOT NULL,
+    email character varying(254) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.users_customuser OWNER TO postgres;
+
+--
+-- Name: users_customuser_groups; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_customuser_groups (
+    id integer NOT NULL,
+    customuser_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.users_customuser_groups OWNER TO postgres;
+
+--
+-- Name: users_customuser_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_customuser_groups_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_customuser_groups_id_seq OWNER TO postgres;
+
+--
+-- Name: users_customuser_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_customuser_groups_id_seq OWNED BY public.users_customuser_groups.id;
+
+
+--
+-- Name: users_customuser_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_customuser_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_customuser_id_seq OWNER TO postgres;
+
+--
+-- Name: users_customuser_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_customuser_id_seq OWNED BY public.users_customuser.id;
+
+
+--
+-- Name: users_customuser_user_permissions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_customuser_user_permissions (
+    id integer NOT NULL,
+    customuser_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.users_customuser_user_permissions OWNER TO postgres;
+
+--
+-- Name: users_customuser_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_customuser_user_permissions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_customuser_user_permissions_id_seq OWNER TO postgres;
+
+--
+-- Name: users_customuser_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_customuser_user_permissions_id_seq OWNED BY public.users_customuser_user_permissions.id;
+
+
+--
 -- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -554,6 +681,27 @@ ALTER TABLE ONLY public.onsen_inns_onseninn ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: users_customuser id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser ALTER COLUMN id SET DEFAULT nextval('public.users_customuser_id_seq'::regclass);
+
+
+--
+-- Name: users_customuser_groups id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups ALTER COLUMN id SET DEFAULT nextval('public.users_customuser_groups_id_seq'::regclass);
+
+
+--
+-- Name: users_customuser_user_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.users_customuser_user_permissions_id_seq'::regclass);
+
+
+--
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -586,18 +734,18 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 10	Can change group	3	change_group
 11	Can delete group	3	delete_group
 12	Can view group	3	view_group
-13	Can add user	4	add_user
-14	Can change user	4	change_user
-15	Can delete user	4	delete_user
-16	Can view user	4	view_user
-17	Can add content type	5	add_contenttype
-18	Can change content type	5	change_contenttype
-19	Can delete content type	5	delete_contenttype
-20	Can view content type	5	view_contenttype
-21	Can add session	6	add_session
-22	Can change session	6	change_session
-23	Can delete session	6	delete_session
-24	Can view session	6	view_session
+13	Can add content type	4	add_contenttype
+14	Can change content type	4	change_contenttype
+15	Can delete content type	4	delete_contenttype
+16	Can view content type	4	view_contenttype
+17	Can add session	5	add_session
+18	Can change session	5	change_session
+19	Can delete session	5	delete_session
+20	Can view session	5	view_session
+21	Can add Token	6	add_token
+22	Can change Token	6	change_token
+23	Can delete Token	6	delete_token
+24	Can view Token	6	view_token
 25	Can add onsen	7	add_onsen
 26	Can change onsen	7	change_onsen
 27	Can delete onsen	7	delete_onsen
@@ -606,6 +754,10 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 30	Can change onsen inn	8	change_onseninn
 31	Can delete onsen inn	8	delete_onseninn
 32	Can view onsen inn	8	view_onseninn
+33	Can add user	9	add_customuser
+34	Can change user	9	change_customuser
+35	Can delete user	9	delete_customuser
+36	Can view user	9	view_customuser
 \.
 
 
@@ -635,10 +787,20 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
+-- Data for Name: authtoken_token; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.authtoken_token (key, created, user_id) FROM stdin;
+5e58b09e646bfd0f072e15c205cf9762cc3de73f	2019-07-12 13:08:15.899269+00	2
+\.
+
+
+--
 -- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2019-07-12 13:07:03.898129+00	2		1	[{"added": {}}]	9	1
 \.
 
 
@@ -650,11 +812,12 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 1	admin	logentry
 2	auth	permission
 3	auth	group
-4	auth	user
-5	contenttypes	contenttype
-6	sessions	session
+4	contenttypes	contenttype
+5	sessions	session
+6	authtoken	token
 7	onsen_inns	onsen
 8	onsen_inns	onseninn
+9	users	customuser
 \.
 
 
@@ -663,30 +826,33 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2019-07-05 04:33:29.089437+00
-2	auth	0001_initial	2019-07-05 04:33:29.177976+00
-3	admin	0001_initial	2019-07-05 04:33:29.31389+00
-4	admin	0002_logentry_remove_auto_add	2019-07-05 04:33:29.356875+00
-5	admin	0003_logentry_add_action_flag_choices	2019-07-05 04:33:29.374572+00
-6	contenttypes	0002_remove_content_type_name	2019-07-05 04:33:29.408491+00
-7	auth	0002_alter_permission_name_max_length	2019-07-05 04:33:29.428834+00
-8	auth	0003_alter_user_email_max_length	2019-07-05 04:33:29.453992+00
-9	auth	0004_alter_user_username_opts	2019-07-05 04:33:29.488971+00
-10	auth	0005_alter_user_last_login_null	2019-07-05 04:33:29.512882+00
-11	auth	0006_require_contenttypes_0002	2019-07-05 04:33:29.520489+00
-12	auth	0007_alter_validators_add_error_messages	2019-07-05 04:33:29.538244+00
-13	auth	0008_alter_user_username_max_length	2019-07-05 04:33:29.570124+00
-14	auth	0009_alter_user_last_name_max_length	2019-07-05 04:33:29.594443+00
-15	auth	0010_alter_group_name_max_length	2019-07-05 04:33:29.6183+00
-16	auth	0011_update_proxy_permissions	2019-07-05 04:33:29.637962+00
-17	onsen_inns	0001_initial	2019-07-05 04:33:29.694113+00
-18	onsen_inns	0002_auto_20190531_0620	2019-07-05 04:33:29.877142+00
-19	onsen_inns	0003_auto_20190531_0648	2019-07-05 04:33:30.007303+00
-20	onsen_inns	0004_auto_20190531_1227	2019-07-05 04:33:30.03395+00
-21	onsen_inns	0005_auto_20190601_1638	2019-07-05 04:33:30.092497+00
-22	onsen_inns	0006_auto_20190601_1827	2019-07-05 04:33:30.111696+00
-23	onsen_inns	0007_auto_20190705_1007	2019-07-05 04:33:30.146227+00
-24	sessions	0001_initial	2019-07-05 04:33:30.17067+00
+1	contenttypes	0001_initial	2019-07-12 13:04:52.976229+00
+2	contenttypes	0002_remove_content_type_name	2019-07-12 13:04:52.996684+00
+3	auth	0001_initial	2019-07-12 13:04:53.050362+00
+4	auth	0002_alter_permission_name_max_length	2019-07-12 13:04:53.110043+00
+5	auth	0003_alter_user_email_max_length	2019-07-12 13:04:53.128026+00
+6	auth	0004_alter_user_username_opts	2019-07-12 13:04:53.146978+00
+7	auth	0005_alter_user_last_login_null	2019-07-12 13:04:53.166715+00
+8	auth	0006_require_contenttypes_0002	2019-07-12 13:04:53.176903+00
+9	auth	0007_alter_validators_add_error_messages	2019-07-12 13:04:53.195648+00
+10	auth	0008_alter_user_username_max_length	2019-07-12 13:04:53.208499+00
+11	auth	0009_alter_user_last_name_max_length	2019-07-12 13:04:53.226557+00
+12	auth	0010_alter_group_name_max_length	2019-07-12 13:04:53.23998+00
+13	auth	0011_update_proxy_permissions	2019-07-12 13:04:53.253776+00
+14	users	0001_initial	2019-07-12 13:04:53.306449+00
+15	admin	0001_initial	2019-07-12 13:04:53.384016+00
+16	admin	0002_logentry_remove_auto_add	2019-07-12 13:04:53.416864+00
+17	admin	0003_logentry_add_action_flag_choices	2019-07-12 13:04:53.438203+00
+18	authtoken	0001_initial	2019-07-12 13:04:53.468843+00
+19	authtoken	0002_auto_20160226_1747	2019-07-12 13:04:53.541269+00
+20	onsen_inns	0001_initial	2019-07-12 13:04:53.584127+00
+21	onsen_inns	0002_auto_20190531_0620	2019-07-12 13:04:53.7527+00
+22	onsen_inns	0003_auto_20190531_0648	2019-07-12 13:04:53.830016+00
+23	onsen_inns	0004_auto_20190531_1227	2019-07-12 13:04:53.854025+00
+24	onsen_inns	0005_auto_20190601_1638	2019-07-12 13:04:53.904627+00
+25	onsen_inns	0006_auto_20190601_1827	2019-07-12 13:04:53.922936+00
+26	onsen_inns	0007_auto_20190705_1007	2019-07-12 13:04:53.95661+00
+27	sessions	0001_initial	2019-07-12 13:04:53.987839+00
 \.
 
 
@@ -695,6 +861,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+47p9p4rn02bxa4h3dj25m372an84twk8	OTllNzIzMWZmMmMxNmJkNzAwMmQyYjNhODUxODMwZThhN2I5M2ZlZTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmMzJmOWQyNjdjODEzNGJhYThmNDQ3NjViNmJlNzI2ZTU4M2ZiNGZlIn0=	2019-07-26 13:08:36.70254+00
 osut020bo7qwdp0bnz4xa2j2pxs2adqe	ZDUzOTI4YjA3NWI5MzdmODE5Nzg5NzY0MjNhZTdjY2Q0NzYwM2Q3NTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjYjNjZmMyM2YzOTkyZWI3NDk5ZTljZjY4YmNjMTQ4ZWEwYmMyMzNlIn0=	2019-07-19 04:35:35.366739+00
 \.
 
@@ -3995,6 +4162,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 26	365748	KIKI知床ナチュラルリゾート	images/inn_image_365748.jpg	8666	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	16	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 27	372051	ホテル清さと	images/inn_image_372051.jpg	20064	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	16	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 29	316661	ホテル知床	images/inn_image_316661.jpg	7740	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	16	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+56	323776	ガストホフぱぴりお	images/inn_image_323776.jpg	6435	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 30	320778	知床天然温泉 ルートイングランティア知床 -斜里駅前-	images/inn_image_320778.jpg	5277	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	16	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 31	317028	【世界自然遺産の宿】しれとこ村つくだ荘	images/inn_image_317028.jpg	5555	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	16	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 32	359680	ホテル緑清荘	images/inn_image_359680.jpg	5018	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	16	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -4019,7 +4187,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 52	346076	名湯の森ホテルきたふくろう	images/inn_image_346076.jpg	4629	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	27	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 54	340226	小さなオーベルジュてぃんくる	images/inn_image_340226.jpg	12037	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 55	317884	ペンションBirao	images/inn_image_317884.jpg	5000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-56	323776	ガストホフぱぴりお	images/inn_image_323776.jpg	6435	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 57	313098	奥屈斜路温泉ランプの宿森つべつ	images/inn_image_313098.jpg	8731	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 58	346967	きらの宿すばる	images/inn_image_346967.jpg	9074	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 59	312141	三香温泉	images/inn_image_312141.jpg	4351	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	28	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -4239,6 +4406,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 298	335845	純和風旅館一乃松	images/inn_image_335845.jpg	12129	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	154	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 299	348359	平成館海羊亭	images/inn_image_348359.jpg	7407	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	154	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 300	329988	湯元啄木亭	images/inn_image_329988.jpg	8000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	154	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+327	380254	楠旅館	images/inn_image_380254.jpg	11111	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	176	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 301	312243	函館・湯の川温泉花びしホテル	images/inn_image_312243.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	154	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 302	355230	平成館しおさい亭別館花月	images/inn_image_355230.jpg	25925	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	154	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 303	320921	竹葉新葉亭	images/inn_image_320921.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	154	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -4263,7 +4431,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 324	328431	ホテルモントレエーデルホフ札幌	images/inn_image_328431.jpg	4814	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	167	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 325	328874	ホテルさっぽろ弥生	images/inn_image_328874.jpg	2731	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	167	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 326	344121	温泉旅館矢野	images/inn_image_344121.jpg	11000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	170	7	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-327	380254	楠旅館	images/inn_image_380254.jpg	11111	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	176	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 328	366554	ホテルモアン	images/inn_image_366554.jpg	7592	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	176	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 329	318946	湯元尾岱沼温泉シーサイドホテル	images/inn_image_318946.jpg	8100	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	176	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 330	399082	べっかい郊楽苑	images/inn_image_399082.jpg	5648	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	176	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -4944,6 +5111,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1078	303687	首都圏に近い秘湯明賀屋（みょうがや）本館	images/inn_image_303687.jpg	11500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	848	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1079	312854	秘湯の宿元泉館	images/inn_image_312854.jpg	4500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	848	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1080	319782	塩原温泉旅館上会津屋	images/inn_image_319782.jpg	5000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	848	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+1108	310385	ゆ宿美や川	images/inn_image_310385.jpg	16000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1082	332120	ペットと泊まれるコテージ塩原グリーンビレッジ	images/inn_image_332120.jpg	4444	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	848	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1083	330121	湯西川温泉彩り湯かしき花と華	images/inn_image_330121.jpg	8240	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	860	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1084	347395	湯西川白雲の宿山城屋	images/inn_image_347395.jpg	9000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	860	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -4968,7 +5136,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1104	347460	旧外国大使別荘跡湖上苑	images/inn_image_347460.jpg	9500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1106	312655	休暇村日光湯元	images/inn_image_312655.jpg	10362	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1107	325293	奥日光源泉の宿ゆの森	images/inn_image_325293.jpg	23000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-1108	310385	ゆ宿美や川	images/inn_image_310385.jpg	16000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1109	337093	奥日光湯元温泉奥日光高原ホテル	images/inn_image_337093.jpg	10000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1110	320110	中禅寺金谷ホテル	images/inn_image_320110.jpg	17129	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1111	391910	奥日光小西ホテル（日光湯元温泉）	images/inn_image_391910.jpg	11574	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	868	10	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -5546,6 +5713,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1533	314616	南国ホテル【伊東園ホテルズ】	images/inn_image_314616.jpg	4800	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1142	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1557	386568	自家源泉の小さなお宿豊明殿	images/inn_image_386568.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1146	1	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1582	341212	貸別荘バーネットビレッジ	images/inn_image_341212.jpg	3888	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1168	9	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+1842	347136	野沢温泉朝日屋旅館	images/inn_image_347136.jpg	7500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1588	360444	展望温泉付きコンドミニアムホテルグランビュー岩井	images/inn_image_360444.jpg	2222	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1185	16	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1606	316987	金乃竹塔ノ澤	images/inn_image_316987.jpg	34000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1227	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1630	323295	箱根湯本温泉駅チカ！貸切露天風呂が無料◎山海の幸喜仙荘	images/inn_image_323295.jpg	9000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1227	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -5594,6 +5762,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1714	319927	ホテル千石	images/inn_image_319927.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1276	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1715	311280	常磐ホテル	images/inn_image_311280.jpg	10000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1281	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1716	318020	甲府記念日ホテル	images/inn_image_318020.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1281	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+1843	381040	野沢温泉旅館さかや	images/inn_image_381040.jpg	14618	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1717	346103	自家源泉かけ流しの天然温泉ビジネスホテル湯村ホテルＢ＆Ｂ	images/inn_image_346103.jpg	6500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1281	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1718	308391	甲州湯村温泉 柳屋 -yanagiya-	images/inn_image_308391.jpg	7000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1281	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1719	361152	湯村温泉弘法湯	images/inn_image_361152.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1281	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -5713,8 +5882,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1839	323621	野沢温泉河一屋旅館	images/inn_image_323621.jpg	7185	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1840	332775	信州野沢温泉野沢グランドホテル〜絶景露天風呂の宿〜	images/inn_image_332775.jpg	9101	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1841	344455	自家源泉かけ流しの宿野沢温泉村のホテル住吉屋	images/inn_image_344455.jpg	12500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-1842	347136	野沢温泉朝日屋旅館	images/inn_image_347136.jpg	7500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-1843	381040	野沢温泉旅館さかや	images/inn_image_381040.jpg	14618	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1844	310130	野沢温泉ホテル	images/inn_image_310130.jpg	5500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1845	368832	山里の暮らしに浸るぬくもり宿中島屋旅館	images/inn_image_368832.jpg	6481	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 1846	300332	村のミニ画廊民家造りの宿奈良屋旅館	images/inn_image_300332.jpg	9500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1365	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -6651,6 +6818,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2858	382828	リブマックスリゾート城ヶ崎海岸	images/inn_image_382828.jpg	5537	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1983	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2860	315809	源泉かけ流しの宿ホテル南回帰線	images/inn_image_315809.jpg	13888	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1983	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2861	316736	伊豆高原城ヶ崎温泉花吹雪	images/inn_image_316736.jpg	20148	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1983	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+2938	320179	伊豆今井浜温泉今井荘	images/inn_image_320179.jpg	7700	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2862	308869	ワンちゃんと一緒！海一望の宿ピッコラルージュ	images/inn_image_308869.jpg	12037	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1983	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2863	368030	岩風呂とおふくろの手料理の宿みかみ	images/inn_image_368030.jpg	3888	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1983	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2864	344907	天然温泉付き海の見える宿J-Garden（ジェイガーデン）	images/inn_image_344907.jpg	5555	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1983	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -6723,7 +6891,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2935	339302	今井浜温泉桐のかほり咲楽（さくら）	images/inn_image_339302.jpg	27777	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2936	320597	太洋荘	images/inn_image_320597.jpg	3981	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2937	340955	げんば荘	images/inn_image_340955.jpg	7870	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-2938	320179	伊豆今井浜温泉今井荘	images/inn_image_320179.jpg	7700	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2939	319904	プチホテルトゥインクル	images/inn_image_319904.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2940	347362	シャレー今井浜	images/inn_image_347362.jpg	13888	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 2941	306288	温泉民宿船長	images/inn_image_306288.jpg	3981	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1992	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -7234,6 +7401,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 3471	323919	夕日ヶ浦温泉夕日浪漫一望館	images/inn_image_323919.jpg	7638	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2266	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3472	312169	一晩泊まればトドになる夕日ヶ浦温泉海舟	images/inn_image_312169.jpg	5250	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2266	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3473	372944	夕日ヶ浦温泉大人専用の宿佳松苑はなれ風香	images/inn_image_372944.jpg	19166	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2266	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
+3549	311682	京都嵐山温泉渡月亭	images/inn_image_311682.jpg	17600	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2273	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3474	327499	坂本屋 瑠璃亭Spa Yuuhigaura Sakamotoya Ruritei	images/inn_image_327499.jpg	10972	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2266	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3475	391656	夕日ヶ浦温泉落ちついた大人の隠れ家海花亭花御前	images/inn_image_391656.jpg	14500	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2266	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3476	337768	離れの宿和楽	images/inn_image_337768.jpg	23000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2266	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -7306,7 +7474,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 3546	325221	湯の花温泉松園荘保津川亭 (しょうえんそうほづがわてい）	images/inn_image_325221.jpg	6000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2272	5	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3547	350897	湯の花温泉有楽荘	images/inn_image_350897.jpg	11722	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2272	5	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3548	327485	京都 嵐山温泉 花伝抄（かでんしょう）	images/inn_image_327485.jpg	14000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2273	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
-3549	311682	京都嵐山温泉渡月亭	images/inn_image_311682.jpg	17600	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2273	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3550	329468	京都嵐山温泉・彩四季の宿花筏	images/inn_image_329468.jpg	21000	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2273	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3551	320861	桃山温泉月見館	images/inn_image_320861.jpg	14611	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2275	0	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
 3552	367146	窓に広がる夕日と海美食を奏で150年間人温泉炭平	images/inn_image_367146.jpg	17453	4.3	4.7	4.3	4.5	4.6	4.4	129	5	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	2283	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,リフレクソロジー
@@ -8346,6 +8513,32 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 
 
 --
+-- Data for Name: users_customuser; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_customuser (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, name) FROM stdin;
+1	pbkdf2_sha256$150000$BwZebCdTi0ym$xi68MOEpB7JNtsbf7wKFZKqYQZ09pC8zfvxARbsw4MI=	2019-07-12 13:06:40.699363+00	t	admin			admin@example.com	t	t	2019-07-12 13:06:32.40824+00	
+2	pbkdf2_sha256$150000$UTs9XRhb3bvo$eGwZws/30wRwFiDe8+KgeA4v1vbJFUkgMbAM6/d4EfE=	2019-07-12 13:08:36.656354+00	f	Shunto				f	t	2019-07-12 13:07:03.73873+00	
+\.
+
+
+--
+-- Data for Name: users_customuser_groups; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_customuser_groups (id, customuser_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users_customuser_user_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_customuser_user_permissions (id, customuser_id, permission_id) FROM stdin;
+\.
+
+
+--
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -8420,6 +8613,27 @@ SELECT pg_catalog.setval('public.onsen_inns_onseninnmodel_id_seq', 4371, true);
 --
 
 SELECT pg_catalog.setval('public.onsen_inns_onsenmodel_id_seq', 3259, true);
+
+
+--
+-- Name: users_customuser_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_customuser_groups_id_seq', 1, false);
+
+
+--
+-- Name: users_customuser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_customuser_id_seq', 2, true);
+
+
+--
+-- Name: users_customuser_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_customuser_user_permissions_id_seq', 1, false);
 
 
 --
@@ -8519,6 +8733,22 @@ ALTER TABLE ONLY public.auth_user
 
 
 --
+-- Name: authtoken_token authtoken_token_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.authtoken_token
+    ADD CONSTRAINT authtoken_token_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: authtoken_token authtoken_token_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.authtoken_token
+    ADD CONSTRAINT authtoken_token_user_id_key UNIQUE (user_id);
+
+
+--
 -- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8572,6 +8802,54 @@ ALTER TABLE ONLY public.onsen_inns_onseninn
 
 ALTER TABLE ONLY public.onsen_inns_onsen
     ADD CONSTRAINT onsen_inns_onsenmodel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_customuser_id_group_id_76b619e3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_customuser_id_group_id_76b619e3_uniq UNIQUE (customuser_id, group_id);
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser users_customuser_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser
+    ADD CONSTRAINT users_customuser_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_user_pe_customuser_id_permission_7a7debf6_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_user_pe_customuser_id_permission_7a7debf6_uniq UNIQUE (customuser_id, permission_id);
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser users_customuser_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser
+    ADD CONSTRAINT users_customuser_username_key UNIQUE (username);
 
 
 --
@@ -8638,6 +8916,13 @@ CREATE INDEX auth_user_username_6821ab7c_like ON public.auth_user USING btree (u
 
 
 --
+-- Name: authtoken_token_key_10f0b77e_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX authtoken_token_key_10f0b77e_like ON public.authtoken_token USING btree (key varchar_pattern_ops);
+
+
+--
 -- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -8670,6 +8955,41 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session U
 --
 
 CREATE INDEX onsen_inns_onseninnmodel_onsen_id_8f99b6ce ON public.onsen_inns_onseninn USING btree (onsen_id);
+
+
+--
+-- Name: users_customuser_groups_customuser_id_958147bf; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_groups_customuser_id_958147bf ON public.users_customuser_groups USING btree (customuser_id);
+
+
+--
+-- Name: users_customuser_groups_group_id_01390b14; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_groups_group_id_01390b14 ON public.users_customuser_groups USING btree (group_id);
+
+
+--
+-- Name: users_customuser_user_permissions_customuser_id_5771478b; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_user_permissions_customuser_id_5771478b ON public.users_customuser_user_permissions USING btree (customuser_id);
+
+
+--
+-- Name: users_customuser_user_permissions_permission_id_baaa2f74; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_user_permissions_permission_id_baaa2f74 ON public.users_customuser_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: users_customuser_username_80452fdf_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_username_80452fdf_like ON public.users_customuser USING btree (username varchar_pattern_ops);
 
 
 --
@@ -8729,6 +9049,14 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
+-- Name: authtoken_token authtoken_token_user_id_35299eff_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.authtoken_token
+    ADD CONSTRAINT authtoken_token_user_id_35299eff_fk_users_customuser_id FOREIGN KEY (user_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8745,11 +9073,51 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_users_customuser_id FOREIGN KEY (user_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: onsen_inns_onseninn onsen_inns_onseninnm_onsen_id_8f99b6ce_fk_onsen_inn; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.onsen_inns_onseninn
     ADD CONSTRAINT onsen_inns_onseninnm_onsen_id_8f99b6ce_fk_onsen_inn FOREIGN KEY (onsen_id) REFERENCES public.onsen_inns_onsen(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_groups users_customuser_gro_customuser_id_958147bf_fk_users_cus; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_gro_customuser_id_958147bf_fk_users_cus FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_group_id_01390b14_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_group_id_01390b14_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_use_customuser_id_5771478b_fk_users_cus; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_use_customuser_id_5771478b_fk_users_cus FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_use_permission_id_baaa2f74_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_use_permission_id_baaa2f74_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

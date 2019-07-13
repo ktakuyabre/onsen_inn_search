@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 from django_mysql.models import ListCharField
+#from votes.managers import VotableManager
+from vote.models import VoteModel
 
 class Onsen(models.Model):
 
@@ -22,7 +24,7 @@ class Onsen(models.Model):
         return self.onsen_name
 
 
-class OnsenInn(models.Model):
+class OnsenInn(VoteModel, models.Model):
     
     inn_id = models.IntegerField()
     inn_name = models.CharField(max_length=100)
@@ -73,6 +75,7 @@ class OnsenInn(models.Model):
     
     category = models.IntegerField(blank=True, null=True)
     onsen = models.ForeignKey(Onsen, on_delete=models.CASCADE)
+    #votes = VotableManager()
 
     def __str__(self):
         return self.inn_name
