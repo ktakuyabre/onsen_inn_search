@@ -59,6 +59,7 @@ export default {
         'https://2.bp.blogspot.com/-w2cc5PFxpDY/WTd5F-_HDcI/AAAAAAABEtE/hLef7WMLdt8Vvugs3Jr4Xkg1uHDxAp6HQCLcB/s800/stand_onsen_girl.png',
         'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png',
       ],
+      category: 1,
       items: [],
     }
   },
@@ -72,6 +73,7 @@ export default {
           category: this.category,
           page: page,
         },
+        data: {},
       })
         .then(response => {
           console.log(response.data)
@@ -83,17 +85,6 @@ export default {
     },
   },
 }
-</script>
-<script>
-  export default {
-    data () {
-      return {
-        items: [
-          {title: '日本三秘湯谷次温泉', avatar: 'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png' }
-        ]
-      }
-    }
-  }
 </script>
 
 <style scoped>

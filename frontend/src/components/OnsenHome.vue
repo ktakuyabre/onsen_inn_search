@@ -1,43 +1,10 @@
 <template>
-  <div id='home'>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+  <div class="bg" :style="{ 'background-image': 'url(' + assetsImage + ')' }">
     <h1>{{ msg }}</h1>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h1>{{ msg }}</h1>
     <div>
       <v-btn large href='/#/tinder/'>Tinder</v-btn>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
   </div>
 </template>
 
@@ -47,6 +14,7 @@ export default {
   data () {
     return {
       msg: 'Onsender♨️',
+      assetsImage: require('../assets/onei.jpg'),
     }
   },
 }
@@ -58,7 +26,4 @@ h1 {
   font-size: 64px;
 }
 
-#home {
-  background-image: url('../assets/onei.jpg');
-}
 </style>
