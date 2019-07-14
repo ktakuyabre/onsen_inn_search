@@ -28,7 +28,7 @@ def main():
 
     # create a dummy numpy array to make it possible to cocatanate
     data_set = np.empty([len(onsen_inns), 1])
-    print("initial", data_set)
+    #print("initial", data_set)
     for entry in data_list:        
         data_column = np.array(onsen_inns.values_list(entry), np.float)
 
@@ -38,9 +38,9 @@ def main():
         data_column[inds] = np.take(col_mean, inds[1])
 
         # normalization
-        print("before normalization", data_column)
+        #print("before normalization", data_column)
         data_column = normalize(data_column)
-        print("after normalization", data_column)
+        #print("after normalization", data_column)
 
         # concatenate data_set and data_column
         data_set = np.concatenate((data_set, data_column), axis=1)  
@@ -49,15 +49,20 @@ def main():
     data_column = np.array(onsen_inns.values_list("onsen__nature_of_onsen"))
 
     # transform the nature_of_onsen column into one-hot encoded numpy arrays
-    enc = OneHotEncoder(handle_unknown='ignore')
+    '''enc = OneHotEncoder(handle_unknown='ignore')
     enc.fit(data_column)
-    data_column = enc.transform(data_column).toarray()
+    data_column = enc.transform(data_column).toarray()'''
 
     # concatenate the transformed one-hot encoded numpys arrays with data_set
-    data_set = np.concatenate((data_set, data_column), axis=1)  
+    #data_set = np.concatenate((data_set, data_column), axis=1)  
+
+    # create bow_vec and word2id from the nature_of_onsen column
+    nature_of_onsen_bow_vec, nature_of_onsen_word2id = bowVectorizer(data_column)
+    # concatenate the nature_of_onsen_bow_vec with data_set
+    data_set = np.concatenate((data_set, nature_of_onsen_bow_vec), axis=1)  
 
     # create the service_leisure column
-    #data_column = np.array(onsen_inns.values_list("service_leisure", flat=True))
+    data_column = np.array(onsen_inns.values_list("service_leisure", flat=True))
     
     # transform the service_leisure column into one-hot encoded numpy arrays
     '''enc = OneHotEncoder(handle_unknown='ignore')
@@ -65,21 +70,23 @@ def main():
     data_column = enc.transform(data_column).toarray()
     print(data_column)'''
 
-  # create bow_vec and word2id from the service_leisure column
-    '''data_column = onsen_inns.values_list("service_leisure", flat=True)
+    # create bow_vec and word2id from the service_leisure column
+    data_column = onsen_inns.values_list("service_leisure", flat=True)
     print(data_column)
     service_leisure_bow_vec, service_leisure_word2id = bowVectorizer(data_column)
-    print(service_leisure_bow_vec)
-    print(service_leisure_word2id)
+    #print(service_leisure_bow_vec)
+    #print(service_leisure_word2id)
+    print(len(nature_of_onsen_word2id))
+    print(nature_of_onsen_word2id)
     print(len(service_leisure_word2id))
-    # concatenate the service_leisure_bow_vec  with data_set
-    data_set = np.concatenate((data_set, service_leisure_bow_vec), axis=1)  '''
+    # concatenate the service_leisure_bow_vec with data_set
+    data_set = np.concatenate((data_set, service_leisure_bow_vec), axis=1)  
         
     # remove the dummy numpy array created in the beginning
     data_set = data_set[:,1:]
     print(data_set.dtype)
     print(len(data_set[0]))
-    print(data_set)
+    #print(data_set)
     print("test", data_set[0])
 
     
@@ -91,7 +98,7 @@ def main():
 
     # apply kmeans clustering, k = 1 ~ 30, using Elbow Method to evaluate each result at each k
     sse = {}
-    for k in range(18, 19):
+    for k in range(10, 11):
         kmeans = KMeans(n_clusters=k, random_state = 0)
         #kmeans.fit(data_set)
         clusters = kmeans.fit_predict(data_set)
@@ -101,18 +108,26 @@ def main():
         result = kmeans.labels_
         #print(result)
         #print(len(result))
-    
-    '''for i, centroid in enumerate(centroids):
-        print("category ",i, centroid)'''
 
-    #plotSseValues("cluster_sse_values_4.pdf", sse)
+    #plotSseValues("cluster_sse_values_2.pdf", sse)
     # store the result into our database
     #store_clustering_result(result)
 
     # bring cluster centers back to original scale and show them
-    centroids = scaler.inverse_transform(centroids)
+    #centroids = scaler.inverse_transform(centroids)
     '''for centroid in centroids:
         print(centroid)'''
+
+    # bring cluster centroids back to original scale and show them
+    clustered_original_vectors = []
+    for k in range(10):
+        clustered_original_vectors.append(getClusteredVectors(k, nature_of_onsen_word2id, service_leisure_word2id))
+
+    centroids = lambda inp: [[sum(m)/float(len(m)) for m in zip(*l)] for l in inp]
+    
+
+    for i, centroid in enumerate(centroids(clustered_original_vectors)):
+        print("category ",i, centroid)
 
 def store_clustering_result(result):
     for onsen_inn, category in zip(OnsenInn.objects.all(), result):       
@@ -155,8 +170,59 @@ def plotSseValues(filename, sse):
     plt.show()
     plt.savefig(filename)
 
-#def showClusterCenterValues(centroids):
-    #  centroids = scal
+def getClusteredVectors(k, nature_of_onsen_word2id, service_leisure_word2id):
+    # fetch data from our database and convert it into numpy array
+    onsen_inns = OnsenInn.objects.filter(category=k)
+
+    # create a dummy numpy array to make it possible to cocatanate
+    data_set = np.empty([len(onsen_inns), 1])
+
+    for entry in data_list:        
+        data_column = np.array(onsen_inns.values_list(entry), np.float)
+
+        # replace nan values with column mean
+        col_mean = np.nanmean(data_column, axis=0)
+        inds = np.where(np.isnan(data_column))
+        data_column[inds] = np.take(col_mean, inds[1])
+
+        # concatenate data_set and data_column
+        data_set = np.concatenate((data_set, data_column), axis=1)  
+
+    # create the nature_of_onsen column
+    data_column = np.array(onsen_inns.values_list("onsen__nature_of_onsen"))
+
+    nature_of_onsen_bow_vec = onlyBowVectorizer(nature_of_onsen_word2id, data_column)
+
+    # concatenate the transformed one-hot encoded numpys arrays with data_set
+    data_set = np.concatenate((data_set, nature_of_onsen_bow_vec), axis=1)  
+
+    # create the service_leisure column
+    data_column = np.array(onsen_inns.values_list("service_leisure", flat=True))
+    service_leisure_bow_vec = onlyBowVectorizer(service_leisure_word2id, data_column)
+
+    # concatenate the service_leisure_bow_vec  with data_set
+    data_set = np.concatenate((data_set, service_leisure_bow_vec), axis=1)  
+
+    # remove the dummy numpy array created in the beginning
+    data_set = data_set[:,1:]
+    print(data_set.dtype)
+    print(len(data_set[0]))
+    #print(data_set)
+    print("test", data_set[0])
+
+    return data_set
+
+def onlyBowVectorizer(word2id, preprocessed_docs):
+    bow_vec = []
+    for tokens in preprocessed_docs:
+        bow = [0] * len(word2id)
+        for token in tokens:
+            try:
+                bow[word2id[token]] += 1
+            except:
+                pass
+        bow_vec.append(bow)
+    return bow_vec
 
 if __name__ == "__main__":
 

@@ -11,6 +11,7 @@ from rest_framework import filters
 from django.db.models import Count
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from collections import Counter
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -19,23 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-
-class AuthInfoDeleteView(generics.DestroyAPIView):
-    """
-    API endpoint that allows users to delete their own accounts.
-    """
-    permission_classes = (IsAuthenticated,)
-    serializer_class = UserSerializer
-    lookup_field = 'email'
-    queryset = CustomUser.objects.all()
-
-    def get_object(self):
-        try:
-            instance = self.queryset.get(email=self.request.user.email)
-            return instance
-        except Account.DoesNotExist:
-            raise Http404
-
+    
 class OnsenViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows onsens to be viewed or edited.
@@ -51,9 +36,11 @@ class OnsenInnViewSet(viewsets.ModelViewSet):
     """
     queryset = OnsenInn.objects.all()
     serializer_class = OnsenInnSerializer
+    #filter_backends = (django_filters.rest_framwork.DjangoFilterBackend, filters.OrderingFilter,)
+    filter_backends = (DjangoFilterBackend, filters.OrderingFilter,)
     filter_fields = ('id', 'category')
-    filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('vote_score', 'num_vote_up', 'num_vote_down' )
+    #ordering = ('-vote_score', '-num_vote_up', '-num_vote_down' )
 
 '''class OnsenInnViewSet(viewsets.ModelViewSet):
     """
@@ -158,3 +145,20 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         onsen_inn = OnsenInn.objects.get(pk=id)
         onsen_inn.votes.delete(user_id)
         return Response({'message': 'Successfully deleted'})
+
+
+#class AuthInfoDeleteView(generics.DestroyAPIView):
+    """
+    API endpoint that allows users to delete their own accounts.
+    """
+    '''permission_classes = (IsAuthenticated,)
+    serializer_class = UserSerializer
+    lookup_field = 'email'
+    queryset = CustomUser.objects.all()
+
+    def get_object(self):
+        try:
+            instance = self.queryset.get(email=self.request.user.email)
+            return instance
+        except Account.DoesNotExist:
+            raise Http404'''

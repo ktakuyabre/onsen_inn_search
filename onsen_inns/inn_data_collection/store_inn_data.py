@@ -106,6 +106,9 @@ def storeInnData(onsen, inn_data):
             onsen_inn.conditioner = data[29]
             onsen_inn.bathrobe = data[30]
             onsen_inn.cotton_swab = data[31]
+            onsen_inn.vote_score = 0
+            onsen_inn.num_vote_up = 0
+            onsen_inn.num_vote_down = 0
             #onsen_inn.category = data[32]
             onsen_inn.onsen = onsen
             onsen_inn.save()
