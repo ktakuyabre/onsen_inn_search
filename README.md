@@ -129,9 +129,9 @@ OnsenInn: <br />
     bathrobe Bool()<br />
     cotton_swab Bool()<br />
     category Int(0~10)<br />
-    vote_score Int<br />
-    num_vote_up<br />
-    num_vote_down<br />
+    vote_score Int()<br />
+    num_vote_up Int()<br />
+    num_vote_down Int()<br />
     onsen ForeignKey(Onsen)<br />
 
 ##API
@@ -140,16 +140,16 @@ Get onsen data(10 entries per page)
 
 Endpoint:
 
-'''
+```
 /api/onsens/
-'''        
+```        
 
 Parameters:<br />
 page: specify the page<br />
 
 Response:
 
-'''
+```
 {
     "count": 3255,
     "next": "http://localhost:8000/api/onsens/?page=2",
@@ -194,9 +194,9 @@ Get onsen inn data(10 entries per page)
 
 Endpoint:
 
-'''
+```
 /api/onsen_inns/
-'''
+```
 
 Paramters:<br />
 id: return the onsen inn that has the specified id as its primary key<br />
@@ -205,13 +205,13 @@ ordering: sort onsen inns by the specific key out of "vote_score", "num_vote_up"
 page: specify the page<br />
 
 Example: 
-'''
+```
 /api/onsen_inns/?id=1
-'''
+```
 
 Response:
 
-'''
+```
 {
     "count": 1,
     "next": null,
@@ -269,17 +269,17 @@ Response:
             "cotton_swab": true,
             "category": 1
         }
-'''
+```
 
 Example: 
 
-'''
+```
 /api/onsen_inns/?category=1&page=3
-'''
+```
 
 Response:
 
-'''
+```
 {
     "count": 224,
     "next": "http://localhost:8000/api/onsen_inns/?category=1&page=4",
@@ -396,21 +396,21 @@ Response:
             "category": 1
         },
             ...
-'''
+```
 
-'''
+```
 
 Example: 
 
-'''
+```
 /api/onsen_inns/?category=5&ordering=-vote_score
-'''
+```
+
 *(-vote_score -> descending order, vote_score -> ascending order)<br >
 
 Response:
 
-'''
-
+```
 {
     "count": 20,
     "next": "http://localhost:8000/api/onsen_inns/?category=5&ordering=-vote_score&page=2",
@@ -527,47 +527,48 @@ Response:
             "category": 5
         },
            ...
-'''
+```
 
 Authentication
 
-Login
+Login<br />
 Endpoint:
 
-'''
+```
 /api/rest-auth/login (POST)
-'''
+```
 
 Paramters:<br />
 username<br />
 email<br />
 password<br />
 
-Returns: Token key
+Returns:<br /> 
+Token key
 
-Logout
+Logout<br /> 
 Endpoint:
 
-'''
+```
 /api/rest-auth/logout (POST)
-'''
+```
 
-Password reset
+Password reset<br />
 Endpoint:
 
-'''
+```
 /api/rest-auth/password/reset (POST)
-'''
+```
 
 Paramters:<br />
 email<br />
 
-Password confirm
-Endpoint
+Password confirm<br />
+Endpoint:
 
-'''
+```
 rest-auth/password/reset/confirm (POST)
-'''
+```
 
 Paramters:<br />
 uid<br />
@@ -575,12 +576,12 @@ token<br />
 new_password1<br />
 new_password2<br />
 
-Password change
-Endpoint
+Password change<br />
+Endpoint:
 
-'''
+```
 /api/rest-auth/password/change/ (POST)
-'''
+```
 
 Parameters:<br />
 new_password1<br />
@@ -588,22 +589,23 @@ new_password2<br />
 old_password<br />
 
 User detail<br />
-Endpoint
+Endpoint:
 
-'''
+```
 /api/rest-auth/user/ (GET, PUT, PATCH)
-'''
+```
 
-Returns pk, username, email, first_name, last_name <br />
+Returns:<br /> 
+pk, username, email, first_name, last_name <br />
 
 
 Registration<br />
 
-Endpoint
+Endpoint:
 
-'''
+```
 /api/rest-auth/registration/ (POST)
-'''
+```
 
 Paramters:<br />
 username<br />
@@ -612,139 +614,139 @@ password2<br />
 email<br />
 
 Verifiy email<br />
-Endpoint
+Endpoint:
 
-'''
+```
 /api/rest-auth/registration/verify-email/ (POST)
-'''
+```
 
-Parameters<br />
+Parameters:<br />
 key<br />
 
 
 Vote<br />
 
 Upvote<br />
-Endpoint
+Endpoint:
 
-'''
+```
 /api/votes/up/
-'''
+```
 
-Parameters:
+Parameters:<br />
 id: the id of onsen inn that you want to vote for
 
-Example
+Example:
 
-'''
+```
 /api/votes/up/?id=4
-'''
+```
 
 Response:
 
-'''
+```
 {
     "message": "Successfully voted"
 }
-'''
+```
 
 Downvote<br />
-Endpoint
+Endpoint:
 
-'''
+```
 /api/votes/down/
-'''
+```
 
 Parameters:<br />
 id: the id of onsen inn that you want to downvote for<br />
 
-Example
+Example:
 
-'''
+```
 /api/votes/down/?id=4
-'''
+```
 
 Response:
 
-'''
+```
 {
     "message": "Successfully down-voted"
 }
-'''
+```
 
 Exists<br />
 Check if the user already voted for the onsen inn<br />
 
-Endpoint
+Endpoint:
 
-'''
+```
 /api/votes/exists/
-'''
+```
 
 Parameters:<br />
 id: the id of onsen inn<br />
 
-Example
+Example:
 
-'''
+```
 /api/votes/up/?id=4
-'''
+```
 
 Response:
 
-'''
+```
 {
     "voted": false
 }
-'''
+```
 
 Count<br />
-Returns the total count of votes for the onsen inn
+Returns: the total count of votes for the onsen inn
 
-Endpoint
+Endpoint:
 
-'''
+```
 /api/votes/count/
-'''
+```
 
 Parameters:<br />
 id: the id of onsen inn<br />
 
-Example
+Example:
 
-'''
+```
 /api/votes/count/?id=2
-'''
+```
 
 Response:
 
-'''
+```
 {
     "vote_count": 2
 }
-'''
+```
 
 Users<br />
 Returns a list of users who voted and their voting date<br />
 
-Endpoint
+Endpoint:
 
-'''
+```
 /api/votes/users/
-'''
+```
 
 Parameters:<br />
 id: the id of onsen inn<br />
 
-Example
+Example:
 
-'''
+```
 /api/votes/users/?id=2
-'''
+```
 
 Response:
 
-'''
+```
 {
     "users_count": [
         [
@@ -757,30 +759,30 @@ Response:
         ]
     ]
 }
-'''
+```
 
 Delete vote<br />
-unvote for the inn model<br />
+Unvote for the inn model<br />
 
-Endpoint
+Endpoint:
 
-'''
+```
 /api/votes/delete/
-'''
+```
 
 Parameters:<br />
 id: the id of onsen inn<br />
 
-Example
+Example:
 
-'''
+```
 /api/votes/delete/?id=2
-'''
+```
 
 Response:
 
-'''
+```
 {
     "message": "Successfully deleted"
 }
-'''
+```
