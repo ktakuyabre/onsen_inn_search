@@ -128,7 +128,7 @@ OnsenInn: <br />
     conditioner Bool()<br />
     bathrobe Bool()<br />
     cotton_swab Bool()<br />
-    category Int(0~10)<br />
+    category Int(0~9)<br />
     vote_score Int()<br />
     num_vote_up Int()<br />
     num_vote_down Int()<br />
@@ -136,7 +136,72 @@ OnsenInn: <br />
 
 ##API
 
-Get onsen data(10 entries per page)
+###Get user data
+
+Endpoint:
+
+```
+/api/users/
+```        
+
+Parameters:<br />
+page: specify the page<br />
+
+Response:
+```
+{
+    "count": 9,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "email": "amazon@example.com",
+            "username": "amazon"
+        },
+        {
+            "email": "ebay@example.com",
+            "username": "ebay"
+        },
+        {
+            "email": "huawei@example.com",
+            "username": "huawei"
+        },
+        {
+            "email": "intel@example.com",
+            "username": "intel"
+        },
+        {
+            "email": "yahoo@example.com",
+            "username": "yahoo"
+        },
+        {
+            "email": "admin@example.com",
+            "username": "admin"
+        },
+        {
+            "email": "apple@example.com",
+            "username": "apple"
+        },
+        {
+            "email": "google@example.com",
+            "username": "google"
+        },
+        {
+            "email": "netflix@example.com",
+            "username": "netflix"
+        }
+    ]
+}
+```
+
+###Delete user (DELETE)
+Endpoint:
+
+```
+/api/users/pk
+```      
+
+###Get onsen data(10 entries per page)
 
 Endpoint:
 
@@ -190,7 +255,7 @@ Response:
         ...
 '''
 
-Get onsen inn data(10 entries per page)
+###Get onsen inn data(10 entries per page)
 
 Endpoint:
 
@@ -235,27 +300,30 @@ Response:
                 "onsen_area_id": 50651,
                 "onsen_area_caption": null
             },
+            "vote_score": 1,
+            "num_vote_up": 1,
+            "num_vote_down": 0,
             "inn_id": 386526,
             "inn_name": "とよとみ温泉川島旅館",
             "inn_photo": "http://localhost:8000/media/images/inn_image_386526.jpg",
             "inn_min_price": 7700,
-            "review_room": "4.3",
-            "review_bath": "4.7",
-            "review_breakfast": "4.3",
+            "review_room": "4.1",
+            "review_bath": "4.6",
+            "review_breakfast": "4.6",
             "review_dinner": "4.5",
-            "review_service": "4.6",
-            "review_cleaness": "4.4",
-            "rooms_total": 129,
-            "baths_total": 5,
-            "service_leisure": "['エステ（有料）', 'マッサージ（有料）', '将棋（有料）', '囲碁（有料）', 'マージャン（有料）', 'リフレクソロジー']",
+            "review_service": "4.4",
+            "review_cleaness": "4.8",
+            "rooms_total": 15,
+            "baths_total": 0,
+            "service_leisure": "[]",
             "free_wifi": true,
-            "convenience_store": true,
+            "convenience_store": false,
             "hand_towel": true,
             "body_wash": true,
-            "hairdryer": true,
-            "onsui_toilet": true,
+            "hairdryer": false,
+            "onsui_toilet": false,
             "dental_amenities": true,
-            "bar_soap": true,
+            "bar_soap": false,
             "duvet": false,
             "hair_brush": true,
             "bath_towel": true,
@@ -263,12 +331,14 @@ Response:
             "razor": true,
             "shampoo": true,
             "pajamas": false,
-            "shower_cap": true,
+            "shower_cap": false,
             "conditioner": true,
             "bathrobe": false,
-            "cotton_swab": true,
+            "cotton_swab": false,
             "category": 1
         }
+    ]
+}
 ```
 
 Example: 
@@ -396,8 +466,6 @@ Response:
             "category": 1
         },
             ...
-```
-
 ```
 
 Example: 
@@ -529,9 +597,10 @@ Response:
            ...
 ```
 
-Authentication
+###Authentication
 
-Login<br />
+###Login<br />
+
 Endpoint:
 
 ```
@@ -543,17 +612,18 @@ username<br />
 email<br />
 password<br />
 
-Returns:<br /> 
-Token key
+Returns Token key
 
-Logout<br /> 
+###Logout<br /> 
+
 Endpoint:
 
 ```
 /api/rest-auth/logout (POST)
 ```
 
-Password reset<br />
+###Password reset<br />
+
 Endpoint:
 
 ```
@@ -563,7 +633,8 @@ Endpoint:
 Paramters:<br />
 email<br />
 
-Password confirm<br />
+###Password confirm<br />
+
 Endpoint:
 
 ```
@@ -576,7 +647,8 @@ token<br />
 new_password1<br />
 new_password2<br />
 
-Password change<br />
+###Password change<br />
+
 Endpoint:
 
 ```
@@ -588,18 +660,18 @@ new_password1<br />
 new_password2<br />
 old_password<br />
 
-User detail<br />
+###User detail<br />
+
 Endpoint:
 
 ```
 /api/rest-auth/user/ (GET, PUT, PATCH)
 ```
 
-Returns:<br /> 
-pk, username, email, first_name, last_name <br />
+Returns pk, username, email, first_name, last_name <br />
 
 
-Registration<br />
+###Registration<br />
 
 Endpoint:
 
@@ -613,7 +685,8 @@ password1<br />
 password2<br />
 email<br />
 
-Verifiy email<br />
+###Verifiy email<br />
+
 Endpoint:
 
 ```
@@ -624,9 +697,10 @@ Parameters:<br />
 key<br />
 
 
-Vote<br />
+###Vote<br />
 
-Upvote<br />
+###Upvote<br />
+
 Endpoint:
 
 ```
@@ -650,7 +724,8 @@ Response:
 }
 ```
 
-Downvote<br />
+###Downvote<br />
+
 Endpoint:
 
 ```
@@ -674,7 +749,8 @@ Response:
 }
 ```
 
-Exists<br />
+###Exists<br />
+
 Check if the user already voted for the onsen inn<br />
 
 Endpoint:
@@ -700,8 +776,8 @@ Response:
 }
 ```
 
-Count<br />
-Returns: the total count of votes for the onsen inn
+###Count<br />
+Returns the total count of votes for the onsen inn
 
 Endpoint:
 
@@ -726,7 +802,7 @@ Response:
 }
 ```
 
-Users<br />
+###Users<br />
 Returns a list of users who voted and their voting date<br />
 
 Endpoint:
@@ -761,7 +837,7 @@ Response:
 }
 ```
 
-Delete vote<br />
+###Delete vote<br />
 Unvote for the inn model<br />
 
 Endpoint:
