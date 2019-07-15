@@ -128,7 +128,7 @@ OnsenInn: <br />
     conditioner Bool()<br />
     bathrobe Bool()<br />
     cotton_swab Bool()<br />
-    category Int(0~9)<br />
+    category Int(0~10)<br />
     vote_score Int()<br />
     num_vote_up Int()<br />
     num_vote_down Int()<br />

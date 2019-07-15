@@ -66,10 +66,11 @@ def scrapeInnHtml(url, session, headers, cookies):
 
 
 
-        #links = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
-        #link = links[2]
-        link = soup.find("table", {"class": "jlnpc-shisetsu-bath"})
+        links = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
         if link != None:
+            link = links[-1]
+        #link = soup.find("table", {"class": "jlnpc-shisetsu-bath"})
+        #if link != None:
             num = 0
             for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
                 text = l.get_text()
@@ -80,6 +81,7 @@ def scrapeInnHtml(url, session, headers, cookies):
             inn_data.append(num)
         else:
             inn_data.append(0)
+            print("No bath total information")
 
         #サービス、レジャー
         added = False
@@ -96,33 +98,40 @@ def scrapeInnHtml(url, session, headers, cookies):
         if added==False:
             inn_data.append([])
 
-
-        links = soup.find("div", {"class": "jlnpc-table-row-layout"}).find_all("td", {"class":"jlnpc-td03 s12_30"})
-        text = links[-1].get_text()
-        text = removeBadChars(text)
-        text2 = "インターネット"
-        #ネット無料なら0を、そうでないと1を返す
-        if text2 in text:
-            text = 1
-        else:
-            text = 0
+        text = 0
+        link = soup.find("div", {"class": "jlnpc-table-row-layout"})
+        if link != None:
+            links = link.find_all("td", {"class":"jlnpc-td03 s12_30"})
+            if links != None:
+                text = links[-1].get_text()
+                text = removeBadChars(text)
+                text2 = "インターネット"
+                #ネット無料なら0を、そうでないと1を返す
+                if text2 in text:
+                    text = 1
+                else:
+                    text = 0
         inn_data.append(text)
 
-        imgs = soup.find("div",{"class":"iconbox"}).find_all("img")
-        konbini = False
-        for img in imgs:
-            text = img["alt"]
-            text2 = "コンビニ"
-            #コンビニまで5分以内なら0を、そうでないと1を返す
-            if text2 in text:
-                #text = 0
-                konbini = True
-            '''else:
-                text = 1'''
-        if konbini:
-            text = 1
-        else:
-            text = 0
+        text = 0
+        link = soup.find("div",{"class":"iconbox"})
+        if link != None:
+            imgs = link.find_all("img")
+            #konbini = False
+            for img in imgs:
+                text = img["alt"]
+                text2 = "コンビニ"
+                #コンビニまで5分以内なら0を、そうでないと1を返す
+                if text2 in text:
+                    #text = 0
+                    text = 1
+                    #konbini = True
+                else:
+                    text = 0
+                #if konbini:
+                #   text = 1
+                #else:
+                #    text = 0
         inn_data.append(text)
 
         links = soup.find_all("table", {"class": "s12_30 shisetsu-amenityspec_body jlnpc-table-basic-layout"})

@@ -185,10 +185,10 @@ def storeJaranOnsens(url):
         large_areas = dom.getElementsByTagName('LargeArea')
         small_areas = dom.getElementsByTagName('SmallArea')
         nature_of_onsens = dom.getElementsByTagName('NatureOfOnsen')
-        onsen_area_names = dom.getElementsByTagName('OnsenAreaName')
-        onsen_area_name_kanas = dom.getElementsByTagName('OnsenAreaNameKana')
+        #onsen_area_names = dom.getElementsByTagName('OnsenAreaName')
+        #onsen_area_name_kanas = dom.getElementsByTagName('OnsenAreaNameKana')
         onsen_area_ids = dom.getElementsByTagName('OnsenAreaID')
-        onsen_area_captions = dom.getElementsByTagName('OnsenAreaCaption')
+        #onsen_area_captions = dom.getElementsByTagName('OnsenAreaCaption')'''
 
         for i in range(0, len(onsen_ids)):
             onsen = Onsen()
@@ -206,7 +206,7 @@ def storeJaranOnsens(url):
             onsen.nature_of_onsen = nodeValueNoneCheck(nature_of_onsens[i])
             #onsen.onsen_area_name = nodeValueNoneCheck(onsen_area_names[i])
             #onsen.onsen_area_name_kana = nodeValueNoneCheck(onsen_area_name_kanas[i])
-            #onsen.onsen_area_id = nodeValueNoneCheck(onsen_area_ids[i])
+            onsen.onsen_area_id = nodeValueNoneCheck(onsen_area_ids[i])
             #onsen.onsen_area_caption = nodeValueNoneCheck(onsen_area_captions[i])
             #onsens.append(onsen)
             onsen.save()

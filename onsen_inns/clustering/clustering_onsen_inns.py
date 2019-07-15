@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler, normalize, OneHotEncoder
 from sklearn import decomposition
+import csv
 
 sys.path.append("..")
 sys.path.append("../..")
@@ -18,7 +19,7 @@ from onsen_inns.models import Onsen, OnsenInn
 from sklearn.datasets.samples_generator import make_blobs
 
 
-data_list = ["inn_min_price", "review_room", "review_bath", "review_breakfast", "review_dinner", "review_service", "review_cleaness", "rooms_total", "baths_total", "free_wifi", "convenience_store", "hand_towel", "dental_amenities", "bath_towel", "shampoo", "conditioner", "body_wash", "bar_soap", "yukata", "pajamas", "bathrobe", "hairdryer", "duvet", "razor", "shower_cap", "cotton_swab", "onsui_toilet", "hair_brush"]
+data_list = ["inn_min_price", "review_room", "review_bath", "review_breakfast", "review_dinner", "review_service", "review_cleaness", "rooms_total", "baths_total", "free_wifi", "convenience_store", "hand_towel", "body_wash", "hairdryer", "onsui_toilet", "dental_amenities", "bar_soap", "duvet", "hair_brush", "bath_towel", "yukata", "razor", "shampoo", "pajamas", "shower_cap", "conditioner", "bathrobe", "cotton_swab"]
 
 def main():
     # data processing
@@ -75,10 +76,11 @@ def main():
     print(data_column)
     service_leisure_bow_vec, service_leisure_word2id = bowVectorizer(data_column)
     #print(service_leisure_bow_vec)
-    #print(service_leisure_word2id)
+    
     print(len(nature_of_onsen_word2id))
     print(nature_of_onsen_word2id)
     print(len(service_leisure_word2id))
+    print(service_leisure_word2id)
     # concatenate the service_leisure_bow_vec with data_set
     data_set = np.concatenate((data_set, service_leisure_bow_vec), axis=1)  
         
@@ -98,7 +100,7 @@ def main():
 
     # apply kmeans clustering, k = 1 ~ 30, using Elbow Method to evaluate each result at each k
     sse = {}
-    for k in range(10, 11):
+    for k in range(11, 12):
         kmeans = KMeans(n_clusters=k, random_state = 0)
         #kmeans.fit(data_set)
         clusters = kmeans.fit_predict(data_set)
@@ -109,9 +111,9 @@ def main():
         #print(result)
         #print(len(result))
 
-    #plotSseValues("cluster_sse_values_2.pdf", sse)
+    #plotSseValues("cluster_sse_values.pdf", sse)
     # store the result into our database
-    #store_clustering_result(result)
+    store_clustering_result(result)
 
     # bring cluster centers back to original scale and show them
     #centroids = scaler.inverse_transform(centroids)
@@ -120,14 +122,26 @@ def main():
 
     # bring cluster centroids back to original scale and show them
     clustered_original_vectors = []
-    for k in range(10):
+    for k in range(11):
         clustered_original_vectors.append(getClusteredVectors(k, nature_of_onsen_word2id, service_leisure_word2id))
 
     centroids = lambda inp: [[sum(m)/float(len(m)) for m in zip(*l)] for l in inp]
     
-
+    centroids_list = []
     for i, centroid in enumerate(centroids(clustered_original_vectors)):
-        print("category ",i, centroid)
+        print("category ", i, centroid)
+        centroids_list.append([i]+centroid)
+        
+
+    #fieldnames = data_list+list(nature_of_onsen_word2id.keys())+list(service_leisure_word2id.keys()),
+    fieldnames = ["category"]
+    fieldnames = fieldnames + data_list
+    for key in nature_of_onsen_word2id.keys():
+        fieldnames.append(key)
+    for key in service_leisure_word2id.keys():
+        fieldnames.append(key)
+    print(fieldnames)
+    writeToCsv("clustering_onsen_inns_result.csv", fieldnames, centroids_list)
 
 def store_clustering_result(result):
     for onsen_inn, category in zip(OnsenInn.objects.all(), result):       
@@ -223,6 +237,28 @@ def onlyBowVectorizer(word2id, preprocessed_docs):
                 pass
         bow_vec.append(bow)
     return bow_vec
+
+def writeToCsv(filename, fieldnames, data_list):
+    with open(filename, mode='w') as onsen_inn_data:
+        onsen_inn_data_writer = csv.writer(onsen_inn_data, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        #fieldnames = ['inn_name', 'reviews']
+        writer = csv.DictWriter(onsen_inn_data, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for entry in data_list:
+            onsen_inn_data_writer.writerow(entry)
+
+def readFromCsv(filepath):
+    onsen_inn_data = []
+    with open(filepath, mode='r') as onsen_inn_data:
+        csv_reader = csv.DictReader(onsen_inn_data)
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                line_count += 1
+            #reviews.append(row["reviews"])
+            line_count += 1
+    return onsen_inn_data
 
 if __name__ == "__main__":
 
