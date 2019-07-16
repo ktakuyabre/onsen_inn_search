@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
+    <h1>{{ msg }}</h1>
     <div style="position: absolute;" v-drag>
-      <img :src="items[count]"/>
+      <img class="img" :src="tests[count]"/>
     </div>
     <v-btn @click=increment color="error">Nope</v-btn>
     <v-btn @click=increment color="info">Like</v-btn>
@@ -50,7 +51,6 @@ export default {
     getTwenty () {
       for (var i = 0; i < 20; i++) {
         var randId = this.getRandomInt(10)
-        console.log(randId)
         axios.get('http://localhost:8000/api/onsen_inns/', {
           params: {
             id: randId,

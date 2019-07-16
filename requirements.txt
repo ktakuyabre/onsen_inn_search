@@ -10,3 +10,6 @@ djangorestframework
 django-filter
 django-cors-headers
 django-mysql
+django-rest-auth
+django-allauth
+django-vote
