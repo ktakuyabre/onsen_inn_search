@@ -77,7 +77,7 @@ export default {
 
       items ,
 
-  created () {
+  created () :{
     this.getList(this.page)
   },
   methods: {
