@@ -81,7 +81,7 @@ export default {
     this.getList(this.page)
   ),
   methods(
-    getList (page) {
+    getList (page) (
       axios.get('http://localhost:8000/api/onsen_inns/', {
         params: {
           category: this.category,
@@ -96,7 +96,7 @@ export default {
         .catch(err => {
           console.error(err)
         })
-    },
+    ),
   )
 </script>
 
