@@ -15,6 +15,13 @@ from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from collections import Counter
 
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
+
+from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
+from rest_auth.registration.views import SocialLoginView
+from rest_auth.social_serializers import TwitterLoginSerializer
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -53,6 +60,12 @@ class OnsenInnViewSet(viewsets.ModelViewSet):
     filter_fields = ('id', 'category')
     ordering_fields = ('vote_score', 'num_vote_up', 'num_vote_down' )
     #ordering = ('-vote_score', '-num_vote_up', '-num_vote_down' )
+    '''def get_queryset(self):
+        category_value = self.request.QUERY_PARAMS.get('category', None)
+        if category_value:
+            category_list =  category_value.split(',')
+            queryset = OnsenInn.objects.filter(category__in=category_list)
+        return queryset'''
 
 '''class OnsenInnViewSet(viewsets.ModelViewSet):
     """
@@ -65,6 +78,13 @@ class OnsenInnViewSet(viewsets.ModelViewSet):
     filter_fields = ('id', 'category')
     filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('inn_name', 'vote_count' )'''
+
+class FacebookLogin(SocialLoginView):
+    adapter_class = FacebookOAuth2Adapter
+
+class TwitterLogin(SocialLoginView):
+    serializer_class = TwitterLoginSerializer
+    adapter_class = TwitterOAuthAdapter
 
 
 class VoteQueryViewSet(viewsets.ModelViewSet):
