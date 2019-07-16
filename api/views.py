@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from api.permissions import IsLoggedInUserOrAdmin, IsAdminUser
 from django.shortcuts import render
 from django.urls import include, path
 from rest_framework import viewsets, generics
@@ -20,6 +21,17 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+    # Configure permissions
+    def get_permissions(self):
+        permission_classes = []
+        if self.action == 'create':
+            permission_classes = [AllowAny]
+        elif self.action == 'retrieve' or self.action == 'update' or self.action == 'partial_update':
+            permission_classes = [IsLoggedInUserOrAdmin]
+        elif self.action == 'list' or self.action == 'destroy':
+            permission_classes = [IsAdminUser]
+        return [permission() for permission in permission_classes]
     
 class OnsenViewSet(viewsets.ModelViewSet):
     """
@@ -72,8 +84,11 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         user_id = request.user.id
         id = request.query_params.get("id", None)
         onsen_inn = OnsenInn.objects.get(pk=id)
-        onsen_inn.votes.up(user_id)
-        message = "Successfully voted"
+        voted = onsen_inn.votes.exists(user_id)
+        message = "Already voted"
+        if voted == "false":
+            onsen_inn.votes.up(user_id)
+            message = "Successfully voted"            
         #message = "Please provide a like or dislike parameter."
         return Response({'message': message})
 
@@ -82,6 +97,9 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         user_id = request.user.id
         id = request.query_params.get("id", None)
         onsen_inn = OnsenInn.objects.get(pk=id)
+        #voted = onsen_inn.votes.exists(user_id)
+        #if voted = "true":
+        #    msg
         onsen_inn.votes.down(user_id)
         return Response({'message': 'Successfully down-voted'})
 
