@@ -77,9 +77,9 @@ export default {
 
       items ,
 
-  created ( {
+  created (
     this.getList(this.page)
-  }),
+  ),
   methods: {
     getList (page) {
       axios.get('http://localhost:8000/api/onsen_inns/', {
