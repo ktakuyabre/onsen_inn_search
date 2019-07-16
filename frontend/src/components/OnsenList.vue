@@ -80,7 +80,7 @@ export default {
   created (
     this.getList(this.page)
   ),
-  methods: {
+  methods{
     getList (page) {
       axios.get('http://localhost:8000/api/onsen_inns/', {
         params: {
