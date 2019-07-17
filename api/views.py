@@ -105,11 +105,11 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         id = request.query_params.get("id", None)
         onsen_inn = OnsenInn.objects.get(pk=id)
         voted = onsen_inn.votes.exists(user_id)
-        message = "Already voted"
-        if voted == "false":
+        message = "Already voted"        
+        if voted == False:
             onsen_inn.votes.up(user_id)
             message = "Successfully voted"            
-        #message = "Please provide a like or dislike parameter."
+            #message = "Please provide a like or dislike parameter."
         return Response({'message': message})
 
     @list_route(methods=["POST", "GET"])
