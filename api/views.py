@@ -185,11 +185,11 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         return Response({'message': 'Successfully deleted'})
 
 
-#class AuthInfoDeleteView(generics.DestroyAPIView):
+class AuthInfoDeleteView(generics.DestroyAPIView):
     """
     API endpoint that allows users to delete their own accounts.
     """
-    '''permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     lookup_field = 'email'
     queryset = CustomUser.objects.all()
@@ -199,4 +199,4 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
             instance = self.queryset.get(email=self.request.user.email)
             return instance
         except Account.DoesNotExist:
-            raise Http404'''
+            raise Http404

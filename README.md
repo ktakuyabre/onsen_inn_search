@@ -194,13 +194,6 @@ Response:
 }
 ```
 
-###Delete user (DELETE)
-Endpoint:
-
-```
-/api/users/pk
-```      
-
 ###Get onsen data(10 entries per page)
 
 Endpoint:
@@ -696,6 +689,11 @@ Endpoint:
 Parameters:<br />
 key<br />
 
+###Delete user (DELETE) Endpoint:
+
+```
+/api/users/rest-auth/delete
+```
 
 ###Vote<br />
 
@@ -862,3 +860,5 @@ Response:
     "message": "Successfully deleted"
 }
 ```
+
+

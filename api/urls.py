@@ -1,6 +1,5 @@
 from django.urls import include, path
-#from api.views import AuthInfoDeleteView, VoteQueryViewSet
-from api.views import VoteQueryViewSet
+from api.views import AuthInfoDeleteView, VoteQueryViewSet
 from rest_auth.views import UserDetailsView
 
 from api.views import FacebookLogin, TwitterLogin
@@ -12,7 +11,7 @@ urlpatterns = [
     path(r'rest-auth/twitter/', TwitterLogin.as_view(), name='twitter_login'),
     #path('rest-auth/<int:pk>/', UserDetailsView.as_view()),
     #path('rest-auth/<uid>/', UserDetailsView.as_view(), name="user-profile"),
-    #path('rest-auth/delete/', AuthInfoDeleteView.as_view()),
+    path('rest-auth/delete/', AuthInfoDeleteView.as_view()),
     #path('votes/', VoteQueryViewSet.as_view(), name="votes"),
     #path(r'vote', VoteQueryViewSet),
     #path(r'', include(urls)),
