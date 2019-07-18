@@ -29,6 +29,13 @@ class OnsenInn(VoteModel, models.Model):
     inn_id = models.IntegerField()
     inn_name = models.CharField(max_length=100)
     inn_photo = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
+
+    #extra data
+    '''inn_photo_2 = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
+    inn_photo_3 = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
+    inn_photo_4 = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
+    inn_overview = models.CharField(blank=True, null=True, max_length=200)'''
+
     inn_min_price = models.IntegerField()
     review_room = models.DecimalField(blank=True, null=True, max_digits=2, decimal_places=1)
     review_bath = models.DecimalField(blank=True, null=True, max_digits=2, decimal_places=1)
