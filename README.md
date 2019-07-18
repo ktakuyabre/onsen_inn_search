@@ -98,7 +98,12 @@ Onsen:<br />
 OnsenInn: <br />
     inn_id Int(Not Null)<br />
     inn_name Char(max_length=100, Not Null)<br />
+    inn_headline Char(max_length=100, Not Null)<br />
+    inn_overview Char(max_length=200, Not Null)<br />
     inn_photo Image()<br />
+    inn_photo_2 Image()<br />
+    inn_photo_3 Image()<br />
+    inn_photo_4 Image()<br />
     inn_min_price Int(Not Null)<br />
     review_room Decimal(max_digits=2, decimal_places=1)<br />
     review_bath Decimal(max_digits=2, decimal_places=1)<br />
