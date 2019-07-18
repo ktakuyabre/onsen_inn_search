@@ -58,24 +58,17 @@ export default {
   name: 'OnsenList',
   data () {
     return {
-      msg: 'OnsenList Page',
-        items: [
-          { title: 'ニセコ五色温泉旅館', avatar: 'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png' },
-          { title: '高湯温泉旅館　玉子湯', avatar: 'https://2.bp.blogspot.com/-8SXUjho2Q3A/WTd5IbXcdeI/AAAAAAABEtU/lLMy-W__SCol746jtdzKntgpQ4yNw9ggwCLcB/s800/stand_onsen_woman.png' },
-          { title: '湯治のふるさと　玉川温泉', avatar: 'https://2.bp.blogspot.com/-w2cc5PFxpDY/WTd5F-_HDcI/AAAAAAABEtE/hLef7WMLdt8Vvugs3Jr4Xkg1uHDxAp6HQCLcB/s800/stand_onsen_girl.png' },
-          { title: '日本三秘湯　谷次温泉', avatar: 'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png' }
-        ]
-      }
-    }
-  }
+
       oneimages: [
         'https://1.bp.blogspot.com/-GWMxdkI0GQs/WTd5HhIXb7I/AAAAAAABEtQ/00aFX7Auf_YtKjyIAmK4E9XjyPIGiS6cQCLcB/s800/stand_onsen_white_woman.png',
         'https://2.bp.blogspot.com/-8SXUjho2Q3A/WTd5IbXcdeI/AAAAAAABEtU/lLMy-W__SCol746jtdzKntgpQ4yNw9ggwCLcB/s800/stand_onsen_woman.png',
         'https://2.bp.blogspot.com/-w2cc5PFxpDY/WTd5F-_HDcI/AAAAAAABEtE/hLef7WMLdt8Vvugs3Jr4Xkg1uHDxAp6HQCLcB/s800/stand_onsen_girl.png',
         'https://2.bp.blogspot.com/-KPPWPTS1pOk/UZmCU2fi74I/AAAAAAAATgw/IFd8eUNlvhk/s800/onsen_woman.png',
       ],
-
-      items ,
+      category: 1,
+      items: [],
+    }
+  },
 
   created () {
     this.getList(this.page)
@@ -97,7 +90,8 @@ export default {
           console.error(err)
         })
     },
-  }
+ },
+}
 </script>
 
 <style scoped>
