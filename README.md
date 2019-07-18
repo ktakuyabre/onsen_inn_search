@@ -246,7 +246,7 @@ Response:
             "onsen_area_caption": null
         },
         ...
-'''
+```
 
 ###Get onsen inn data(10 entries per page)
 
