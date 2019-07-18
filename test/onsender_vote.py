@@ -8,13 +8,17 @@ import sys
 
 class OnsenderVote:
     def __init__(self):
-        #self.username = "apple"
-        #self.password = "appleappleapple"
-        self.username = "huawei"
-        self.password = "huaweihuaweihuawei"
+        '''self.username = "apple"
+        self.email = "apple@example.com"
+        self.password = "appleappleapple"'''
+        self.username = "rakuten"
+        self.email = "rakuten@example.com"
+        self.password = "rakutenrakutenrakuten"
+        #self.username = "huawei"
+        #self.password = "huaweihuaweihuawei"
         #self.csrf_token = "ZQ1Ic82ju13t1nA9ABqQuKaFFTfvUgY3d8hYXJeMpNAA96gXRtHt0EiO9T3Z7uRR"
         self.csrf_token = ""
-        self.id = "19"
+        self.id = "4"
 
     def vote(self):
         session = requests.Session()
@@ -61,6 +65,7 @@ class OnsenderVote:
 
         payload_login['csrfmiddlewaretoken'] = self.csrf_token
         payload_login['username'] = self.username
+        payload_login['email'] = self.email
         payload_login['password'] = self.password
         #print("key", auth_token)
         #print("headers", headers)

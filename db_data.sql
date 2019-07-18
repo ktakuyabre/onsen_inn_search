@@ -1036,11 +1036,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.authtoken_token (key, created, user_id) FROM stdin;
-aa8a5e8a18ec359dce4d8e5f7683e8a29fac08d2	2019-07-15 11:29:58.997007+00	10
-811e8bcee70a800a86cc02bcc69945b33d8ba625	2019-07-15 11:31:36.686769+00	8
-5d80c1040c679b71c3ee976e58ea12f20e21c320	2019-07-15 11:32:41.814473+00	4
-2c21932b2ccc182d0151dc5b8b55f2c31331da61	2019-07-16 04:53:42.031857+00	5
-cbfeb0136c9a101cbe4f4434d78a869feace7042	2019-07-17 05:16:38.270329+00	6
+4bef17bc72362308b84800447ac57d9e51fd4959	2019-07-18 05:20:58.963784+00	11
 \.
 
 
@@ -1081,48 +1077,49 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2019-07-15 03:33:55.704234+00
-2	contenttypes	0002_remove_content_type_name	2019-07-15 03:33:55.726662+00
-3	auth	0001_initial	2019-07-15 03:33:55.779862+00
-4	auth	0002_alter_permission_name_max_length	2019-07-15 03:33:55.834231+00
-5	auth	0003_alter_user_email_max_length	2019-07-15 03:33:55.85103+00
-6	auth	0004_alter_user_username_opts	2019-07-15 03:33:55.871196+00
-7	auth	0005_alter_user_last_login_null	2019-07-15 03:33:55.884223+00
-8	auth	0006_require_contenttypes_0002	2019-07-15 03:33:55.893141+00
-9	auth	0007_alter_validators_add_error_messages	2019-07-15 03:33:55.907101+00
-10	auth	0008_alter_user_username_max_length	2019-07-15 03:33:55.924514+00
-11	auth	0009_alter_user_last_name_max_length	2019-07-15 03:33:55.941682+00
-12	auth	0010_alter_group_name_max_length	2019-07-15 03:33:55.956103+00
-13	auth	0011_update_proxy_permissions	2019-07-15 03:33:55.969509+00
-14	users	0001_initial	2019-07-15 03:33:56.027933+00
-15	account	0001_initial	2019-07-15 03:33:56.13818+00
-16	account	0002_email_max_length	2019-07-15 03:33:56.188779+00
-17	admin	0001_initial	2019-07-15 03:33:56.230441+00
-18	admin	0002_logentry_remove_auto_add	2019-07-15 03:33:56.274255+00
-19	admin	0003_logentry_add_action_flag_choices	2019-07-15 03:33:56.298899+00
-20	authtoken	0001_initial	2019-07-15 03:33:56.341409+00
-21	authtoken	0002_auto_20160226_1747	2019-07-15 03:33:56.423502+00
-22	onsen_inns	0001_initial	2019-07-15 03:33:56.465574+00
-23	onsen_inns	0002_auto_20190531_0620	2019-07-15 03:33:56.585787+00
-24	onsen_inns	0003_auto_20190531_0648	2019-07-15 03:33:56.681366+00
-25	onsen_inns	0004_auto_20190531_1227	2019-07-15 03:33:56.708203+00
-26	onsen_inns	0005_auto_20190601_1638	2019-07-15 03:33:56.800828+00
-27	onsen_inns	0006_auto_20190601_1827	2019-07-15 03:33:56.828849+00
-28	onsen_inns	0007_auto_20190705_1007	2019-07-15 03:33:56.864433+00
-29	onsen_inns	0008_auto_20190713_1412	2019-07-15 03:33:56.920844+00
-30	onsen_inns	0009_auto_20190713_1603	2019-07-15 03:33:56.995484+00
-31	onsen_inns	0010_auto_20190713_1606	2019-07-15 03:33:57.054173+00
-32	onsen_inns	0011_auto_20190715_1226	2019-07-15 03:33:57.149093+00
-33	sessions	0001_initial	2019-07-15 03:33:57.175209+00
-34	sites	0001_initial	2019-07-15 03:33:57.206481+00
-35	sites	0002_alter_domain_unique	2019-07-15 03:33:57.231524+00
-36	socialaccount	0001_initial	2019-07-15 03:33:57.38254+00
-37	socialaccount	0002_token_max_lengths	2019-07-15 03:33:57.490567+00
-38	socialaccount	0003_extra_data_default_dict	2019-07-15 03:33:57.511419+00
-39	vote	0001_initial	2019-07-15 03:33:57.564132+00
-40	vote	0002_auto_20161229_1022	2019-07-15 03:33:57.593277+00
-41	vote	0003_vote_action	2019-07-15 03:33:57.613583+00
-42	vote	0004_auto_20170110_1150	2019-07-15 03:33:57.639115+00
+1	contenttypes	0001_initial	2019-07-18 05:12:18.750693+00
+2	contenttypes	0002_remove_content_type_name	2019-07-18 05:12:18.776696+00
+3	auth	0001_initial	2019-07-18 05:12:18.862788+00
+4	auth	0002_alter_permission_name_max_length	2019-07-18 05:12:18.911624+00
+5	auth	0003_alter_user_email_max_length	2019-07-18 05:12:18.924369+00
+6	auth	0004_alter_user_username_opts	2019-07-18 05:12:18.936278+00
+7	auth	0005_alter_user_last_login_null	2019-07-18 05:12:18.94925+00
+8	auth	0006_require_contenttypes_0002	2019-07-18 05:12:18.953649+00
+9	auth	0007_alter_validators_add_error_messages	2019-07-18 05:12:18.965765+00
+10	auth	0008_alter_user_username_max_length	2019-07-18 05:12:18.977373+00
+11	auth	0009_alter_user_last_name_max_length	2019-07-18 05:12:18.989751+00
+12	auth	0010_alter_group_name_max_length	2019-07-18 05:12:19.000753+00
+13	auth	0011_update_proxy_permissions	2019-07-18 05:12:19.011545+00
+14	users	0001_initial	2019-07-18 05:12:19.056492+00
+15	account	0001_initial	2019-07-18 05:12:19.158181+00
+16	account	0002_email_max_length	2019-07-18 05:12:19.203657+00
+17	admin	0001_initial	2019-07-18 05:12:19.232204+00
+18	admin	0002_logentry_remove_auto_add	2019-07-18 05:12:19.267295+00
+19	admin	0003_logentry_add_action_flag_choices	2019-07-18 05:12:19.288044+00
+20	authtoken	0001_initial	2019-07-18 05:12:19.316755+00
+21	authtoken	0002_auto_20160226_1747	2019-07-18 05:12:19.383807+00
+22	onsen_inns	0001_initial	2019-07-18 05:12:19.420743+00
+23	onsen_inns	0002_auto_20190531_0620	2019-07-18 05:12:19.52013+00
+24	onsen_inns	0003_auto_20190531_0648	2019-07-18 05:12:19.606883+00
+25	onsen_inns	0004_auto_20190531_1227	2019-07-18 05:12:19.623733+00
+26	onsen_inns	0005_auto_20190601_1638	2019-07-18 05:12:19.660395+00
+27	onsen_inns	0006_auto_20190601_1827	2019-07-18 05:12:19.678764+00
+28	onsen_inns	0007_auto_20190705_1007	2019-07-18 05:12:19.705196+00
+29	onsen_inns	0008_auto_20190713_1412	2019-07-18 05:12:19.779133+00
+30	onsen_inns	0009_auto_20190713_1603	2019-07-18 05:12:19.821139+00
+31	onsen_inns	0010_auto_20190713_1606	2019-07-18 05:12:19.86134+00
+32	onsen_inns	0011_auto_20190715_1226	2019-07-18 05:12:19.917553+00
+33	sessions	0001_initial	2019-07-18 05:12:19.937995+00
+34	sites	0001_initial	2019-07-18 05:12:19.966735+00
+35	sites	0002_alter_domain_unique	2019-07-18 05:12:19.986922+00
+36	socialaccount	0001_initial	2019-07-18 05:12:20.12052+00
+37	socialaccount	0002_token_max_lengths	2019-07-18 05:12:20.214994+00
+38	socialaccount	0003_extra_data_default_dict	2019-07-18 05:12:20.237769+00
+39	users	0002_auto_20190718_1404	2019-07-18 05:12:20.27207+00
+40	vote	0001_initial	2019-07-18 05:12:20.314129+00
+41	vote	0002_auto_20161229_1022	2019-07-18 05:12:20.345888+00
+42	vote	0003_vote_action	2019-07-18 05:12:20.366323+00
+43	vote	0004_auto_20170110_1150	2019-07-18 05:12:20.39578+00
 \.
 
 
@@ -1138,6 +1135,10 @@ lfs7liw94d5d67jy05ndthppzi8jjd9k	MzA2NGFmOGI1ZDM3OTU2NjJmMWE3MWM5ODQwZWJiODFhNGM
 w9ynp6rg8sgu0fnkugro0a9znjr8xu4q	MzA2NGFmOGI1ZDM3OTU2NjJmMWE3MWM5ODQwZWJiODFhNGM2MDg3MDp7Il9hdXRoX3VzZXJfaWQiOiI2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMWI5NjNiMjEwODljNTBjZTNmZTVjYjg0ZTBjZDVhZTEzYzFiOWFiIn0=	2019-07-31 05:19:59.617364+00
 fjno5l4xt1ms3otnniucrpopk4snc1ts	MzA2NGFmOGI1ZDM3OTU2NjJmMWE3MWM5ODQwZWJiODFhNGM2MDg3MDp7Il9hdXRoX3VzZXJfaWQiOiI2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMWI5NjNiMjEwODljNTBjZTNmZTVjYjg0ZTBjZDVhZTEzYzFiOWFiIn0=	2019-07-31 05:20:15.616243+00
 ffl11j7meb8vssx7klae8rsxaxh7g1wm	MzA2NGFmOGI1ZDM3OTU2NjJmMWE3MWM5ODQwZWJiODFhNGM2MDg3MDp7Il9hdXRoX3VzZXJfaWQiOiI2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMWI5NjNiMjEwODljNTBjZTNmZTVjYjg0ZTBjZDVhZTEzYzFiOWFiIn0=	2019-07-31 05:22:48.539198+00
+0prcjh3uloy2olgf5lbtdqgq7yerambo	OGRlM2ZjMmNlMTc0NTY0ZmE5ZWJhYTVmODQ5NjczZjkwNjZhYmJlMDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmYjllNWRhYTI0MWFiYzYzYTU3Yjc3ZDYxMDEyZjc2MDFjOWE5YTY2In0=	2019-08-01 02:46:16.603115+00
+32kbcmjg7u4ixy7ch2fx07zxknrlcwfy	ODQ1NDc1YmIwNDhhZTQzMWNlZDgyNzNkMjdmYzFmMjcyYjM0YmY1Yzp7Il9hdXRoX3VzZXJfaWQiOiIxMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiYTYxN2VlNDJhOGI1MDRlOWU5NzY4ODcxMGRkNDk3MWE2OTljNmU2YyJ9	2019-08-01 02:57:17.347388+00
+yk1m3utkn4g3eh8eq41kw3nrshrsbi64	Zjc3YjlmMjgyYmNlZDhjMDUxNGUzNWIwNGZlOWIxZDI1OTQxN2FjODp7Il9hdXRoX3VzZXJfaWQiOiIxMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6ImE2MTdlZTQyYThiNTA0ZTllOTc2ODg3MTBkZDQ5NzFhNjk5YzZlNmMifQ==	2019-08-01 05:20:58.983011+00
+whmosrfw3jvjf707t1ld5mr4qsgla4v7	Zjc3YjlmMjgyYmNlZDhjMDUxNGUzNWIwNGZlOWIxZDI1OTQxN2FjODp7Il9hdXRoX3VzZXJfaWQiOiIxMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6ImE2MTdlZTQyYThiNTA0ZTllOTc2ODg3MTBkZDQ5NzFhNjk5YzZlNmMifQ==	2019-08-01 05:22:11.781771+00
 \.
 
 
@@ -3888,7 +3889,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 16	393665	てしお温泉夕映	images/inn_image_393665.jpg	5907	4.3	3.9	3.5	3.7	4.0	4.2	21	2	t	f	t	t	t	t	t	f	t	t	t	t	t	t	t	f	f	t	f	5	0		0	0	0
 17	357250	とままえ温泉ふわっと	images/inn_image_357250.jpg	4907	4.1	4.0	3.6	4.4	4.0	4.1	17	5	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	f	t	f	5	1	ルームサービス,将棋,マージャン（有料）	0	0	0
 18	380791	旭温泉	images/inn_image_380791.jpg	3518	3.7	4.9	3.9	4.6	4.2	4.0	9	4	f	f	t	t	t	f	t	f	f	t	f	f	f	t	f	f	f	f	f	5	1		0	0	0
-19	319963	はぼろ温泉サンセットプラザ	images/inn_image_319963.jpg	9629	3.6	3.8	3.5	3.9	3.5	3.6	40	6	f	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	5	1	マッサージ（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 15	388190	五味温泉	images/inn_image_388190.jpg	4370	3.8	4.6	4.2	4.9	4.1	3.9	17	3	f	f	t	t	t	t	t	f	f	t	t	t	t	t	f	f	f	f	f	3	1	将棋,囲碁,マージャン（有料）	0	1	1
 21	357858	音威子府住民保養センター天塩川温泉	images/inn_image_357858.jpg	7407	3.5	3.8	3.5	3.5	3.8	3.7	27	2	f	f	t	f	t	t	t	f	f	t	t	f	t	t	f	f	f	t	f	5	1	将棋（有料）,囲碁（有料）,マージャン（有料）,パターゴルフ	0	0	0
 23	319959	森のゆ・花神楽	images/inn_image_319959.jpg	7129	4.4	4.3	4.3	4.6	4.4	4.3	39	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	f	t	t	f	11	0	マージャン（有料）	0	0	0
@@ -3901,7 +3901,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 8	328140	稚内温泉ホテル大将	images/inn_image_328140.jpg	6500	3.8	3.9	0.0	0.0	4.1	4.0	71	1	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	2	0	クリーニングサービス,マッサージ（有料）	1	0	-1
 31	317028	【世界自然遺産の宿】しれとこ村つくだ荘	images/inn_image_317028.jpg	5555	3.5	3.8	4.1	4.6	4.1	3.7	55	2	f	f	t	t	t	t	t	f	f	t	t	t	t	f	t	f	t	t	f	16	1	貸自転車（有料）,将棋,釣り（有料）,ダイビング（有料）,カヌー（有料）	0	0	0
 7	387192	稚内グランドホテル	images/inn_image_387192.jpg	5370	4.2	3.8	3.5	0.0	3.8	4.2	94	2	f	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	f	t	t	2	0	ルームサービス,クリーニングサービス,マッサージ（有料）	0	2	2
-4	353632	天然温泉天北の湯ドーミーイン稚内	images/inn_image_353632.jpg	3236	4.4	4.4	4.4	0.0	4.2	4.5	175	3	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	t	t	t	2	0	マッサージ（有料）,デイユース（有料）	0	1	1
 22	327425	天然温泉 プレミアホテル-CABIN-旭川(旧ホテルパコ旭川)	images/inn_image_327425.jpg	1990	3.7	4.0	4.1	3.6	3.9	3.7	355	4	t	t	t	t	t	t	t	f	t	f	t	f	t	t	t	f	t	t	t	11	8	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,デイユース（有料）	1	2	1
 33	358302	ホテル季風クラブ知床	images/inn_image_358302.jpg	7638	4.5	4.1	4.6	4.7	4.5	4.7	0	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	f	t	t	t	16	0	貸自転車（有料）	0	0	0
 34	361610	流氷の宿海に桂田（旧夕映えの宿国民宿舎桂田）	images/inn_image_361610.jpg	4166	3.4	4.1	3.9	4.1	4.0	3.7	20	2	f	f	t	t	t	t	t	f	f	t	t	f	t	f	t	f	t	t	f	16	1	マッサージ（有料）,貸自転車（有料）,釣り,ダイビング,カヌー	0	0	0
@@ -3964,6 +3963,8 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 92	384168	翠山亭倶楽部定山渓	images/inn_image_384168.jpg	15750	4.4	4.1	4.3	4.5	4.5	4.2	14	3	t	f	t	t	t	t	t	t	t	t	t	t	t	t	t	t	t	t	t	98	0	ルームサービス,エステ（有料）,マッサージ（有料）,ゴルフ（有料）,陶芸（有料）	0	0	0
 93	327601	奥定山渓温泉佳松御苑	images/inn_image_327601.jpg	20500	4.5	4.2	3.7	4.0	3.9	4.5	23	0	t	f	t	t	t	t	t	t	t	t	t	t	t	t	t	t	t	t	t	98	0	ルームサービス,エステ（有料）,マッサージ（有料）	0	0	0
 516	322456	はるみや旅館	images/inn_image_322456.jpg	11550	4.4	4.4	4.4	4.5	4.5	4.3	10	1	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	494	0		0	0	0
+123	370809	浅虫温泉旅館すみれ荘	images/inn_image_370809.jpg	8500	3.6	3.7	4.0	4.1	3.7	3.3	10	1	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	111	5	将棋,囲碁,マージャン（有料）	0	0	0
+124	307225	星野リゾート奥入瀬渓流ホテル	images/inn_image_307225.jpg	12500	4.5	4.3	4.5	4.4	4.4	4.7	0	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	f	f	f	119	0	エステ（有料）,マッサージ（有料）	0	0	0
 94	326706	定山渓グランドホテル瑞苑	images/inn_image_326706.jpg	6620	3.5	3.6	3.7	3.8	3.6	3.2	220	4	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	t	f	98	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,デイユース（有料）,ペットOK（有料）(ケージ持込)	0	0	0
 95	368445	美味しい宿敷島定山渓別邸	images/inn_image_368445.jpg	16000	4.7	3.4	4.5	4.9	4.2	4.5	10	2	t	f	t	t	t	t	t	f	f	t	t	f	t	f	t	t	t	t	t	98	0	囲碁	0	0	0
 96	350625	悠久の宿白糸	images/inn_image_350625.jpg	6805	3.7	4.2	4.3	4.9	4.7	4.2	9	2	t	t	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	98	5	ルームサービス,マッサージ（有料）,将棋,囲碁,デイユース（有料）	0	0	0
@@ -3993,8 +3994,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 120	324328	宿屋つばき	images/inn_image_324328.jpg	5319	3.8	4.2	3.8	3.7	4.3	3.9	15	1	t	f	t	f	t	t	t	f	f	t	f	f	t	t	t	f	f	t	f	111	5	ルームサービス,クリーニングサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,釣り（有料）,デイユース（有料）	0	0	0
 121	333379	津軽藩本陣の宿旅館柳の湯	images/inn_image_333379.jpg	7000	4.2	4.5	4.0	4.1	4.0	4.1	0	3	f	f	t	t	t	t	t	f	f	t	t	t	t	t	f	t	t	t	t	111	0	マッサージ（有料）,マージャン（有料）	0	0	0
 122	323968	ホテル秋田屋	images/inn_image_323968.jpg	6500	3.5	3.3	3.8	4.5	4.0	3.4	37	2	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	f	t	111	5	将棋,囲碁,マージャン（有料）,釣り（有料）	0	0	0
-123	370809	浅虫温泉旅館すみれ荘	images/inn_image_370809.jpg	8500	3.6	3.7	4.0	4.1	3.7	3.3	10	1	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	111	5	将棋,囲碁,マージャン（有料）	0	0	0
-124	307225	星野リゾート奥入瀬渓流ホテル	images/inn_image_307225.jpg	12500	4.5	4.3	4.5	4.4	4.4	4.7	0	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	f	f	f	119	0	エステ（有料）,マッサージ（有料）	0	0	0
 125	312853	野の花焼山荘	images/inn_image_312853.jpg	5601	4.1	4.2	4.5	4.8	4.6	4.3	22	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	119	8	ルームサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,パターゴルフ（有料）,カヌー（有料）,デイユース（有料）	0	0	0
 126	317731	十和田プリンスホテル	images/inn_image_317731.jpg	3907	4.0	3.9	4.3	4.3	4.3	3.9	66	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	119	0	貸自転車,デイユース（有料）	0	0	0
 127	330586	十和田湖レークビューホテル	images/inn_image_330586.jpg	4629	4.0	3.6	3.5	4.1	4.0	4.0	100	2	t	f	t	f	t	t	t	f	f	t	t	f	t	f	t	f	f	t	f	119	1	ルームサービス,マッサージ（有料）,マージャン（有料）	0	0	0
@@ -4044,6 +4043,8 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 174	344748	鶯宿温泉 ホテル加賀助	images/inn_image_344748.jpg	6018	4.3	4.3	4.1	4.1	4.2	4.0	37	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	193	8	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
 201	380196	高繁旅館	images/inn_image_380196.jpg	4444	4.2	5.0	3.8	4.8	4.8	4.2	50	4	f	f	t	t	t	f	t	f	f	t	t	t	f	t	f	f	f	t	f	213	1	マッサージ（有料）,将棋,囲碁	0	0	0
 287	393809	青根温泉一棟温泉宿星月	images/inn_image_393809.jpg	15000	4.9	5.0	4.4	4.8	5.0	4.9	3	0	t	f	t	t	t	t	t	t	f	t	t	f	t	t	t	f	t	t	t	276	0	エステ（有料）,陶芸	0	0	0
+233	310138	白金四季の森ホテルパークヒルズ	images/inn_image_310138.jpg	3564	3.6	4.1	3.8	3.8	3.9	3.7	174	5	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	52	0	マージャン（有料）,デイユース（有料）	0	0	0
+262	321778	大江戸温泉物語鳴子温泉ますや	images/inn_image_321778.jpg	6873	3.7	3.8	4.2	4.1	4.1	3.8	70	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	256	5	マッサージ（有料）,将棋,囲碁	0	0	0
 175	381610	健康と美のラドン岩盤浴鶯宿温泉赤い風車	images/inn_image_381610.jpg	5070	3.7	4.5	3.7	3.9	4.2	3.9	32	2	t	f	t	t	t	t	t	f	t	t	f	f	t	f	f	t	t	t	t	193	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,ゴルフ（有料）	0	0	0
 176	361602	鶯宿温泉元湯源泉かけ流しの宿川長（旧：川長山荘）	images/inn_image_361602.jpg	4900	4.1	4.4	4.2	3.7	4.3	4.2	12	3	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	f	f	193	1	マッサージ（有料）,マージャン（有料）,ゴルフ（有料）,パラグライダー（有料）,乗馬（有料）,デイユース（有料）	0	0	0
 177	332277	鶯宿温泉レムナント鴬宿	images/inn_image_332277.jpg	3518	4.3	4.2	0.0	0.0	4.0	4.2	17	1	f	t	t	f	t	t	t	f	f	t	t	t	t	t	t	f	f	t	f	193	1	グランド,デイユース（有料）	0	0	0
@@ -4099,7 +4100,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 231	327106	HOTELKUMOI	images/inn_image_327106.jpg	3500	3.1	2.5	2.0	2.2	2.9	3.6	50	1	t	t	t	t	t	t	t	f	t	t	f	f	t	f	t	f	t	f	t	48	0		0	0	0
 232	330474	白金温泉郷森の旅亭びえい	images/inn_image_330474_dmA6LjT.jpg	18333	4.4	4.6	4.6	4.8	4.6	4.7	17	5	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	t	t	t	t	52	0	ルームサービス,マッサージ（有料）,ゴルフ（有料）,乗馬（有料）,陶芸（有料）,デイユース（有料）	0	0	0
 318	373412	大館雪沢温泉郷清風荘	images/inn_image_373412.jpg	4259	3.9	4.3	3.7	3.8	3.7	3.7	20	4	f	f	t	t	t	t	t	f	f	t	t	t	t	f	t	f	f	t	f	299	1		0	0	0
-233	310138	白金四季の森ホテルパークヒルズ	images/inn_image_310138.jpg	3564	3.6	4.1	3.8	3.8	3.9	3.7	174	5	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	52	0	マージャン（有料）,デイユース（有料）	0	0	0
 234	312613	十勝岳温泉カミホロ荘	images/inn_image_312613.jpg	11574	3.9	4.5	4.2	4.1	4.3	4.2	23	3	t	f	t	t	t	t	t	f	f	t	t	f	t	t	f	f	t	t	t	52	5	将棋,囲碁,マージャン（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）,デイユース（有料）	0	0	0
 235	337872	湯元白金温泉ホテル	images/inn_image_337872.jpg	6620	3.2	4.2	3.3	3.2	3.5	3.5	55	3	f	f	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	f	f	52	8	ルームサービス,マッサージ（有料）,貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 236	329401	大雪山白金観光ホテル	images/inn_image_329401.jpg	10185	3.5	4.3	3.6	3.4	3.7	3.5	74	5	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	f	f	52	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
@@ -4125,7 +4125,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 259	369832	満天の星空を堪能するリゾート芦別温泉スターライトホテル	images/inn_image_369832.jpg	6000	3.7	4.1	3.9	3.3	3.8	3.7	69	7	f	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	f	t	t	79	7	マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,グランド,テニス,陶芸（有料）,デイユース（有料）	0	0	0
 260	354254	ホテル奥中山高原	images/inn_image_354254.jpg	2777	0.0	0.0	0.0	0.0	0.0	0.0	10	2	f	f	t	f	t	t	t	f	f	t	t	f	t	t	t	f	f	f	f	251	2	マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,パターゴルフ,釣り（有料）	0	0	0
 261	367842	鳴子温泉湯元吉祥	images/inn_image_367842.jpg	8148	4.3	4.5	4.3	4.1	4.0	4.3	50	2	t	f	t	t	t	t	t	f	t	t	t	f	t	t	t	f	t	t	t	256	5	エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
-262	321778	大江戸温泉物語鳴子温泉ますや	images/inn_image_321778.jpg	6873	3.7	3.8	4.2	4.1	4.1	3.8	70	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	256	5	マッサージ（有料）,将棋,囲碁	0	0	0
 263	373124	鳴子ホテル	images/inn_image_373124.jpg	8333	3.8	4.6	4.2	4.4	4.1	4.1	125	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	256	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 264	336972	伝統の宿旅館すがわら	images/inn_image_336972.jpg	5000	3.8	4.5	4.3	4.6	4.1	3.9	0	2	t	t	t	t	t	t	t	f	f	t	f	f	t	f	t	f	t	t	t	256	0	マッサージ（有料）,デイユース（有料）	0	0	0
 289	355965	湯元不忘閣	images/inn_image_355965.jpg	16500	3.7	4.7	4.3	4.3	4.3	3.6	0	4	t	f	f	f	t	t	t	f	f	t	f	t	t	f	t	f	f	f	f	276	1		0	0	0
@@ -4203,6 +4202,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 346	397130	かしわや旅館	images/inn_image_397130.jpg	9000	4.3	4.3	4.2	4.5	4.6	4.5	7	1	f	f	t	f	f	f	t	f	f	t	t	f	f	t	f	f	f	t	f	395	1	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 347	313755	瀧の屋	images/inn_image_313755.jpg	7222	3.6	4.2	4.2	4.5	4.2	4.0	12	1	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	f	t	395	3	将棋,囲碁,マージャン（有料）,ペットOK(ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 348	379066	癒しの源泉かけ流しの宿温海荘	images/inn_image_379066.jpg	11000	3.6	4.4	3.8	4.2	4.2	3.8	8	1	f	f	t	t	t	t	t	f	f	t	f	t	t	f	f	f	f	f	f	395	1	マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
+378	335984	瀬見温泉四季の宿まごろく	images/inn_image_335984.jpg	9259	4.4	4.5	4.2	4.9	4.9	4.8	9	1	t	f	f	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	416	0	マッサージ（有料）	0	0	0
 349	311789	絶景の夕陽に心癒され庄内の美味を堪能游水亭いさごや	images/inn_image_311789.jpg	9000	4.3	4.3	4.3	4.6	4.5	4.5	48	4	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	399	8	エステ（有料）,マッサージ（有料）,囲碁（有料）,マージャン（有料）,釣り（有料）	0	0	0
 350	392100	海辺のお宿一久	images/inn_image_392100.jpg	16805	4.6	4.6	4.9	4.9	4.9	4.8	19	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	399	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 352	320732	亀や	images/inn_image_320732.jpg	6500	4.3	4.3	4.1	4.0	4.4	4.1	0	4	t	f	t	f	t	t	t	f	f	t	f	t	t	t	t	f	f	t	f	399	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
@@ -4231,8 +4231,8 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 376	333612	高見屋最上川別邸紅-ＢＥＮＩ-	images/inn_image_333612.jpg	10500	4.4	4.3	4.2	4.1	4.4	4.4	20	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	t	t	t	407	0	マッサージ（有料）	0	0	0
 570	320088	いわき湯本温泉郷白鳥山温泉喜楽苑	images/inn_image_320088.jpg	5046	3.7	3.9	4.2	0.0	4.5	3.7	17	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	t	543	0	マッサージ（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 377	323753	山形の旬を里山会席で味わう瀬見温泉ゆめみの宿観松館	images/inn_image_323753.jpg	4500	4.3	3.8	4.4	4.6	4.5	4.3	49	2	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	f	416	7	ルームサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,グランド,テニス,デイユース（有料）	0	0	0
-378	335984	瀬見温泉四季の宿まごろく	images/inn_image_335984.jpg	9259	4.4	4.5	4.2	4.9	4.9	4.8	9	1	t	f	f	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	416	0	マッサージ（有料）	0	0	0
 379	304560	旅館小川屋	images/inn_image_304560.jpg	5555	3.8	3.9	4.3	4.5	4.9	4.7	7	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	f	t	416	5	マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
+662	362080	日光自家源泉の宿ホテルユーロシティ	images/inn_image_362080.jpg	6944	3.7	4.3	4.1	4.1	4.2	3.7	17	3	t	f	t	t	t	t	t	t	f	f	f	f	t	f	t	t	t	t	t	623	0		0	0	0
 380	380271	喜至楼別館	images/inn_image_380271.jpg	4000	4.0	3.9	3.9	3.9	3.9	3.2	21	3	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	f	f	416	1	マッサージ（有料）,将棋,マージャン（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）	0	0	0
 381	312654	おふろ好きの宿旅館しゃくなげ荘	images/inn_image_312654.jpg	11018	4.1	4.8	4.6	4.7	4.6	4.3	0	0	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	t	t	t	417	0		0	0	0
 382	324837	わらべ唄の宿湯の原	images/inn_image_324837.jpg	6000	4.3	4.3	4.9	4.9	4.5	4.3	18	2	f	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	417	5	エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,釣り,陶芸（有料）,ペットOK（有料）(ケージ持込)	0	0	0
@@ -4260,6 +4260,8 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 406	334295	ほほえみの空湯舟つるや	images/inn_image_334295.jpg	8500	4.5	4.4	4.4	4.6	4.7	4.7	24	2	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	429	5	ルームサービス,エステ（有料）,マッサージ（有料）,貸自転車,将棋,囲碁,ゴルフ（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 432	309590	蔵王国際ホテル	images/inn_image_309590.jpg	9800	4.4	4.6	4.3	4.3	4.0	4.4	59	3	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	f	443	8	ルームサービス,マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 433	335940	蔵王温泉 松金や －MATSUKANEYA ANNEX－	images/inn_image_335940.jpg	6000	4.0	4.5	4.3	4.7	4.6	4.2	40	3	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	443	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）	0	0	0
+543	349080	熱海荘	images/inn_image_349080.jpg	17037	0.0	0.0	0.0	0.0	0.0	0.0	11	2	t	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	513	2	マッサージ（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
+1179	394611	山梨泊まれる温泉より道の湯	images/inn_image_394611.jpg	4564	4.4	4.3	3.5	0.0	4.2	4.8	37	4	t	t	t	t	t	t	t	f	t	f	t	f	t	t	t	f	f	t	t	1094	0	エステ（有料）,マッサージ（有料）	0	0	0
 407	399104	ほほえみの宿滝の湯	images/inn_image_399104.jpg	9000	4.5	4.2	4.2	4.5	4.2	4.5	89	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	t	f	f	429	4	ルームサービス,マッサージ（有料）,将棋,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 408	352092	美味求真の宿天童ホテル	images/inn_image_352092.jpg	8500	3.9	4.1	4.1	4.1	4.1	4.1	114	3	t	f	t	f	t	t	t	f	f	t	t	f	t	t	t	t	t	f	t	429	5	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,貸自転車,将棋,囲碁,マージャン（有料）,ゴルフ（有料）,陶芸（有料）,デイユース（有料）	0	0	0
 409	362424	桜桃の花湯坊いちらく	images/inn_image_362424.jpg	6185	4.0	4.5	4.2	4.0	4.1	4.0	49	2	t	f	t	t	t	t	t	f	f	t	f	f	t	f	t	f	t	t	t	429	5	マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
@@ -4386,8 +4388,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 541	391150	かんぽの宿郡山	images/inn_image_391150.jpg	10046	3.7	4.4	4.4	4.0	4.0	3.9	36	2	t	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	513	0	囲碁	0	0	0
 542	383808	離れの宿よもぎ埜	images/inn_image_383808.jpg	24000	0.0	0.0	0.0	0.0	0.0	0.0	14	2	t	t	t	t	t	t	t	f	t	t	t	t	t	t	t	t	t	t	t	513	2	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,貸自転車（有料）,将棋,囲碁,マージャン（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,そば打ち（有料）,デイユース（有料）,リフレクソロジー	0	0	0
 706	333224	鬼怒川温泉旅の宿丸京	images/inn_image_333224.jpg	8000	4.2	3.7	4.7	4.7	4.4	4.7	18	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	682	0		0	0	0
-543	349080	熱海荘	images/inn_image_349080.jpg	17037	0.0	0.0	0.0	0.0	0.0	0.0	11	2	t	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	513	2	マッサージ（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
-662	362080	日光自家源泉の宿ホテルユーロシティ	images/inn_image_362080.jpg	6944	3.7	4.3	4.1	4.1	4.2	3.7	17	3	t	f	t	t	t	t	t	t	f	f	f	f	t	f	t	t	t	t	t	623	0		0	0	0
 545	343238	浅香荘	images/inn_image_343238.jpg	18000	0.0	0.0	0.0	0.0	0.0	0.0	18	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	513	2	クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 546	318587	福島県 磐梯熱海温泉 八景園	images/inn_image_318587.jpg	3900	2.8	3.3	3.7	3.5	3.5	3.0	46	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	f	t	f	f	513	1		0	0	0
 547	354284	健康温泉水林亭	images/inn_image_354284.jpg	7000	0.0	0.0	0.0	0.0	0.0	0.0	19	0	t	t	t	t	t	t	t	f	f	t	f	f	t	f	t	f	f	t	f	513	2	ルームサービス,デイユース（有料）	0	0	0
@@ -4413,6 +4413,8 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 568	327583	伊勢屋旅館	images/inn_image_327583.jpg	6805	3.8	3.8	3.8	4.7	4.2	3.5	11	0	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	f	f	t	f	543	5	将棋,囲碁,マージャン,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）	0	0	0
 571	331704	旅館遊湯亭	images/inn_image_331704.jpg	4500	3.9	3.8	3.1	0.0	3.9	3.8	18	1	f	t	t	f	t	t	t	f	f	t	t	t	t	t	t	f	f	t	f	543	1	マッサージ,将棋,囲碁	0	0	0
 572	310244	桜と欅の宿ホテル住乃江	images/inn_image_310244.jpg	4333	0.0	0.0	0.0	0.0	0.0	0.0	0	1	t	t	t	t	t	t	t	f	f	t	f	t	t	f	f	f	t	f	t	543	2	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
+594	394194	有馬屋旅館	images/inn_image_394194.jpg	6000	4.0	4.0	4.4	4.6	4.4	4.2	8	1	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	f	f	f	f	567	1	マッサージ（有料）,マージャン（有料）	0	0	0
+1552	385581	立山黒部アルペンルート湯の宿千寿荘	images/inn_image_385581.jpg	5462	4.4	4.2	4.1	4.2	4.6	4.5	11	1	f	f	t	f	t	t	t	f	f	t	t	f	t	f	f	f	f	f	f	1348	1		0	0	0
 573	395686	いわき 湯本温泉美風の宿	images/inn_image_395686.jpg	2166	2.9	4.1	0.0	0.0	3.8	3.3	15	2	t	t	t	t	t	t	t	f	f	t	t	f	t	f	t	f	t	f	t	543	0	マッサージ（有料）,将棋（有料）,デイユース（有料）	0	0	0
 574	328670	ホテルいづみや	images/inn_image_328670.jpg	5554	3.3	4.4	3.2	0.0	3.0	2.8	0	1	t	t	t	f	t	t	t	f	f	t	t	t	t	t	t	f	f	t	f	543	1	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 576	324916	ふじや	images/inn_image_324916.jpg	4166	3.8	4.4	4.0	4.5	4.5	4.0	15	0	t	f	t	t	t	t	t	f	f	t	t	t	t	f	f	f	t	f	t	553	4	将棋,体育館（有料）,グランド（有料）,パラグライダー（有料）,そば打ち（有料）	0	0	0
@@ -4434,7 +4436,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 621	340492	那須いちやホテル	images/inn_image_340492.jpg	8500	4.1	4.3	4.8	4.8	4.8	4.5	28	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	588	0		0	0	0
 592	384702	大江戸温泉物語会津東山温泉東山グランドホテル	images/inn_image_384702.jpg	7314	4.0	3.7	4.1	4.1	3.9	3.8	123	3	f	f	t	t	t	t	t	f	f	t	f	f	t	f	t	f	f	t	t	567	5	エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン,ゴルフ（有料）,陶芸（有料）	0	0	0
 593	343826	向瀧	images/inn_image_343826.jpg	18000	4.0	4.5	4.7	4.5	4.7	4.2	0	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	t	t	t	t	567	5	ルームサービス,マッサージ（有料）,将棋,囲碁	0	0	0
-594	394194	有馬屋旅館	images/inn_image_394194.jpg	6000	4.0	4.0	4.4	4.6	4.4	4.2	8	1	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	f	f	f	f	567	1	マッサージ（有料）,マージャン（有料）	0	0	0
 596	357960	東山パークホテル新風月【伊東園ホテルズ】	images/inn_image_357960.jpg	4800	3.7	3.8	3.8	3.7	3.7	3.5	85	3	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	567	5	マッサージ（有料）,将棋,囲碁,マージャン	0	0	0
 597	323735	会津東山温泉月のあかり	images/inn_image_323735.jpg	3000	3.6	3.6	3.0	2.5	3.5	3.6	30	1	t	f	t	f	t	t	t	f	f	t	f	f	t	f	f	f	f	f	f	567	4	エステ（有料）,マッサージ（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,ダイビング（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り/ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 598	324983	瀞流の宿かわち	images/inn_image_324983.jpg	11000	3.8	4.2	3.9	4.4	4.7	4.2	18	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	f	t	t	t	570	4	クリーニングサービス,マッサージ（有料）,貸しスキー（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
@@ -4460,6 +4461,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 620	320920	恋する二人の露天風呂付お部屋でフルコースの宿アクアスイート	images/inn_image_320920.jpg	5555	4.5	4.4	4.6	4.6	4.6	4.5	12	0	t	f	t	t	t	t	t	t	f	t	t	t	t	t	t	f	t	t	t	588	0	エステ（有料）,ゴルフ（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 622	386820	那須の温泉隠れ宿昔日オールドデイズ	images/inn_image_386820.jpg	16648	4.7	4.5	4.8	4.7	4.6	4.8	8	0	t	f	t	t	t	t	t	t	f	t	t	t	t	t	t	f	t	t	t	588	0	エステ（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 623	331120	ホテルサンバレー那須	images/inn_image_331120.jpg	9500	3.8	4.5	4.1	4.2	4.2	3.8	298	20	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	588	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,ゴルフ（有料）,陶芸（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り)	0	0	0
+927	302111	元湯玉川館	images/inn_image_302111.jpg	12300	0.0	0.0	0.0	0.0	0.0	0.0	0	1	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	f	t	956	2	マッサージ（有料）	0	0	0
 624	303456	ホテル森の風那須(2018年10月11日グランドオープン)	images/inn_image_303456.jpg	18000	4.6	4.6	4.2	4.2	4.2	4.8	90	3	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	588	9	エステ（有料）,貸自転車,将棋,囲碁,ゴルフ,パターゴルフ,釣り,パラグライダー,乗馬,ダイビング,ペットOK（有料）(ケージ有り/ケージ持込)	0	0	0
 625	367278	那須ノ宿縁〈ENISHI〉	images/inn_image_367278.jpg	6018	4.6	4.6	4.8	4.8	4.9	4.6	9	0	t	f	t	f	t	t	t	f	f	t	f	f	t	f	t	f	t	t	f	588	1	マッサージ（有料）	0	0	0
 626	325658	ウェルネスの森那須	images/inn_image_325658.jpg	6944	4.2	4.2	4.3	4.3	4.3	4.1	47	3	t	f	t	t	t	t	t	f	t	f	t	f	t	t	t	t	t	t	t	588	0	エステ（有料）,マッサージ（有料）,貸自転車,将棋,囲碁,ゴルフ（有料）,デイユース（有料）,ペットOK(ケージ有り/ケージ持込/部屋,ラウンジ持込OK)	0	0	0
@@ -4651,7 +4653,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 921	345110	季（とき）の湯温泉木更津富士屋季眺	images/inn_image_345110.jpg	14500	0.0	0.0	0.0	0.0	0.0	0.0	12	2	t	t	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	927	2	マッサージ（有料）,将棋,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 923	324876	ＳＰＡ＆ＨＯＴＥＬ和	images/inn_image_324876.jpg	6000	4.1	4.6	3.0	0.0	4.3	4.3	0	6	t	t	t	t	t	t	t	f	t	f	t	f	t	t	t	t	t	t	t	949	0	ルームサービス,マッサージ（有料）,デイユース（有料）	0	0	0
 924	385557	厚木飯山温泉元湯旅館	images/inn_image_385557.jpg	15574	4.7	4.9	4.4	4.8	4.9	4.6	26	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	953	5	マッサージ（有料）,将棋,囲碁,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
-927	302111	元湯玉川館	images/inn_image_302111.jpg	12300	0.0	0.0	0.0	0.0	0.0	0.0	0	1	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	f	t	956	2	マッサージ（有料）	0	0	0
 928	303348	宇宙と地中から元気をもらう宿七沢荘（日本の名湯百選）	images/inn_image_303348.jpg	7200	2.9	3.8	3.5	3.8	3.2	3.0	46	2	t	t	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	f	f	956	1	将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,ペットOK（有料）(ケージ有り/ペット用風呂有り)	0	0	0
 929	306043	七沢温泉福元館	images/inn_image_306043.jpg	5500	3.2	3.5	3.4	3.4	3.3	2.8	18	1	t	f	t	t	t	t	t	f	f	t	t	f	t	f	f	t	t	f	f	956	1	マッサージ（有料）,マージャン（有料）,デイユース（有料）	0	0	0
 930	319267	中川温泉かくれ湯の里信玄館	images/inn_image_319267.jpg	6500	4.2	4.8	4.2	4.3	4.5	4.1	22	3	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	f	962	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,釣り（有料）,デイユース（有料）	0	0	0
@@ -4709,6 +4710,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 985	393443	強羅花扇円かの杜	images/inn_image_393443.jpg	35185	4.9	4.9	3.8	3.6	4.6	4.9	20	2	t	f	t	t	t	t	t	t	t	t	t	f	t	t	t	t	t	t	t	967	0	マッサージ（有料）,リフレクソロジー	0	0	0
 986	366160	箱根強羅白檀	images/inn_image_366160.jpg	27777	4.6	4.5	4.6	4.4	4.4	4.6	16	0	t	f	t	t	t	t	t	t	f	t	t	t	t	t	t	t	t	t	t	967	0	エステ（有料）,マッサージ（有料）	0	0	0
 816	388119	筑波山京成ホテル	images/inn_image_388119.jpg	6500	3.9	4.3	3.9	3.9	3.7	3.7	19	2	t	f	t	f	t	t	t	f	f	t	t	f	t	t	f	f	t	t	f	813	1		0	0	0
+3232	330392	里やど月乃家	images/inn_image_330392.jpg	8148	4.2	4.5	4.4	4.8	4.8	4.6	5	0	f	f	t	t	t	t	t	f	f	t	f	f	t	t	t	f	f	t	f	2533	1		0	0	0
 987	375320	箱根強羅月の泉	images/inn_image_375320.jpg	18055	4.4	4.6	4.5	4.4	4.4	4.1	9	0	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	f	t	t	t	967	0	ルームサービス,エステ（有料）,マッサージ（有料）,リフレクソロジー	0	0	0
 988	327756	和の宿華ごころ	images/inn_image_327756.jpg	25000	4.4	4.8	4.6	4.2	3.8	3.6	8	1	t	f	t	t	t	t	t	t	f	t	t	f	t	t	t	t	t	t	t	967	0	ルームサービス,エステ（有料）,マッサージ（有料）	0	0	0
 989	302407	レジーナリゾート箱根雲外荘	images/inn_image_302407.jpg	30000	4.9	4.8	4.8	4.9	3.9	4.0	10	0	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	967	0	ペットOK(ケージ有り/ケージ持込/部屋,ラウンジ持込OK/ペット用風呂有り)	0	0	0
@@ -4890,7 +4892,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1176	350761	ホテルキーフォレスト北杜	images/inn_image_350761.jpg	19351	0.0	0.0	0.0	0.0	0.0	0.0	8	0	t	f	t	t	t	t	t	t	t	f	t	t	t	t	t	t	t	t	t	1087	2	マッサージ（有料）,テニス,ゴルフ（有料）,釣り（有料）,乗馬（有料）	0	0	0
 1177	353450	ハイジの村クララ館スパ＆レストランホテル	images/inn_image_353450.jpg	11900	4.4	3.9	4.5	4.5	4.4	4.2	11	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	1090	0	ペットOK（有料）	0	0	0
 1178	373793	八田温泉 湧暇李の里 樹園	images/inn_image_373793.jpg	4194	2.9	4.0	0.0	0.0	2.9	3.0	6	1	f	f	t	f	t	f	t	f	f	t	f	f	f	f	f	f	f	f	f	1092	1	テニス（有料）	0	0	0
-1179	394611	山梨泊まれる温泉より道の湯	images/inn_image_394611.jpg	4564	4.4	4.3	3.5	0.0	4.2	4.8	37	4	t	t	t	t	t	t	t	f	t	f	t	f	t	t	t	f	f	t	t	1094	0	エステ（有料）,マッサージ（有料）	0	0	0
 1180	341520	志賀高原白い温泉渓谷の湯	images/inn_image_341520.jpg	15500	4.3	4.9	4.7	4.9	4.4	4.4	25	3	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	t	t	1095	8	貸しスキー（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 1181	335045	北アルプスを望む露天風呂の宿ひがしだて	images/inn_image_335045.jpg	15833	4.9	4.0	4.8	4.7	4.5	4.8	30	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	f	f	t	f	1095	1	貸しスキー（有料）,貸しボード（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）	0	0	0
 1182	323878	志賀山温泉アスペン志賀	images/inn_image_323878.jpg	9259	3.9	4.7	4.6	4.5	4.6	4.5	20	1	t	f	t	f	t	t	t	f	f	f	t	t	t	t	f	f	f	f	f	1095	4	マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
@@ -4914,6 +4915,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1203	347136	野沢温泉朝日屋旅館	images/inn_image_347136.jpg	7500	4.1	4.4	4.3	4.4	4.6	4.1	26	1	t	t	t	t	t	t	t	f	f	t	t	t	t	t	f	f	t	t	f	1101	5	マッサージ（有料）,将棋,囲碁,体育館（有料）,グランド（有料）,テニス（有料）	0	0	0
 1204	381040	野沢温泉旅館さかや	images/inn_image_381040.jpg	14618	4.1	4.8	4.3	4.3	4.1	4.3	29	3	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	1101	4	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
 1227	374972	信州湯田中温泉 よろづやアネックス湯楽庵	images/inn_image_374972.jpg	7000	3.3	4.7	3.8	4.3	3.7	3.2	22	3	t	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1108	0	マッサージ（有料）,マージャン（有料）	0	0	0
+1228	358088	湯田中温泉せせらぎの宿ホテル星川館（ＢＢＨホテルグループ）	images/inn_image_358088.jpg	6000	4.0	4.2	4.2	4.2	4.5	4.1	53	2	f	t	t	t	t	t	t	f	f	f	t	f	t	t	t	t	t	t	t	1108	0	貸自転車	0	0	0
 1205	368832	山里の暮らしに浸るぬくもり宿中島屋旅館	images/inn_image_368832.jpg	6481	4.0	4.5	4.2	4.5	4.6	4.3	15	1	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	t	f	f	1101	4	マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
 1206	310130	野沢温泉ホテル	images/inn_image_310130.jpg	5500	3.5	4.1	4.1	4.0	3.9	3.6	26	2	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	f	f	f	f	1101	1	マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,マージャン（有料）	0	0	0
 1207	388894	御宿野沢屋	images/inn_image_388894.jpg	5694	4.4	4.5	4.9	5.0	4.8	4.5	10	1	f	t	t	f	f	t	t	f	f	t	t	t	t	f	f	f	f	t	f	1101	1	貸しスキー（有料）,貸しボード（有料）	0	0	0
@@ -4936,7 +4938,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1224	349716	渋温泉御宿炭乃湯	images/inn_image_349716.jpg	6000	4.3	4.4	4.3	4.4	4.7	4.5	13	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1108	5	マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,将棋,囲碁,マージャン（有料）,釣り（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1225	310840	渋温泉湯本旅館	images/inn_image_310840.jpg	7000	4.2	4.5	4.6	4.5	4.5	4.5	12	1	t	f	t	f	t	t	t	f	f	t	f	t	t	t	f	f	f	f	f	1108	1	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 1226	323429	人が温め湯が癒す渋温泉渋ホテル	images/inn_image_323429.jpg	10000	4.8	4.9	4.4	4.9	4.9	4.4	0	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1108	4	ルームサービス,マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
-1228	358088	湯田中温泉せせらぎの宿ホテル星川館（ＢＢＨホテルグループ）	images/inn_image_358088.jpg	6000	4.0	4.2	4.2	4.2	4.5	4.1	53	2	f	t	t	t	t	t	t	f	f	f	t	f	t	t	t	t	t	t	t	1108	0	貸自転車	0	0	0
 1229	315111	和風の宿ますや	images/inn_image_315111.jpg	9000	3.8	4.2	4.3	4.5	4.5	4.2	20	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1108	0	ルームサービス,クリーニングサービス,マッサージ（有料）,マージャン（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1230	370870	上林温泉塵表閣本店(じんぴょうかくほんてん）	images/inn_image_370870.jpg	27500	5.0	4.6	4.4	4.6	4.8	4.6	6	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1108	8	マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,パターゴルフ（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1231	390642	若木屋旅館	images/inn_image_390642.jpg	4166	4.5	4.8	4.9	5.0	4.7	4.5	5	0	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	f	f	f	f	1108	1	将棋,囲碁,マージャン,デイユース（有料）,ペットOK	0	0	0
@@ -4963,6 +4964,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1253	329934	梅の屋リゾート松川館	images/inn_image_329934.jpg	7666	3.9	4.1	4.2	4.4	4.7	4.1	11	1	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	t	t	t	1120	4	ルームサービス,将棋,囲碁,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1254	382503	七味温泉ホテル渓山亭	images/inn_image_382503.jpg	15000	3.7	4.7	3.9	4.1	3.8	3.7	18	2	f	f	t	f	t	f	t	f	f	t	f	f	f	t	t	f	f	t	f	1120	1		0	0	0
 1255	312784	五色の湯旅館	images/inn_image_312784.jpg	9120	0.0	0.0	0.0	0.0	0.0	0.0	12	2	t	f	t	t	t	t	t	f	f	t	f	t	f	t	f	t	f	f	t	1120	2	マッサージ（有料）,マージャン（有料）	0	0	0
+1336	346356	鹿教湯温泉望山亭ことぶき	images/inn_image_346356.jpg	5000	4.0	4.2	4.0	4.1	4.1	4.2	0	1	t	f	t	f	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	1181	1	マッサージ（有料）,マージャン（有料）,ペットOK（有料）(ケージ持込/ペット用風呂有り)	0	0	0
 1256	344472	チロル的大自然奥山田温泉にごり湯の宿セルバン白雲館	images/inn_image_344472.jpg	15000	0.0	0.0	0.0	0.0	0.0	0.0	8	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1120	2	貸しスキー（有料）,貸しボード（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 1257	337097	ニュー笠岳	images/inn_image_337097.jpg	5092	0.0	0.0	0.0	0.0	0.0	0.0	20	1	t	f	t	f	f	t	t	f	f	f	f	t	t	f	f	f	f	f	f	1120	2	貸しスキー（有料）,貸しボード（有料）,デイユース（有料）	0	0	0
 1258	395949	あずまや高原ホテル	images/inn_image_395949.jpg	7638	4.0	4.4	3.9	3.8	3.7	3.8	40	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1128	8	将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,そば打ち（有料）	0	0	0
@@ -5039,7 +5041,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1332	331299	ホテル上田西洋旅籠館	images/inn_image_331299.jpg	8518	2.9	4.2	3.2	0.0	2.9	2.8	50	4	f	t	t	t	t	t	t	f	f	t	f	f	t	t	f	f	f	f	f	1177	1		0	0	0
 1333	386190	大江戸温泉物語鹿教湯温泉鹿教湯	images/inn_image_386190.jpg	6296	3.7	3.9	3.8	3.9	3.8	3.7	49	2	t	t	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	1181	5	マッサージ（有料）,将棋,囲碁	0	0	0
 1334	317105	鹿教湯温泉斎藤ホテル	images/inn_image_317105.jpg	12000	4.3	4.1	4.3	4.3	4.2	4.4	65	2	t	f	t	f	t	t	t	f	t	t	f	t	t	t	t	t	t	t	t	1181	5	エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,デイユース（有料）,ペットOK（有料）	0	0	0
-1336	346356	鹿教湯温泉望山亭ことぶき	images/inn_image_346356.jpg	5000	4.0	4.2	4.0	4.1	4.1	4.2	0	1	t	f	t	f	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	1181	1	マッサージ（有料）,マージャン（有料）,ペットOK（有料）(ケージ持込/ペット用風呂有り)	0	0	0
 1337	334584	上田市国民宿舎鹿月荘	images/inn_image_334584.jpg	3888	4.0	4.3	3.6	4.4	3.9	4.0	34	1	t	f	t	f	t	t	t	f	f	t	f	f	t	t	f	t	f	f	f	1181	1	マッサージ（有料）,将棋,囲碁,マージャン（有料）,釣り（有料）	0	0	0
 1339	305187	鹿教湯温泉斉北荘	images/inn_image_305187.jpg	5000	3.6	4.2	3.8	4.2	4.1	3.7	12	1	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	t	f	f	1181	7	マッサージ（有料）,将棋,囲碁,マージャン,体育館,グランド,テニス,ゴルフ,デイユース（有料）	0	0	0
 1340	351236	鹿教湯温泉こくや旅館	images/inn_image_351236.jpg	4074	3.5	4.4	4.5	4.5	4.3	3.7	10	1	t	t	t	f	t	t	t	f	f	t	f	f	t	f	t	f	f	f	f	1181	1	釣り（有料）	0	0	0
@@ -5094,6 +5095,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1392	362838	日本海の夕日を露天風呂と客室で満喫する宿瀬波ビューホテル	images/inn_image_362838.jpg	5462	3.7	3.8	4.0	4.1	4.2	3.7	38	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	f	t	t	t	t	1203	5	マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,デイユース（有料）	0	0	0
 1393	353888	大清荘	images/inn_image_353888.jpg	5000	3.9	4.5	4.4	4.5	4.4	3.7	25	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	f	t	1203	5	マッサージ（有料）,将棋（有料）,囲碁,マージャン（有料）	0	0	0
 1492	335124	ひなの宿ちとせ	images/inn_image_335124.jpg	14500	4.5	4.4	4.5	4.6	4.4	4.6	30	2	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1275	5	将棋,囲碁,マージャン（有料）,デイユース（有料）	0	0	0
+1550	381455	グリーンビュー立山	images/inn_image_381455.jpg	10714	4.1	4.6	4.5	4.5	4.8	4.3	32	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	f	t	t	t	f	1348	8	将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 1394	310473	くつろぎの宿静雲荘・別邸華海廊	images/inn_image_310473.jpg	18000	4.2	4.2	4.2	3.9	4.0	3.5	13	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1203	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）	0	0	0
 1395	355218	瀬波温泉木もれびの宿 ゆのか	images/inn_image_355218.jpg	6000	4.0	4.5	0.0	0.0	4.7	4.2	8	1	f	f	t	t	t	f	t	f	f	t	t	f	f	f	f	f	f	t	t	1203	1	将棋（有料）,囲碁（有料）,マージャン（有料）,デイユース（有料）	0	0	0
 1396	333527	瀬波温泉開湯の宿 大和屋旅館	images/inn_image_333527.jpg	4444	3.4	4.1	4.0	0.0	4.5	3.4	12	1	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	f	f	1203	1	マージャン（有料）	0	0	0
@@ -5241,8 +5243,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1544	321155	鳥越の宿 三楽園	images/inn_image_321155.jpg	10000	4.3	4.6	4.5	4.8	4.7	4.5	23	3	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1331	5	エステ（有料）,マッサージ（有料）,将棋,囲碁,リフレクソロジー	0	0	0
 1545	323415	ロイヤルホテル 富山砺波	images/inn_image_323415.jpg	3703	4.2	4.0	3.8	3.5	3.8	4.0	249	3	f	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	f	t	t	1331	0	エステ（有料）,マッサージ（有料）,ゴルフ（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り/ケージ持込)	0	0	0
 1546	346176	庄川温泉風流味道座敷ゆめつづり	images/inn_image_346176.jpg	10000	4.5	4.7	4.3	4.5	4.6	4.8	30	4	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1331	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
-1550	381455	グリーンビュー立山	images/inn_image_381455.jpg	10714	4.1	4.6	4.5	4.5	4.8	4.3	32	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	f	t	t	t	f	1348	8	将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
-1552	385581	立山黒部アルペンルート湯の宿千寿荘	images/inn_image_385581.jpg	5462	4.4	4.2	4.1	4.2	4.6	4.5	11	1	f	f	t	f	t	t	t	f	f	t	t	f	t	f	f	f	f	f	f	1348	1		0	0	0
 1553	310971	立山山麓温泉癒しの湯宿クレヨンハウス	images/inn_image_310971.jpg	6000	0.0	0.0	0.0	0.0	0.0	0.0	0	1	f	f	t	t	t	t	t	f	f	t	f	f	t	t	t	f	f	t	f	1348	2	貸しスキー（有料）,貸しボード（有料）,パラグライダー（有料）	0	0	0
 1554	317036	立山吉峰温泉立山グリーンパーク吉峰（旧よしみね山荘）	images/inn_image_317036.jpg	8796	4.7	4.5	4.5	4.5	4.0	4.9	10	5	f	f	t	t	t	t	t	f	f	t	f	f	t	t	f	f	t	t	t	1348	8	貸自転車（有料）,将棋（有料）,囲碁（有料）,グランド,パターゴルフ（有料）,陶芸（有料）	0	0	0
 1555	328347	湯宿ホワイトベル	images/inn_image_328347.jpg	5092	0.0	0.0	0.0	0.0	0.0	0.0	12	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	f	t	f	f	1348	2	貸しスキー（有料）,貸しボード（有料）,パラグライダー（有料）	0	0	0
@@ -5289,6 +5289,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1598	328805	【和倉温泉お宿すず花】源泉１００％−親しみと安らぎの湯宿−	images/inn_image_328805.jpg	6000	3.0	3.8	3.6	3.6	3.7	3.3	17	2	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	t	t	t	1369	7	クリーニングサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,グランド,テニス,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
 1599	325643	味な宿宝仙閣	images/inn_image_325643.jpg	6000	3.2	3.8	3.9	3.6	3.8	3.0	21	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1369	4	エステ（有料）,マッサージ（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,陶芸（有料）	0	0	0
 2606	377375	スーパーホテル江津駅前天然温泉石州の湯	images/inn_image_377375.jpg	3240	4.3	4.3	4.4	0.0	4.7	4.8	71	1	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	t	1981	0		0	0	0
+2076	345152	湯の風HAZU	images/inn_image_345152.jpg	5000	3.5	4.2	3.9	4.0	3.7	3.4	32	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	1640	0	エステ（有料）,マッサージ（有料）,マージャン（有料）	0	0	0
 1600	347437	深谷温泉元湯石屋	images/inn_image_347437.jpg	10000	4.1	4.1	4.3	4.5	4.5	4.3	20	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	1376	8	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,陶芸（有料）	0	0	0
 1601	379790	金沢湯涌温泉百楽荘贅と美と２つの館を愉しむ宿	images/inn_image_379790.jpg	15000	4.7	4.2	4.4	4.6	4.4	4.6	12	0	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1379	5	ルームサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
 1602	306202	金沢の奥座敷・歴代藩主も愛した湯お宿やました	images/inn_image_306202.jpg	9629	4.6	4.3	4.9	4.9	4.6	4.3	10	2	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1379	8	ルームサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,そば打ち（有料）	0	0	0
@@ -5721,7 +5722,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2071	313171	勇屋別館	images/inn_image_313171.jpg	4629	3.4	4.0	3.2	4.4	4.0	3.6	7	1	f	f	t	f	t	t	t	f	f	t	f	f	t	f	f	f	f	f	f	1630	3	マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,テニス,ペットOK(ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 2072	319436	昭和古き良き時代の白鷺温泉宿旅館白鷺館	images/inn_image_319436.jpg	6500	3.0	3.4	4.2	3.8	3.7	3.2	10	2	t	f	t	f	t	t	t	f	f	t	f	f	t	t	f	f	f	f	f	1635	1		0	0	0
 2074	320155	旅館ひさご	images/inn_image_320155.jpg	6000	4.1	4.2	4.2	4.5	4.2	4.1	8	1	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	f	1640	0	マージャン（有料）	0	0	0
-2076	345152	湯の風HAZU	images/inn_image_345152.jpg	5000	3.5	4.2	3.9	4.0	3.7	3.4	32	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	1640	0	エステ（有料）,マッサージ（有料）,マージャン（有料）	0	0	0
 2077	342296	湯谷温泉旅荘みつい	images/inn_image_342296.jpg	5703	3.8	3.9	4.2	4.8	4.7	4.0	6	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	t	1640	5	マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
 2079	396856	わか松知多	images/inn_image_396856.jpg	10500	4.6	4.3	4.4	4.7	4.4	4.5	18	1	t	f	t	t	t	t	t	f	f	t	t	f	t	f	t	t	t	t	t	1647	0		0	0	0
 2080	375323	源泉かけ流し 創作会席料理の宿 THE BEACH KUROTAKE	images/inn_image_375323.jpg	15740	4.1	4.3	4.5	4.8	4.5	4.2	24	2	t	f	t	t	t	t	t	f	t	t	f	f	t	t	t	t	t	t	t	1647	5	将棋,囲碁,マージャン（有料）	0	0	0
@@ -5746,6 +5746,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2100	380848	和のリゾートはづ	images/inn_image_380848.jpg	7000	3.7	3.7	3.7	4.3	3.8	3.5	45	2	t	f	t	f	t	t	t	f	f	t	f	t	t	t	f	f	f	t	f	1651	3	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,カヌー（有料）,デイユース（有料）,ペットOK(ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 2101	307816	ホテル龍城（たつき）	images/inn_image_307816.jpg	9000	3.5	3.8	3.5	3.8	3.9	3.3	73	3	t	f	t	t	t	t	t	f	f	t	f	t	t	f	f	t	t	t	t	1651	4	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
 2127	353913	オテル・ド・マロニエ湯の山温泉	images/inn_image_353913.jpg	4920	3.9	4.3	4.1	4.4	4.0	3.7	40	3	t	f	t	t	t	t	t	f	f	t	t	f	t	t	f	t	t	t	t	1664	8	将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,ゴルフ（有料）,乗馬（有料）,陶芸（有料）	0	0	0
+2154	342857	心湯あそびねぼーや	images/inn_image_342857.jpg	5000	4.2	4.4	4.7	4.9	4.6	4.3	12	1	t	f	t	t	t	t	t	f	f	t	f	f	t	f	t	t	t	t	t	1676	0	マッサージ（有料）,貸自転車,釣り（有料）	0	0	0
 2102	322501	西浦グランドホテル 吉慶	images/inn_image_322501.jpg	8000	3.6	3.8	3.7	4.0	4.2	3.5	48	2	t	f	t	f	t	t	t	f	f	t	f	t	t	t	t	f	f	t	t	1651	4	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）	0	0	0
 2103	321772	三河湾一望天下の絶景西浦温泉ホテル東海園	images/inn_image_321772.jpg	6481	3.6	3.5	3.9	4.0	3.7	3.1	81	3	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1651	8	ルームサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,デイユース（有料）	0	0	0
 2104	331809	サンヒルズ三河湾	images/inn_image_331809.jpg	5500	4.0	4.0	4.4	4.4	4.2	4.2	21	2	t	f	t	f	t	t	t	f	f	t	f	t	t	t	t	f	f	t	t	1652	5	マッサージ（有料）,将棋,囲碁	0	0	0
@@ -5794,7 +5795,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2151	328721	鳥羽小浜温泉ホテルメ湯楽々	images/inn_image_328721.jpg	3796	3.5	4.5	0.0	0.0	3.9	3.2	27	3	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	f	t	1672	0	マッサージ（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）	0	0	0
 2152	342596	志摩地中海村	images/inn_image_342596.jpg	14398	4.6	4.3	4.4	4.5	4.5	4.7	53	2	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	f	t	t	t	1676	0	エステ（有料）,マッサージ（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,カヌー（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り/ケージ持込)	0	0	0
 2153	312380	海を望む全室露天風呂の宿 はいふう	images/inn_image_312380.jpg	16074	4.6	4.4	4.4	4.7	4.6	4.5	21	3	t	f	t	t	t	t	t	f	t	t	f	t	t	t	t	f	t	t	t	1676	0	エステ（有料）,マッサージ（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,ネイル	0	0	0
-2154	342857	心湯あそびねぼーや	images/inn_image_342857.jpg	5000	4.2	4.4	4.7	4.9	4.6	4.3	12	1	t	f	t	t	t	t	t	f	f	t	f	f	t	f	t	t	t	t	t	1676	0	マッサージ（有料）,貸自転車,釣り（有料）	0	0	0
 2155	349958	都リゾート 奥志摩 アクアフォレスト	images/inn_image_349958.jpg	10648	4.2	3.7	4.2	4.2	4.2	4.0	127	4	t	f	t	t	t	t	t	f	f	t	t	f	t	f	t	f	t	t	t	1676	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,テニス（有料）,ゴルフ（有料）	0	0	0
 2156	331417	NEMU RESORT  HOTEL NEMU	images/inn_image_331417.jpg	6666	4.4	4.4	4.3	4.2	4.3	4.5	60	3	t	f	t	t	t	t	t	f	t	f	t	f	t	t	t	t	t	t	t	1676	0	エステ（有料）,マッサージ（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）	0	0	0
 2157	327206	賢島宝生苑	images/inn_image_327206.jpg	8148	4.3	4.7	4.1	4.4	4.3	4.4	169	4	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	f	t	t	1676	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）	0	0	0
@@ -5819,6 +5819,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2176	326003	伊勢外宮参道伊勢神泉	images/inn_image_326003.jpg	13888	4.4	4.4	4.6	4.6	4.4	4.4	45	2	t	t	t	t	t	t	t	f	t	t	t	t	t	t	t	t	t	t	t	1714	0	ルームサービス,マッサージ（有料）	0	0	0
 2178	395666	尾上温泉湖北ノ空二人ノ宿きひろ	images/inn_image_395666.jpg	24000	4.9	4.7	4.6	4.8	5.0	5.0	7	0	t	f	t	t	t	t	t	f	t	t	t	f	t	f	t	t	t	t	t	1721	0		0	0	0
 2179	360828	尾上温泉旅館紅鮎〜全室温泉半露天風呂付き客室の宿〜	images/inn_image_360828.jpg	17500	4.3	4.3	3.9	4.1	3.7	4.1	14	3	t	f	t	t	t	t	t	f	t	t	t	t	t	t	t	t	f	t	t	1721	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
+2294	322386	城崎温泉料理旅館よしはる	images/inn_image_322386.jpg	10000	4.0	4.1	4.5	4.6	4.5	4.3	0	1	t	t	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	1787	0	マッサージ（有料）,貸自転車（有料）	0	0	0
 2180	397774	レジーナリゾートびわ湖長浜	images/inn_image_397774.jpg	18000	4.8	4.8	4.8	4.8	5.0	5.0	15	2	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	1722	0	ペットOK（有料）(ケージ有り/ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 2181	316793	ホテル＆リゾーツ 長浜	images/inn_image_316793.jpg	5555	3.8	3.8	3.6	3.8	3.6	3.6	362	3	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	1722	4	エステ（有料）,マッサージ（有料）,貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,ゴルフ（有料）,パターゴルフ（有料）,パラグライダー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 2182	316228	長浜太閤温泉浜湖月	images/inn_image_316228.jpg	26074	4.2	4.4	4.2	4.7	4.0	4.6	8	2	t	t	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	1722	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,デイユース（有料）,チャペル	0	0	0
@@ -5924,7 +5925,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2291	316532	川口屋城崎リバーサイドホテル～展望貸切露天と美食が自慢♪～	images/inn_image_316532.jpg	10000	4.2	4.1	4.2	4.5	4.4	4.4	37	3	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1787	4	ルームサービス,エステ（有料）,将棋,囲碁,マージャン（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 2292	355902	城崎温泉 お宿白山花まんだら【湯亭 花のれん】【花地蔵庵】	images/inn_image_355902.jpg	6500	3.8	4.4	4.1	4.5	4.5	4.0	16	0	f	f	t	t	t	t	t	f	f	t	t	t	t	t	f	t	t	t	t	1787	0	ルームサービス,マッサージ（有料）,陶芸（有料）	0	0	0
 3300	387617	吹上温泉新湯温泉旅館	images/inn_image_387617.jpg	3000	0.0	0.0	0.0	0.0	0.0	0.0	13	1	t	f	t	f	t	t	t	f	f	t	t	t	t	f	t	f	f	f	f	2649	2	マージャン	0	0	0
-2294	322386	城崎温泉料理旅館よしはる	images/inn_image_322386.jpg	10000	4.0	4.1	4.5	4.6	4.5	4.3	0	1	t	t	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	1787	0	マッサージ（有料）,貸自転車（有料）	0	0	0
 2295	386200	城崎温泉西村屋本館	images/inn_image_386200.jpg	23800	4.7	4.0	4.3	4.7	4.6	4.7	34	3	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	t	1787	5	マッサージ（有料）,貸自転車（有料）,将棋,囲碁,ゴルフ（有料）,釣り（有料）,陶芸（有料）	0	0	0
 2297	338212	城崎温泉 登録文化財の宿 三木屋(みきや)	images/inn_image_338212.jpg	17000	4.6	4.2	4.2	4.5	4.5	4.5	16	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	1787	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,陶芸（有料）	0	0	0
 2298	327222	城崎温泉 かがり火の宿 大西屋水翔苑(すいしょうえん)	images/inn_image_327222.jpg	7000	4.6	4.4	4.2	4.5	4.5	4.6	34	3	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1787	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）,陶芸（有料）	0	0	0
@@ -6136,6 +6136,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2513	314800	岩井屋	images/inn_image_314800.jpg	9500	4.3	4.7	4.6	4.7	4.6	4.5	14	2	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	1954	0	マージャン（有料）	0	0	0
 2514	344975	浪漫伝承の宿明石家	images/inn_image_344975.jpg	12000	3.4	4.0	3.5	3.6	3.4	2.9	25	1	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	f	1954	0	マッサージ（有料）,マージャン（有料）	0	0	0
 2515	343111	鳥取温泉観水庭こぜにや白水館・碧水亭	images/inn_image_343111.jpg	8333	4.5	4.7	4.7	4.7	4.9	4.8	15	2	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1955	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,デイユース（有料）	0	0	0
+2607	350848	神代から伝わる美肌の湯美又温泉かめや旅館	images/inn_image_350848.jpg	3222	3.8	4.6	4.2	4.5	4.6	4.1	8	1	f	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	1981	5	将棋,囲碁,マージャン,ゴルフ（有料）,乗馬（有料）	0	0	0
 2516	388404	鳥取温泉観水庭こぜにや玄水亭(旧館)	images/inn_image_388404.jpg	5555	4.6	4.6	4.8	4.9	4.9	4.8	9	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1955	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,パラグライダー（有料）,デイユース（有料）	0	0	0
 2517	399580	ホテルモナーク鳥取	images/inn_image_399580.jpg	3935	4.1	4.2	4.1	4.7	4.4	4.1	108	2	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	t	1955	0	クリーニングサービス,マッサージ（有料）,囲碁	0	0	0
 2518	342976	しいたけ会館対翠閣	images/inn_image_342976.jpg	4629	4.1	4.5	4.6	4.8	4.3	4.0	26	1	t	t	t	t	t	t	t	f	f	t	t	f	t	t	f	t	t	t	t	1955	0	マッサージ（有料）,将棋（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
@@ -6217,7 +6218,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2599	373584	全室源泉温泉掛け流し松江シティホテル別館	images/inn_image_373584.jpg	2962	3.6	3.7	3.0	0.0	4.0	3.7	54	0	t	t	t	f	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	1980	1	ルームサービス,クリーニングサービス,貸自転車	0	0	0
 2600	344382	全室源泉温泉掛け流し松江シティホテル本館	images/inn_image_344382.jpg	2962	3.3	3.7	2.8	0.0	3.8	3.5	40	0	t	t	t	f	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	1980	1	ルームサービス,クリーニングサービス,貸自転車	0	0	0
 2601	376092	大橋館	images/inn_image_376092.jpg	5000	4.1	3.5	3.9	4.3	3.8	3.8	20	1	t	t	t	t	t	t	t	f	f	t	t	t	t	f	t	t	f	f	t	1980	5	マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
-2607	350848	神代から伝わる美肌の湯美又温泉かめや旅館	images/inn_image_350848.jpg	3222	3.8	4.6	4.2	4.5	4.6	4.1	8	1	f	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	1981	5	将棋,囲碁,マージャン,ゴルフ（有料）,乗馬（有料）	0	0	0
 2608	317418	出雲・はたご小田温泉	images/inn_image_317418.jpg	13000	4.5	4.6	4.5	4.5	4.7	4.8	6	1	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	f	f	t	f	1981	5	ルームサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 2609	372224	多田温泉白龍館	images/inn_image_372224.jpg	4000	3.4	4.2	4.3	5.0	3.9	3.7	12	2	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	t	f	t	f	1981	1		0	0	0
 2610	330257	温泉リゾート風の国	images/inn_image_330257.jpg	10000	4.2	3.8	4.5	4.8	4.4	4.3	16	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	f	t	t	1981	4	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,乗馬（有料）	0	0	0
@@ -6352,6 +6352,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2746	332060	原田屋旅館	images/inn_image_332060.jpg	8500	3.2	4.1	4.3	4.8	4.2	3.7	12	1	f	f	t	f	t	t	t	f	f	t	f	t	t	t	f	f	f	f	f	2124	1	将棋,囲碁,マージャン（有料）	0	0	0
 2747	305679	旅館六角堂	images/inn_image_305679.jpg	5000	3.2	3.8	3.5	3.5	4.0	3.2	19	1	t	t	t	f	t	t	t	f	f	t	f	t	t	t	f	f	f	f	f	2124	7	マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,グランド,テニス,釣り,陶芸	0	0	0
 2748	334931	湯本ハイランドホテルふじ	images/inn_image_334931.jpg	4537	3.6	3.9	0.0	0.0	3.6	3.3	49	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	f	t	t	t	t	2124	4	エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
+2828	399032	皆楽荘	images/inn_image_399032.jpg	4000	0.0	0.0	0.0	0.0	0.0	0.0	10	1	t	f	t	t	t	t	t	f	f	t	t	t	f	t	t	f	f	t	t	2218	2	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 2749	394980	長門（仙崎）の天然地魚を食べられる宿ホテル長門はらだ	images/inn_image_394980.jpg	6500	3.3	2.6	3.1	3.6	4.0	3.4	16	2	f	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	t	2124	10	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,ダイビング（有料）,陶芸（有料）,デイユース（有料）,ペットOK（有料）(ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 2750	332163	川棚グランドホテルお多福	images/inn_image_332163.jpg	9000	4.2	4.2	4.7	4.5	4.3	4.2	50	3	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2127	4	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）,ペットOK（有料）(ケージ持込)	0	0	0
 2751	393781	小天狗さんろじ	images/inn_image_393781.jpg	14814	4.5	4.7	4.7	4.8	4.7	4.6	8	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	f	t	t	t	2127	0	ルームサービス	0	0	0
@@ -6379,6 +6380,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2775	355636	ふいご温泉	images/inn_image_355636.jpg	6000	0.0	0.0	0.0	0.0	0.0	0.0	6	2	f	f	t	f	t	t	t	f	f	t	f	t	t	f	f	f	f	t	f	2168	2		0	0	0
 2776	302188	ベイリゾートホテル小豆島	images/inn_image_302188.jpg	3055	4.4	4.2	4.0	4.1	4.4	4.2	117	3	t	f	t	f	t	t	t	f	f	f	t	f	t	t	t	f	f	t	t	2189	1	貸自転車（有料）,将棋,マージャン	0	0	0
 2777	318489	エンジェルロードに一番近い宿小豆島国際ホテル	images/inn_image_318489.jpg	4490	4.4	4.0	4.3	4.5	4.6	4.4	120	2	t	t	t	t	t	t	t	f	f	t	t	t	t	f	f	f	f	f	t	2189	1	クリーニングサービス,マッサージ（有料）,貸自転車（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）	0	0	0
+2829	365532	天然温泉 石手の湯 ドーミーイン松山	images/inn_image_365532.jpg	4162	4.4	4.5	4.6	0.0	4.4	4.6	174	3	t	f	t	t	t	t	t	f	t	f	t	f	t	t	t	f	t	t	t	2220	0		0	0	0
 2778	327371	小豆島 シーサイドホテル 松風	images/inn_image_327371.jpg	4500	4.3	3.7	4.7	5.0	4.9	4.6	25	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	f	t	2189	4	ルームサービス,クリーニングサービス,マッサージ（有料）,貸自転車,将棋,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,カヌー（有料）,陶芸（有料）	0	0	0
 2779	307396	リゾートホテルオリビアン小豆島	images/inn_image_307396.jpg	4500	3.8	4.1	4.3	4.4	3.9	3.7	98	3	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	t	2189	4	クリーニングサービス,エステ（有料）,マッサージ（有料）,囲碁（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,陶芸（有料）,ペットOK(ケージ有り)	0	0	0
 2780	371490	−夕凪の湯−ＨＯＴＥＬ花樹海夜景の見える天然温泉	images/inn_image_371490.jpg	5370	4.2	4.2	4.3	4.2	4.3	4.1	48	4	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2190	8	ルームサービス,クリーニングサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ,デイユース（有料）,チャペル	0	0	0
@@ -6425,8 +6427,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2824	334020	鈍川温泉美賀登（みかど）	images/inn_image_334020.jpg	6000	4.0	4.4	4.3	5.0	4.5	4.2	12	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2218	0	ルームサービス,マッサージ（有料）,マージャン（有料）	0	0	0
 2825	311618	源泉の宿鈍川温泉ホテル	images/inn_image_311618.jpg	5500	3.7	4.1	4.1	4.3	4.0	3.3	31	4	t	f	t	t	t	t	t	f	f	t	f	t	t	f	f	t	f	t	f	2218	1	マッサージ（有料）,マージャン（有料）,デイユース（有料）	0	0	0
 2827	368800	鈍川温泉カドヤ別荘	images/inn_image_368800.jpg	5000	3.3	4.0	4.2	4.4	4.0	3.5	18	1	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	2218	4	ルームサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）	0	0	0
-2828	399032	皆楽荘	images/inn_image_399032.jpg	4000	0.0	0.0	0.0	0.0	0.0	0.0	10	1	t	f	t	t	t	t	t	f	f	t	t	t	f	t	t	f	f	t	t	2218	2	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
-2829	365532	天然温泉 石手の湯 ドーミーイン松山	images/inn_image_365532.jpg	4162	4.4	4.5	4.6	0.0	4.4	4.6	174	3	t	f	t	t	t	t	t	f	t	f	t	f	t	t	t	f	t	t	t	2220	0		0	0	0
 2830	377042	スーパーホテル愛媛・大洲インター天然温泉朝霧の湯	images/inn_image_377042.jpg	3231	4.0	4.1	4.1	0.0	4.3	4.4	103	1	t	t	t	t	t	t	t	f	t	f	t	f	t	f	t	f	f	t	f	2220	0		0	0	0
 2831	350992	リブマックスリゾート奥道後	images/inn_image_350992.jpg	2777	4.3	4.3	3.9	4.1	4.6	4.3	14	3	t	f	t	t	t	t	t	f	t	f	t	f	t	t	t	f	t	t	t	2220	5	マッサージ（有料）,将棋,囲碁,マージャン,パターゴルフ,ペットOK（有料）(ケージ有り/ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 2834	316081	チェックイン松山	images/inn_image_316081.jpg	2810	3.7	4.2	3.8	0.0	3.9	3.8	264	3	t	t	t	t	t	t	t	f	f	f	t	t	t	t	t	t	t	t	t	2220	0	クリーニングサービス,マッサージ（有料）,貸自転車	0	0	0
@@ -6568,6 +6568,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2981	321983	旅亭彩月庵	images/inn_image_321983.jpg	14000	4.6	4.7	4.5	4.5	4.4	4.6	13	0	t	f	t	t	t	t	t	f	t	t	f	t	t	t	t	t	t	t	t	2357	0	マッサージ（有料）,将棋（有料）,囲碁（有料）	0	0	0
 2982	347595	弓張の丘ホテル	images/inn_image_347595.jpg	6157	3.9	3.9	4.1	4.0	4.2	4.0	105	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	2357	0	クリーニングサービス,エステ（有料）,マッサージ（有料）,デイユース（有料）,チャペル	0	0	0
 2983	336238	旅館田の浦温泉	images/inn_image_336238.jpg	10000	4.0	3.5	4.2	4.8	4.3	4.1	6	1	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	2357	7	ルームサービス,体育館（有料）,グランド,テニス,ゴルフ（有料）,釣り（有料）,乗馬（有料）,カヌー（有料）	0	0	0
+3009	328266	雲仙観光ホテル	images/inn_image_328266.jpg	28703	4.7	4.7	4.9	5.0	4.9	5.0	39	2	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	t	t	t	t	2363	0	マッサージ（有料）,テニス（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 2984	343553	九十九島ベイサイドホテル＆リゾートフラッグス	images/inn_image_343553.jpg	3500	3.7	3.8	4.5	4.4	4.3	4.0	72	1	t	t	t	t	t	t	t	f	t	f	f	f	t	t	t	f	f	t	t	2357	4	マッサージ（有料）,将棋,囲碁,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,カヌー（有料）,陶芸（有料）	0	0	0
 2985	371665	平戸たびら温泉サムソンホテル	images/inn_image_371665.jpg	8800	3.7	3.9	3.8	3.7	3.7	3.5	46	4	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	2357	5	マッサージ（有料）,将棋,囲碁,釣り（有料）	0	0	0
 2986	310447	国際観光ホテル旗松亭	images/inn_image_310447.jpg	5500	3.7	4.0	3.5	4.3	4.2	3.6	90	2	f	f	t	t	t	t	t	f	f	t	f	f	t	f	f	t	f	f	f	2357	4	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,カヌー（有料）	0	0	0
@@ -6594,7 +6595,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 3064	328302	歴史の宿御客屋	images/inn_image_328302.jpg	13000	4.5	4.7	4.6	4.8	4.9	4.8	13	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2395	0	マッサージ（有料）	0	0	0
 3006	311781	小浜温泉福徳屋旅館	images/inn_image_311781.jpg	3500	3.5	3.9	3.5	3.9	3.5	3.3	21	1	t	t	t	t	t	t	t	f	f	t	f	f	t	t	f	f	f	t	f	2362	8	マッサージ（有料）,将棋（有料）,囲碁（有料）	0	0	0
 3008	347181	掛け流し温泉美肌の湯雲仙宮崎旅館	images/inn_image_347181.jpg	11000	4.4	4.7	4.7	4.7	4.9	4.5	96	3	t	f	t	t	t	t	t	f	t	t	f	t	t	f	t	t	t	t	t	2363	4	ルームサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,乗馬（有料）,デイユース（有料）	0	0	0
-3009	328266	雲仙観光ホテル	images/inn_image_328266.jpg	28703	4.7	4.7	4.9	5.0	4.9	5.0	39	2	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	t	t	t	t	2363	0	マッサージ（有料）,テニス（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 3010	326785	Mt.Resort 雲仙九州ホテル	images/inn_image_326785.jpg	18000	4.8	4.3	4.6	4.9	4.8	4.9	25	0	t	f	t	t	t	t	t	t	t	f	t	f	t	t	t	f	t	t	t	2363	0	ルームサービス,マッサージ（有料）,ゴルフ（有料）	0	0	0
 3011	383712	雲仙小地獄温泉白濁源泉掛け流し美肌露天風呂青雲荘	images/inn_image_383712.jpg	7731	4.2	4.8	3.9	3.9	4.1	4.3	63	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	f	t	t	f	2363	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド,テニス（有料）,ゴルフ（有料）	0	0	0
 3012	330587	雲仙温泉かけ流し自家源泉を持つ美食の宿東園	images/inn_image_330587.jpg	11000	4.5	4.3	4.4	4.6	4.6	4.2	27	4	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2363	4	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,乗馬（有料）,陶芸（有料）,リフレクソロジー	0	0	0
@@ -6705,6 +6705,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 3158	316259	潮騒の宿 晴海	images/inn_image_316259.jpg	16000	4.4	4.5	4.4	4.2	4.3	4.5	46	4	t	t	t	t	t	t	t	t	f	t	f	t	t	t	t	t	t	t	t	2501	0	エステ（有料）,マッサージ（有料）,ゴルフ（有料）	0	0	0
 3126	317241	住吉浜リゾートパーク	images/inn_image_317241.jpg	5300	0.0	0.0	0.0	0.0	0.0	0.0	127	1	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	t	2499	2	貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,ゴルフ（有料）,釣り	0	0	0
 3127	317488	スパ＆リゾートホテルソラージュ大分・日出	images/inn_image_317488.jpg	5648	4.4	4.3	4.4	4.4	4.1	4.3	63	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2500	4	マッサージ（有料）,貸自転車（有料）,将棋,囲碁,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,乗馬（有料）,デイユース（有料）	0	0	0
+3195	324458	湯平温泉旅館いづもや	images/inn_image_324458.jpg	11000	4.8	4.8	4.8	4.8	4.9	4.9	5	0	t	f	t	t	t	t	t	f	f	t	t	t	t	f	t	f	t	t	t	2514	0	マッサージ（有料）	0	0	0
 3129	344350	杉乃井ホテル	images/inn_image_344350.jpg	11500	4.3	4.5	4.5	4.5	4.4	4.2	647	5	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	2501	0	クリーニングサービス,エステ（有料）,マッサージ（有料）,マージャン（有料）	0	0	0
 3130	328944	悠彩の宿望海	images/inn_image_328944.jpg	10000	4.2	4.1	4.3	4.6	4.3	4.0	52	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	2501	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 3131	351806	癒しの宿彩葉（いろは）	images/inn_image_351806.jpg	8000	4.8	4.8	0.0	3.9	4.6	4.8	15	1	t	t	t	t	t	t	t	f	f	t	f	f	t	t	t	f	f	t	t	2501	0	マッサージ（有料）,デイユース（有料）	0	0	0
@@ -6768,7 +6769,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 3192	356060	湯布院ガーデンホテルドッグラン＆リゾート	images/inn_image_356060.jpg	9000	4.0	4.0	4.7	4.8	4.7	4.1	26	2	t	f	t	t	t	t	t	f	t	t	f	f	t	t	t	t	t	t	t	2514	0	マッサージ（有料）,ペットOK（有料）(ケージ有り/ケージ持込/部屋,ラウンジ持込OK)	0	0	0
 3193	309147	大正ロマンの宿御宿由府両築	images/inn_image_309147.jpg	10000	4.4	4.6	4.8	4.8	4.8	4.6	8	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	f	t	t	2514	0	エステ（有料）,マッサージ（有料）,陶芸（有料）	0	0	0
 3194	338096	限定１日11組・全室離れ 大露天も貸し切り おやど 二本の葦束	images/inn_image_338096.jpg	16638	4.6	4.8	4.6	4.5	4.6	4.7	10	0	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	f	t	t	t	2514	0	エステ（有料）	0	0	0
-3195	324458	湯平温泉旅館いづもや	images/inn_image_324458.jpg	11000	4.8	4.8	4.8	4.8	4.9	4.9	5	0	t	f	t	t	t	t	t	f	f	t	t	t	t	f	t	f	t	t	t	2514	0	マッサージ（有料）	0	0	0
 3196	315345	湯布院山灯館	images/inn_image_315345.jpg	11000	4.4	4.5	4.6	4.7	4.8	4.4	0	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	2514	5	マッサージ（有料）,将棋,囲碁	0	0	0
 3197	325334	御宿由布乃庄	images/inn_image_325334.jpg	14000	4.0	4.7	4.5	4.8	4.6	4.1	8	0	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	2514	0		0	0	0
 3198	369208	旅籠彩くら	images/inn_image_369208.jpg	14000	4.7	4.5	4.5	4.8	4.6	4.7	10	0	t	f	t	t	t	t	t	t	t	t	t	f	t	t	t	t	t	t	t	2518	7	ルームサービス,マッサージ（有料）,貸しスキー,体育館,グランド,ペットOK(ケージ有り/ケージ持込/ペット用風呂有り)	0	0	0
@@ -6802,7 +6802,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 3229	323920	長湯温泉かじか庵	images/inn_image_323920.jpg	4259	3.4	4.2	4.1	3.9	4.0	3.9	9	4	t	f	t	t	t	t	t	f	f	t	t	t	t	f	t	f	f	f	t	2532	1	デイユース（有料）	0	0	0
 3230	308916	山の湯かずよ	images/inn_image_308916.jpg	7222	4.0	4.5	4.5	4.7	4.5	4.3	11	2	f	f	t	t	t	t	t	f	f	t	t	f	t	t	f	f	f	f	f	2532	1		0	0	0
 3231	328349	懐古乃宿萬作屋	images/inn_image_328349.jpg	4629	4.2	4.2	4.6	4.7	4.3	4.3	8	0	f	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	2533	0		0	0	0
-3232	330392	里やど月乃家	images/inn_image_330392.jpg	8148	4.2	4.5	4.4	4.8	4.8	4.6	5	0	f	f	t	t	t	t	t	f	f	t	f	f	t	t	t	f	f	t	f	2533	1		0	0	0
 3233	312679	山の家風楽	images/inn_image_312679.jpg	4629	3.4	3.8	4.2	4.3	3.8	3.2	12	1	f	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	f	t	f	2533	5	エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,ゴルフ（有料）	0	0	0
 3234	381606	くじゅう飯田高原ボスコ	images/inn_image_381606.jpg	15224	0.0	0.0	0.0	0.0	0.0	0.0	9	2	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	t	t	t	t	2533	2		0	0	0
 3235	344366	民宿遊雀荘	images/inn_image_344366.jpg	7000	3.0	4.0	3.6	4.5	3.7	3.7	6	1	f	f	t	t	t	t	t	f	f	t	t	f	t	f	f	f	f	f	f	2533	1	マッサージ（有料）	0	0	0
@@ -6938,6 +6937,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 815	374355	筑波山江戸屋	images/inn_image_374355.jpg	8000	3.9	4.0	4.0	4.5	4.3	4.0	40	2	t	f	t	t	t	t	t	f	f	t	f	t	t	f	f	t	t	t	t	813	4	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 751	316204	月がほほえむ宿大峰館	images/inn_image_316204.jpg	7314	0.0	0.0	0.0	0.0	0.0	0.0	13	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	699	2	ルームサービス,エステ（有料）,マッサージ（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,ダイビング（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 772	386416	江戸創業幕末の宿旅籠屋丸一	images/inn_image_386416.jpg	10648	4.8	4.7	4.7	4.6	4.2	4.8	18	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	t	t	t	t	707	0	マッサージ（有料）,テニス（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）	0	0	0
+819	344738	筑波温泉ホテル	images/inn_image_344738.jpg	4907	3.8	4.0	3.8	3.8	3.6	3.5	41	2	f	f	t	f	t	t	t	f	f	t	t	f	t	f	f	f	f	t	f	813	1	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,デイユース（有料）	0	0	0
 773	328535	【豆富懐石 猿ヶ京ホテル】自家製豆富と源泉かけ流し大露天風呂	images/inn_image_328535.jpg	9000	4.0	4.4	4.5	4.5	4.4	3.9	49	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	707	4	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,パラグライダー（有料）,ラフティング（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 792	321929	四万グランドホテル	images/inn_image_321929.jpg	8148	3.8	4.1	4.0	4.2	3.9	3.6	99	4	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	t	711	4	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,ゴルフ（有料）,釣り（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
 797	324528	四万温泉鍾寿館	images/inn_image_324528.jpg	7222	4.3	4.7	4.5	4.6	4.6	4.0	17	1	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	f	711	0	ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
@@ -6959,7 +6959,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 814	383638	ホテルレイクサイドつくば	images/inn_image_383638.jpg	3168	3.9	4.3	4.3	4.2	4.5	4.2	25	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	f	t	t	t	813	8	クリーニングサービス,将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,デイユース（有料）	0	0	0
 817	332930	筑波山ホテル青木屋	images/inn_image_332930.jpg	12000	3.5	4.3	3.6	4.0	3.9	3.9	40	3	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	f	t	f	t	813	4	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）	0	0	0
 818	319634	筑波山温泉つくばグランドホテル	images/inn_image_319634.jpg	11000	4.5	4.1	4.1	4.2	4.1	3.8	0	2	f	f	t	t	t	t	t	f	f	t	f	f	t	t	t	f	t	t	t	813	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
-819	344738	筑波温泉ホテル	images/inn_image_344738.jpg	4907	3.8	4.0	3.8	3.8	3.6	3.5	41	2	f	f	t	f	t	t	t	f	f	t	t	f	t	f	f	f	f	t	f	813	1	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,デイユース（有料）	0	0	0
+864	357160	養老渓谷『食べる温泉宿』鶴乃家	images/inn_image_357160.jpg	1833	3.2	2.8	3.9	0.0	3.6	3.0	6	1	t	f	t	f	t	t	t	f	f	f	t	f	t	f	f	f	f	f	f	867	1	将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 820	333348	筑波山温泉彩香の宿一望	images/inn_image_333348.jpg	7000	3.3	3.8	3.6	4.0	4.2	3.5	21	6	t	f	t	t	t	t	t	f	f	t	f	f	t	t	f	f	t	t	f	813	4	ルームサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パラグライダー（有料）,乗馬（有料）,陶芸（有料）	0	0	0
 821	338393	大洗パークホテル	images/inn_image_338393.jpg	5601	4.0	3.8	3.6	3.6	3.9	3.8	50	3	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	f	f	t	t	816	5	クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋,囲碁,ゴルフ,デイユース（有料）	0	0	0
 822	316205	かんぽの宿 大洗	images/inn_image_316205.jpg	10231	4.0	3.8	3.7	4.2	4.1	4.1	52	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	816	5	マッサージ（有料）,将棋,囲碁	0	0	0
@@ -6982,6 +6982,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 841	333522	香り豊かな花のおもてなし須崎旅館	images/inn_image_333522.jpg	5870	4.1	4.1	4.5	4.7	4.8	4.5	10	1	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	f	849	4	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,貸自転車,将棋,囲碁,マージャン,体育館,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
 842	363845	川の瀬に和む料理自慢の温泉宿せせらぎ荘	images/inn_image_363845.jpg	7610	3.7	3.8	4.6	5.0	4.2	3.8	10	1	t	f	t	f	t	t	t	f	f	t	f	t	t	t	f	f	t	f	f	849	4	マッサージ（有料）,将棋,囲碁,マージャン（有料）,体育館,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
 843	337933	古民家と料理を楽しむ宿旅籠一番	images/inn_image_337933.jpg	7612	3.2	3.1	3.6	3.5	3.6	3.0	9	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	f	t	f	849	0	エステ（有料）,マッサージ（有料）,そば打ち（有料）	0	0	0
+865	311991	養老温泉温泉旅館川の家	images/inn_image_311991.jpg	11000	3.4	3.0	3.7	4.0	3.7	2.9	7	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	f	f	t	f	867	1	マッサージ（有料）	0	0	0
 844	349920	ちちぶ温泉はなのや	images/inn_image_349920.jpg	9000	4.6	4.6	4.2	4.4	4.7	4.5	12	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	855	4	ルームサービス,マッサージ（有料）,将棋,囲碁,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,ラフティング（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 845	340259	バイキングが人気☆ナチュラルファームシティ農園ホテル	images/inn_image_340259.jpg	6111	3.3	3.5	4.0	3.9	3.8	3.4	72	3	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	857	4	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）	0	0	0
 846	335162	秩父・小鹿野温泉高根の湯越後屋旅館	images/inn_image_335162.jpg	6203	0.0	0.0	0.0	0.0	0.0	0.0	9	1	f	t	t	t	t	t	t	f	f	t	t	t	t	f	f	f	f	f	t	858	2	将棋,囲碁,マージャン,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）,そば打ち（有料）	0	0	0
@@ -7003,8 +7004,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1640	323565	アパホテル＜金沢中央＞	images/inn_image_323565.jpg	2777	3.5	3.9	3.5	0.0	3.8	3.8	513	3	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	1411	0	クリーニングサービス,エステ（有料）,マッサージ（有料）,デイユース（有料）	0	0	0
 862	378792	養老渓谷温泉郷 小さな旅の宿 天龍荘	images/inn_image_378792.jpg	5000	3.8	4.2	4.5	4.5	4.0	4.3	7	1	t	f	t	t	t	t	t	f	f	t	t	t	t	f	t	f	t	t	t	867	4	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）	0	0	0
 863	320702	養老渓谷温泉郷旅館喜代元	images/inn_image_320702.jpg	6481	3.0	3.7	3.8	4.0	3.4	3.4	9	1	t	f	t	t	t	t	t	f	f	t	t	f	t	f	f	f	f	t	t	867	1	ゴルフ,パターゴルフ	0	0	0
-864	357160	養老渓谷『食べる温泉宿』鶴乃家	images/inn_image_357160.jpg	1833	3.2	2.8	3.9	0.0	3.6	3.0	6	1	t	f	t	f	t	t	t	f	f	f	t	f	t	f	f	f	f	f	f	867	1	将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
-865	311991	養老温泉温泉旅館川の家	images/inn_image_311991.jpg	11000	3.4	3.0	3.7	4.0	3.7	2.9	7	1	t	f	t	t	t	t	t	f	f	t	t	t	t	t	f	f	f	t	f	867	1	マッサージ（有料）	0	0	0
 866	320242	勝浦ホテル三日月	images/inn_image_320242.jpg	9000	4.1	3.6	3.8	3.7	3.5	3.6	177	2	t	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	868	4	ルームサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,ダイビング（有料）,ペットOK（有料）	0	0	0
 867	326499	勝浦ヒルトップホテル＆レジデンス	images/inn_image_326499.jpg	6650	4.2	3.7	4.0	3.8	3.7	3.7	36	2	f	f	t	f	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	868	1	貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 868	382942	天然温泉海辺の湯	images/inn_image_382942.jpg	8000	4.0	4.3	3.6	4.4	3.9	4.0	5	3	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	874	0		0	0	0
@@ -7053,6 +7052,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1366	377913	追分屋旅館	images/inn_image_377913.jpg	8000	4.3	4.5	4.4	4.6	4.9	4.8	14	3	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1189	5	ルームサービス,エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,テニス（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1119	342064	甲府の夜景を独占する温泉11種類のお風呂ホテル神の湯温泉	images/inn_image_342064.jpg	4500	3.6	4.2	3.5	4.0	4.0	3.4	24	11	t	t	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1019	4	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1143	344600	秀峰閣湖月	images/inn_image_344600.jpg	20000	4.7	4.6	4.7	4.7	4.8	4.7	0	3	t	f	t	t	t	t	t	f	f	t	f	f	t	t	t	t	t	t	t	1047	0	マッサージ（有料）,貸自転車（有料）,マージャン（有料）,ゴルフ（有料）,釣り（有料）,陶芸（有料）	0	0	0
+1434	332857	新潟・岩室温泉自家源泉の宿富士屋	images/inn_image_332857.jpg	8000	3.8	4.5	4.3	4.3	4.6	4.2	63	3	t	f	t	t	t	t	t	f	t	f	t	t	t	f	t	f	t	t	t	1226	0	クリーニングサービス,エステ（有料）,マッサージ（有料）,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 1154	308666	山岸旅館	images/inn_image_308666.jpg	6481	3.4	2.9	3.3	3.2	3.2	3.3	59	2	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	f	t	t	t	1047	4	ルームサービス,エステ（有料）,マッサージ（有料）,貸しボード（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,ラフティング（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）,ペットOK（有料）	0	0	0
 1166	334655	くつろぎの高原リゾートコロシアム・イン・蓼科	images/inn_image_334655.jpg	5500	4.4	3.7	4.7	4.8	4.7	4.8	29	2	t	f	t	t	t	t	t	f	t	t	f	t	t	t	t	t	t	t	t	1082	4	エステ（有料）,マッサージ（有料）,将棋,囲碁,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,パラグライダー（有料）,乗馬（有料）,カヌー（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）,ネイル,リフレクソロジー	0	0	0
 1189	302544	志賀パレスホテル	images/inn_image_302544.jpg	7000	3.3	3.6	3.2	3.0	3.6	3.3	80	1	t	t	t	t	t	t	t	f	f	t	t	t	t	t	f	f	t	f	f	1095	8	貸しスキー（有料）,貸しボード（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
@@ -7071,7 +7071,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 1360	334099	浅間温泉帰郷亭ゆもとや	images/inn_image_334099.jpg	7000	3.9	4.0	4.0	4.2	3.9	3.9	25	3	f	t	f	t	t	t	t	f	f	t	f	t	t	t	t	f	t	f	f	1186	1	マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
 1386	342492	夕日と湖の宿あおきや	images/inn_image_342492.jpg	5600	0.0	0.0	0.0	0.0	0.0	0.0	0	1	f	f	t	f	t	t	t	f	f	t	t	f	t	t	f	f	f	t	f	1197	2	クリーニングサービス,マッサージ（有料）,貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,ダイビング（有料）,陶芸（有料）,デイユース（有料）	0	0	0
 1410	321989	月岡温泉湯あそび宿曙	images/inn_image_321989.jpg	5500	4.2	4.5	4.4	4.6	4.4	4.2	25	3	f	t	t	t	t	t	t	f	f	t	f	t	t	f	t	f	t	t	t	1212	8	ルームサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
-1434	332857	新潟・岩室温泉自家源泉の宿富士屋	images/inn_image_332857.jpg	8000	3.8	4.5	4.3	4.3	4.6	4.2	63	3	t	f	t	t	t	t	t	f	t	f	t	t	t	f	t	f	t	t	t	1226	0	クリーニングサービス,エステ（有料）,マッサージ（有料）,マージャン（有料）,ゴルフ（有料）,デイユース（有料）	0	0	0
 1435	353776	新潟・岩室温泉自家源泉の宿著莪の里ゆめや	images/inn_image_353776.jpg	16000	4.9	4.9	4.9	4.9	4.7	4.9	11	2	t	f	t	t	t	t	t	f	t	t	t	t	t	t	t	t	t	t	t	1226	8	ルームサービス,クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）	0	0	0
 1458	310044	ryugon(龍言)	images/inn_image_310044.jpg	12200	3.8	4.2	4.4	3.8	4.2	3.8	30	3	t	f	t	t	t	t	t	f	t	f	t	t	t	t	t	t	t	t	t	1258	4	ルームサービス,マッサージ（有料）,貸自転車,将棋,囲碁,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1469	322925	越後湯沢温泉湯沢グランドホテル	images/inn_image_322925.jpg	6500	4.3	4.6	4.5	4.3	4.5	4.3	87	7	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1263	4	ルームサービス,マッサージ（有料）,貸しスキー（有料）,貸しボード（有料）,貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,陶芸（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
@@ -7108,6 +7107,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2809	300427	こんぴら温泉とら丸旅館	images/inn_image_300427.jpg	3800	3.2	3.3	3.9	4.4	4.2	3.0	10	1	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	f	f	t	2196	5	クリーニングサービス,マッサージ（有料）,将棋,囲碁,マージャン（有料）	0	0	0
 1877	375192	石廊館400余年室町古湯の宿	images/inn_image_375192.jpg	3500	3.8	4.1	4.2	4.4	4.4	4.0	18	2	t	t	t	t	t	t	t	f	f	t	f	f	t	t	f	t	t	t	t	1514	4	マッサージ（有料）,将棋,囲碁,マージャン,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,ダイビング（有料）,カヌー（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り/ケージ持込/部屋,ラウンジ持込OK/ペット用風呂有り)	0	0	0
 1900	323701	浜名湖グランドホテルさざなみ館	images/inn_image_323701.jpg	8509	4.1	3.9	4.0	4.1	4.1	4.1	39	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	f	t	t	1532	8	マッサージ（有料）,貸自転車,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
+2833	324814	奥道後壱湯の守	images/inn_image_324814.jpg	6000	4.0	4.7	4.1	4.1	4.2	3.8	160	9	t	f	t	t	t	t	t	f	f	t	t	t	t	f	f	t	t	t	t	2220	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
 1908	326345	海のほてるいさば	images/inn_image_326345.jpg	18000	4.4	4.4	4.3	4.6	4.6	4.4	30	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1536	4	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,体育館（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,ダイビング（有料）,陶芸（有料）,リフレクソロジー	0	0	0
 1930	317444	ホテル穂高	images/inn_image_317444.jpg	7000	4.0	4.3	3.9	4.1	3.9	3.8	49	3	t	f	t	t	t	t	t	f	f	t	f	t	t	f	t	t	t	t	t	1561	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）	0	0	0
 1941	387465	旅館飛騨牛の宿	images/inn_image_387465.jpg	13351	4.1	4.5	4.2	4.6	4.7	4.3	12	2	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1563	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,パターゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
@@ -7148,6 +7148,7 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2469	382392	ホテルハーヴェスト南紀田辺	images/inn_image_382392.jpg	8472	4.3	4.1	4.1	3.6	4.3	4.2	187	2	t	f	t	t	t	t	t	f	f	t	t	f	t	t	t	t	t	t	t	1908	5	クリーニングサービス,エステ（有料）,マッサージ（有料）,将棋,囲碁,マージャン（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）	0	0	0
 2786	333878	四国高松温泉ニューグランデみまつ	images/inn_image_333878.jpg	2703	3.6	4.1	3.7	4.0	3.9	3.7	51	2	f	t	t	t	t	t	t	f	f	t	t	t	t	t	t	f	f	t	t	2190	4	ルームサービス,クリーニングサービス,マッサージ,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,乗馬（有料）,カヌー（有料）	0	0	0
 2481	360728	南紀すさみ温泉ホテルベルヴェデーレ	images/inn_image_360728.jpg	9240	4.2	4.5	4.3	4.5	4.4	4.1	38	4	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	1916	4	ルームサービス,エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,ダイビング（有料）,陶芸（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り/ケージ持込)	0	0	0
+2858	386998	大和屋別荘	images/inn_image_386998.jpg	11851	4.9	4.9	5.0	4.8	5.0	4.9	19	2	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2222	5	ルームサービス,エステ（有料）,マッサージ（有料）,将棋,マージャン,ゴルフ（有料）	0	0	0
 2494	319830	花いろどりの宿花游（かゆう）世界遺産『熊野古道』と美食の旅	images/inn_image_319830.jpg	7500	3.7	3.6	4.2	4.2	4.4	3.9	40	2	t	f	t	t	t	t	t	f	f	t	f	t	t	t	f	t	t	t	t	1920	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）	0	0	0
 2510	322960	和歌の浦温泉萬波MANPA RESORT日本スタイル	images/inn_image_322960.jpg	10185	3.8	4.2	4.2	4.3	4.2	4.0	36	3	t	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	1928	4	ルームサービス,エステ（有料）,マッサージ（有料）,貸自転車（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,デイユース（有料）	0	0	0
 2525	396489	湯守りの宿田中屋	images/inn_image_396489.jpg	11111	4.4	4.2	4.4	4.6	4.6	4.2	7	0	f	f	t	f	t	t	t	f	f	t	f	f	t	t	t	f	f	t	f	1956	4	将棋,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
@@ -7169,8 +7170,6 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 2784	323332	湯元さぬき瀬戸大橋温泉せとうちそう	images/inn_image_323332.jpg	4981	3.7	4.2	4.7	4.6	4.5	3.6	32	4	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	f	t	f	t	2190	4	ルームサービス,マッサージ（有料）,貸自転車,体育館（有料）,グランド（有料）,テニス（有料）,そば打ち（有料）	0	0	0
 2810	318505	ホテルグリーンプラザ小豆島	images/inn_image_318505_SN0l0Cb.jpg	4166	3.7	4.2	3.7	4.2	4.2	3.8	46	4	t	f	t	t	t	t	t	f	f	t	t	t	t	t	t	t	f	f	t	2199	8	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,ゴルフ（有料）,パターゴルフ（有料）,釣り（有料）,カヌー（有料）	0	0	0
 2832	365088	たかのこのホテル	images/inn_image_365088.jpg	2777	4.2	4.7	4.1	3.6	3.9	4.3	88	8	t	t	t	t	t	t	t	f	t	f	t	f	t	t	t	f	f	t	t	2220	0	エステ（有料）,マッサージ（有料）,デイユース（有料）	0	0	0
-2833	324814	奥道後壱湯の守	images/inn_image_324814.jpg	6000	4.0	4.7	4.1	4.1	4.2	3.8	160	9	t	f	t	t	t	t	t	f	f	t	t	t	t	f	f	t	t	t	t	2220	8	エステ（有料）,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,そば打ち（有料）,デイユース（有料）	0	0	0
-2858	386998	大和屋別荘	images/inn_image_386998.jpg	11851	4.9	4.9	5.0	4.8	5.0	4.9	19	2	t	t	t	t	t	t	t	f	f	t	t	t	t	t	t	t	t	t	t	2222	5	ルームサービス,エステ（有料）,マッサージ（有料）,将棋,マージャン,ゴルフ（有料）	0	0	0
 2886	317652	四国最南端絶景リゾートホテル足摺テルメ	images/inn_image_317652.jpg	5500	4.2	4.1	4.5	4.5	4.4	4.2	41	3	t	f	t	t	t	t	t	f	f	t	t	f	t	f	t	f	t	t	t	2270	4	マッサージ（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,ダイビング（有料）,カヌー（有料）,デイユース（有料）,ペットOK（有料）(ケージ有り/ケージ持込)	0	0	0
 2887	384060	あしずり温泉郷足摺パシフィックホテル花椿	images/inn_image_384060.jpg	5500	3.7	4.1	3.9	4.2	3.9	3.6	48	2	f	f	t	t	t	t	t	f	f	t	f	t	t	t	t	t	t	t	t	2270	4	ルームサービス,マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,体育館（有料）,グランド（有料）,テニス（有料）,ゴルフ（有料）,釣り（有料）,ダイビング（有料）,カヌー（有料）,デイユース（有料）	0	0	0
 2912	310430	咸生閣（かんせいかく）	images/inn_image_310430.jpg	5000	2.8	3.6	3.9	4.5	3.4	2.4	15	1	t	f	t	f	t	t	t	f	f	t	t	t	t	t	f	f	f	f	f	2294	1	マッサージ（有料）,貸自転車,マージャン（有料）	0	0	0
@@ -7196,6 +7195,8 @@ COPY public.onsen_inns_onseninn (id, inn_id, inn_name, inn_photo, inn_min_price,
 30	316661	ホテル知床	images/inn_image_316661.jpg	7740	4.0	4.2	4.1	4.2	4.1	4.0	271	3	t	f	t	f	t	t	t	f	f	t	f	t	t	t	f	f	f	f	f	16	10	マッサージ（有料）,将棋（有料）,囲碁（有料）,マージャン（有料）,デイユース（有料）,ペットOK（有料）(ケージ持込/部屋,ラウンジ持込OK)	3	0	-3
 12	359660	ホテル滝川	images/inn_image_359660.jpg	7000	3.5	3.8	3.7	3.3	3.7	3.5	56	1	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	2	0		0	1	1
 13	394942	天然温泉神威の湯ドーミーイン旭川	images/inn_image_394942.jpg	2865	4.1	4.3	4.5	0.0	4.3	4.2	174	3	t	t	t	t	t	t	t	f	t	f	t	f	t	t	t	t	t	t	t	3	0	マッサージ（有料）	0	1	1
+19	319963	はぼろ温泉サンセットプラザ	images/inn_image_319963.jpg	9629	3.6	3.8	3.5	3.9	3.5	3.6	40	6	f	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	f	t	f	5	1	マッサージ（有料）,囲碁（有料）,マージャン（有料）	0	1	1
+4	353632	天然温泉天北の湯ドーミーイン稚内	images/inn_image_353632.jpg	3236	4.4	4.4	4.4	0.0	4.2	4.5	175	3	t	t	t	t	t	t	t	f	f	t	t	f	t	t	t	f	t	t	t	2	0	マッサージ（有料）,デイユース（有料）	0	2	2
 \.
 
 
@@ -7239,12 +7240,13 @@ COPY public.users_customuser (id, password, last_login, is_superuser, username, 
 3	pbkdf2_sha256$150000$fjBk1s8ieVuO$nwgvbKt3fDCi2PyNNoh9IjobX8uoQaMlPadgxcdtjno=	2019-07-14 01:53:58.56032+00	f	amazon			amazon@example.com	f	t	2019-07-14 01:53:58.294779+00	
 7	pbkdf2_sha256$150000$vepRBoTutrl1$4Fn0/0BAWdoxKNJnMBSUNXgMhFjuLs7k4ykLiCMW0fs=	2019-07-14 01:56:40.402177+00	f	intel			intel@example.com	f	t	2019-07-14 01:56:40.132356+00	
 9	pbkdf2_sha256$150000$pIUwnDPoKwTC$c+CH2e8LF7ODz5tNVkZ972T2B8aToasrYL+H/2Ge8AY=	2019-07-14 11:06:09.852165+00	f	apple			apple@example.com	f	t	2019-07-14 01:59:26.091191+00	
-1	pbkdf2_sha256$150000$QrIVV3gDMs7T$VSM67GNf5beL5fhNXLOYJAqwlozvfNFIOEqCR6iycpk=	2019-07-15 11:14:33.425809+00	t	admin			admin@example.com	t	t	2019-07-14 00:39:44.03458+00	
 10	pbkdf2_sha256$150000$Z8psYspo1Vz9$v3DFdnfz4YMLFDF2PE3jgbVaQq2aHZ5vlPeLhrGT/0A=	2019-07-15 11:29:59.009679+00	f	google			google@example.com	f	t	2019-07-14 11:09:02.342846+00	
 8	pbkdf2_sha256$150000$blQsxlfzUFsj$adQAMY4U9dYNAK/zFilfMMzyfcrZ+9Wg+YLuWBEMCgE=	2019-07-15 11:31:36.696644+00	f	yahoo			yahoo@example.com	f	t	2019-07-14 01:58:38.462418+00	
 4	pbkdf2_sha256$150000$tB3RaWecFR57$jIm1mwmAhpHbzOM37PBGG5IfincwQeFNxN1T7blkv80=	2019-07-15 11:32:41.825698+00	f	netflix			netflix@example.com	f	t	2019-07-14 01:55:14.002997+00	
 5	pbkdf2_sha256$150000$6yV45WwbKKo9$XAn+lA2aQqcM89CXNhn2jsAZeLTyLMxC9FyradM5e2U=	2019-07-16 04:53:42.041787+00	f	ebay			ebay@example.com	f	t	2019-07-14 01:55:43.945671+00	
 6	pbkdf2_sha256$150000$4rOaVIQcj0Nw$fKlfMhbMwRXgr2uzGQNcifkfzFNrM0Rpj2LWRDiCy40=	2019-07-17 05:22:48.532463+00	f	huawei			huawei@example.com	f	t	2019-07-14 01:56:18.897297+00	
+1	pbkdf2_sha256$150000$QrIVV3gDMs7T$VSM67GNf5beL5fhNXLOYJAqwlozvfNFIOEqCR6iycpk=	2019-07-18 02:46:16.594572+00	t	admin			admin@example.com	t	t	2019-07-14 00:39:44.03458+00	
+11	pbkdf2_sha256$150000$a6EDzq6a0c1i$E/zDUnCCTRW/RpTLeHK7lFvyH3s0zvUmvinNZrDIeSk=	2019-07-18 05:22:11.772874+00	f	rakuten			rakuten@example.com	f	t	2019-07-18 02:45:46.412048+00	
 \.
 
 
@@ -7309,6 +7311,8 @@ COPY public.vote_vote (id, user_id, object_id, create_at, content_type_id, actio
 39	5	30	2019-07-16 04:56:15.261171+00	16	1
 40	6	12	2019-07-17 07:05:06.607958+00	16	0
 41	6	13	2019-07-17 07:06:25.415844+00	16	0
+42	11	19	2019-07-18 02:57:17.394546+00	16	0
+43	11	4	2019-07-18 05:22:11.82625+00	16	0
 \.
 
 
@@ -7316,7 +7320,7 @@ COPY public.vote_vote (id, user_id, object_id, create_at, content_type_id, actio
 -- Name: account_emailaddress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.account_emailaddress_id_seq', 9, true);
+SELECT pg_catalog.setval('public.account_emailaddress_id_seq', 10, true);
 
 
 --
@@ -7428,7 +7432,7 @@ SELECT pg_catalog.setval('public.users_customuser_groups_id_seq', 1, false);
 -- Name: users_customuser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_customuser_id_seq', 10, true);
+SELECT pg_catalog.setval('public.users_customuser_id_seq', 11, true);
 
 
 --
@@ -7442,7 +7446,7 @@ SELECT pg_catalog.setval('public.users_customuser_user_permissions_id_seq', 1, f
 -- Name: vote_vote_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.vote_vote_id_seq', 41, true);
+SELECT pg_catalog.setval('public.vote_vote_id_seq', 43, true);
 
 
 --
@@ -7670,6 +7674,14 @@ ALTER TABLE ONLY public.socialaccount_socialtoken
 
 
 --
+-- Name: users_customuser users_customuser_email_6445acef_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser
+    ADD CONSTRAINT users_customuser_email_6445acef_uniq UNIQUE (email);
+
+
+--
 -- Name: users_customuser_groups users_customuser_groups_customuser_id_group_id_76b619e3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -7892,6 +7904,13 @@ CREATE INDEX socialaccount_socialtoken_account_id_951f210e ON public.socialaccou
 --
 
 CREATE INDEX socialaccount_socialtoken_app_id_636a42d7 ON public.socialaccount_socialtoken USING btree (app_id);
+
+
+--
+-- Name: users_customuser_email_6445acef_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_email_6445acef_like ON public.users_customuser USING btree (email varchar_pattern_ops);
 
 
 --

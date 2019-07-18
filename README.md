@@ -689,7 +689,8 @@ Endpoint:
 Parameters:<br />
 key<br />
 
-###Delete user (DELETE) Endpoint:
+###Delete user (DELETE)<br />
+Endpoint:
 
 ```
 /api/users/rest-auth/delete

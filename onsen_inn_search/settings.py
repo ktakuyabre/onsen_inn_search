@@ -139,12 +139,26 @@ REST_FRAMEWORK = {
     ),
 }
 
+# Configuration of Rest Auth
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 #ACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+#ACCOUNT_USERNAME_REQUIRED = False
+#ACCOUNT_EMAIL_VERIFICATION = 'optional'
+
+AUTHENTICATION_BACKENDS = (
+ "django.contrib.auth.backends.ModelBackend",
+ "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Internationalization
 
-LANGUAGE_CODE = 'ja'
-#LANGUAGE_CODE = 'en'
+#LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Tokyo'
 
