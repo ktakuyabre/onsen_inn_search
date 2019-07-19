@@ -157,8 +157,8 @@ AUTHENTICATION_BACKENDS = (
 
 # Internationalization
 
-LANGUAGE_CODE = 'ja'
-#LANGUAGE_CODE = 'en'
+#LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Tokyo'
 
