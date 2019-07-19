@@ -11,16 +11,19 @@ class OnsenderVote:
         '''self.username = "apple"
         self.email = "apple@example.com"
         self.password = "appleappleapple"'''
-        self.username = "rakuten"
+        self.username = "amazon"
+        self.email = "amazon@example.com"
+        self.password = "amazonamazonamazon"
+        '''self.username = "rakuten"
         self.email = "rakuten@example.com"
-        self.password = "rakutenrakutenrakuten"
+        self.password = "rakutenrakutenrakuten"'''
         #self.username = "huawei"
         #self.password = "huaweihuaweihuawei"
         #self.csrf_token = "ZQ1Ic82ju13t1nA9ABqQuKaFFTfvUgY3d8hYXJeMpNAA96gXRtHt0EiO9T3Z7uRR"
         self.csrf_token = ""
-        self.id = "4"
+        self.page = 2
 
-    def vote(self):
+    def favorites(self, page):
         session = requests.Session()
 
         headers = {
@@ -44,8 +47,8 @@ class OnsenderVote:
             #"cookies": "",
         }
 
-        payload_upvote = {
-            "id": "",
+        payload_favorites = {
+            "page": "",
         }
 
         #payload_login['username'] = self.username
@@ -86,16 +89,21 @@ class OnsenderVote:
 
         except:
             print("[+] An error occurred in the middle of the login.")
-        payload_upvote['id'] = self.id
+        payload_favorites['page'] = page
         headers['Authorization'] = "Token " + auth_token
         #headers['Referer'] = "http://localhost:8000/api/rest-auth/login/"
         try:
-            favorites = session.get('http://localhost:8000/api/votes/all/', headers=headers, data=payload_upvote, allow_redirects=False, cookies=cookies)
+            #favorites = session.get('http://localhost:8000/api/votes/favorites/', headers=headers, data=payload_favorites, allow_redirects=False, cookies=cookies)
+            favorites = session.get('http://localhost:8000/api/votes/favorites/?page='+str(page), headers=headers, data=payload_favorites, allow_redirects=False, cookies=cookies)
             if favorites.status_code == 200:
-                print(favorites)
+                #print(favorites)
                 response_json = json.loads(favorites.text)
                 #message = response_json['message']
-                print(response_json)
+                #print(response_json)
+                print("count", response_json['count'])
+                print("next", response_json['next'])
+                print("previous", response_json['previous'])
+                print("results total", len(response_json['results']))
                 print("[+] Get favorites successfully, HTTP Status Code: %d" % favorites.status_code)
                 #print("message", message)
             else:
@@ -107,4 +115,6 @@ class OnsenderVote:
 
 if __name__ == "__main__":
      onsender_vote = OnsenderVote()
-     onsender_vote.vote() 
+     #onsender_vote.favorites() 
+     for i in range(2,4):
+         onsender_vote.favorites(i) 

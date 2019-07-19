@@ -1,3 +1,5 @@
+#from django.conf import settings
+from rest_framework.settings import api_settings
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from api.permissions import IsLoggedInUserOrAdmin, IsAdminUser
@@ -165,36 +167,34 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
             #favorites = OnsenInnSerializer(queryset, many=True)
             favorites = OnsenInnSerializer(queryset, many=True).data
             count = len(favorites)
-            page_size = 10
+            page_size = api_settings.PAGE_SIZE
+            index = 0
             next_page = 2
-            #next = None
-            next = ""
+            next = None
             previous_page = 0
-            #previous = None
-            previous = ""
+            previous = None
 
             page_value = self.request.query_params.get('page', None)
             if page_value is not None:
                 page_value = int(page_value)
                 index = (page_value-1)*10
-                favorites = favorites[index:index+page_size-1]
                 next_page = page_value + 1
                 previous_page = page_value - 1
 
             if (next_page-1)*page_size > count:
-                #next = None
-                next = ""
+                next = None
             else:
                 next = "http://localhost:8000/api/votes/all/?page="+str(next_page)
 
             if previous_page == 0:
-                #previous = Nbone
-                previous = ""
+                previous = None                
             else:
                 previous = "http://localhost:8000/api/votes/all/?page="+str(previous_page)
+            if previous is not None:
+                favorites = favorites[index:index+page_size-1]
+            else:
+                favorites = favorites[index:]
             response = { "count": count, "next": next, "previous": previous, "results": favorites}
-            #response = { "count": count, "next": next, "previous": previous, "results": "test"}
-            #response = { "count": count }
             #response = json.dumps(response, cls=CustomEncoder)
             '''queryset = OnsenInn.objects.all()
             id_value = self.request.query_params.get('id', None)

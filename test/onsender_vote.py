@@ -11,16 +11,19 @@ class OnsenderVote:
         '''self.username = "apple"
         self.email = "apple@example.com"
         self.password = "appleappleapple"'''
-        self.username = "rakuten"
+        '''self.username = "rakuten"
         self.email = "rakuten@example.com"
-        self.password = "rakutenrakutenrakuten"
+        self.password = "rakutenrakutenrakuten"'''
+        self.username = "amazon"
+        self.email = "amazon@example.com"
+        self.password = "amazonamazonamazon"
         #self.username = "huawei"
         #self.password = "huaweihuaweihuawei"
         #self.csrf_token = "ZQ1Ic82ju13t1nA9ABqQuKaFFTfvUgY3d8hYXJeMpNAA96gXRtHt0EiO9T3Z7uRR"
         self.csrf_token = ""
-        self.id = "4"
+        #self.id = "4"
 
-    def vote(self):
+    def vote(self, id):
         session = requests.Session()
 
         headers = {
@@ -86,11 +89,13 @@ class OnsenderVote:
 
         except:
             print("[+] An error occurred in the middle of the login.")
-        payload_upvote['id'] = self.id
+        #payload_upvote['id'] = self.id
+        payload_upvote['id'] = id
         headers['Authorization'] = "Token " + auth_token
         #headers['Referer'] = "http://localhost:8000/api/rest-auth/login/"
         try:
-            upvote = session.post('http://localhost:8000/api/votes/up/?id='+self.id, headers=headers, data=payload_upvote, allow_redirects=False, cookies=cookies)
+            #upvote = session.post('http://localhost:8000/api/votes/up/?id='+self.id, headers=headers, data=payload_upvote, allow_redirects=False, cookies=cookies)
+            upvote = session.post('http://localhost:8000/api/votes/up/?id='+str(id), headers=headers, data=payload_upvote, allow_redirects=False, cookies=cookies)
             if upvote.status_code == 200:
                 response_json = json.loads(upvote.text)
                 message = response_json['message']
@@ -105,4 +110,6 @@ class OnsenderVote:
 
 if __name__ == "__main__":
      onsender_vote = OnsenderVote()
-     onsender_vote.vote() 
+     #onsender_vote.vote() 
+     for i in range(25):
+         onsender_vote.vote(i)
