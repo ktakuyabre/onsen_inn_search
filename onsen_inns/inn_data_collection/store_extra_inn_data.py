@@ -49,19 +49,26 @@ def storeExtraInnData(inn_data):
     try:
         for data in inn_data:
             if data[0] not in extra_onsen_inn_list:
+            #if OnsenInn.objects.filter(inn_id=data[0]).exists() and data[0] not in extra_onsen_inn_list:
                 onsen_inn = OnsenInn.objects.get(inn_id=data[0])
-                onsen_inn.headline = data[1] 
-                onsen_inn.overview = data[2]
-                onsen_inn.inn_photo.save("inn_image_"+str(onsen_inn.inn_id)+".jpg", File(downloadImage(data[3])), save=False)
+                onsen_inn.inn_headline = data[1] 
+                onsen_inn.inn_overview = data[2]
+                #print("data[1]", data[1])
+                #print("data[2]", data[2])
+                '''onsen_inn.inn_photo.save("inn_image_"+str(onsen_inn.inn_id)+".jpg", File(downloadImage(data[3])), save=False)
                 onsen_inn.inn_photo_2.save("inn_image_"+str(onsen_inn.inn_id)+"_2.jpg", File(downloadImage(data[4])), save=False)
                 onsen_inn.inn_photo_3.save("inn_image_"+str(onsen_inn.inn_id)+"_3.jpg", File(downloadImage(data[5])), save=False)
-                onsen_inn.inn_photo_4.save("inn_image_"+str(onsen_inn.inn_id)+"_4.jpg", File(downloadImage(data[6])), save=False)
+                onsen_inn.inn_photo_4.save("inn_image_"+str(onsen_inn.inn_id)+"_4.jpg", File(downloadImage(data[6])), save=False)'''
                 '''print(onsen_inn.headline)
                 print(onsen_inn.overview)
                 print(onsen_inn.inn_photo_2)
                 print(onsen_inn.inn_photo_3)
                 print(onsen_inn.inn_photo_4)'''
                 onsen_inn.save()
+                '''onsen_inn = OnsenInn.objects.get(inn_id=data[0])
+                print("saved onsen_inn.headline", onsen_inn.inn_name)
+                print("saved onsen_inn.headline", onsen_inn.inn_headline)
+                print("saved onsen_inn.overview", onsen_inn.inn_overview)'''
                 extra_onsen_inn_list.append(onsen_inn.inn_id)
 
     except Exception as e:

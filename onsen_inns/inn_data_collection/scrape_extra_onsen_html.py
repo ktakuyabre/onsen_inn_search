@@ -33,9 +33,9 @@ def scrapeExtraOnsenHtml(url):
             inn_data_set = [int(extra_inn_data[0].a.get("href")[4:-1]), removeBadChars(extra_inn_data[1].get_text()), removeBadChars(extra_inn_data[2].get_text())]
             inn_data.append(inn_data_set)
         
-        for i, img in enumerate(soup.find_all(attrs={"class": "phtm"})):
+        '''for i, img in enumerate(soup.find_all(attrs={"class": "phtm"})):
             index = int(i/4)
-            inn_data[index].append(img.img.get("src"))
+            inn_data[index].append(img.img.get("src"))'''
 
         # keep scraping the next page until the last page
         if first_page:        

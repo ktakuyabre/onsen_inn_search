@@ -18,7 +18,7 @@ class Onsen(models.Model):
     onsen_area_name = models.CharField(blank=True, null=True, max_length=20)
     onsen_area_name_kana = models.CharField(blank=True, null=True, max_length=30)
     onsen_area_id = models.IntegerField(blank=True, null=True)
-    onsen_area_caption = models.TextField(blank=True, null=True,)
+    onsen_area_caption = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.onsen_name
@@ -34,8 +34,8 @@ class OnsenInn(VoteModel, models.Model):
     inn_photo_2 = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
     inn_photo_3 = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
     inn_photo_4 = models.ImageField(upload_to='images/', default='images/default.jpg', blank=True, null=True)
-    inn_headline = models.CharField(blank=True, null=True, max_length=100)
-    inn_overview = models.CharField(blank=True, null=True, max_length=200)
+    inn_headline = models.CharField(blank=True, null=True, max_length=300)
+    inn_overview = models.TextField(blank=True, null=True)
 
     inn_min_price = models.IntegerField()
     review_room = models.DecimalField(blank=True, null=True, max_digits=2, decimal_places=1)
