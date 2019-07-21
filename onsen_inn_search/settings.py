@@ -17,16 +17,34 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'onsen_inns',
+    'django.contrib.sites',
+
+    # Third-Party Apps
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+    'rest_auth.registration',
     'django_filters',
     'corsheaders',
+    'vote',
+    #'votes',
+
+    # Local Apps
+    'api',
+    'users',
+    'onsen_inns',
 ]
 
 MIDDLEWARE = [
@@ -60,9 +78,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'onsen_inn_search.wsgi.application'
 
+#The configuration of djnago.contrib.sites
+
+SITE_ID = 1
+
 # The configuration of CORS(Cross Origin Resource Sharing)
 
 CORS_ORIGIN_ALLOW_ALL = False
+
+# The configuration of rest_auth.registration
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp/email')
 
 # Add IP addresses to enable them to bypass the Same Origin Policy
 CORS_ORIGIN_WHITELIST = (
@@ -82,6 +109,8 @@ DATABASES = {
     }
 }
 
+# User Model
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Password validation
 
@@ -103,12 +132,34 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
+
+# Configuration of Rest Auth
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#ACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+#ACCOUNT_USERNAME_REQUIRED = False
+#ACCOUNT_EMAIL_VERIFICATION = 'optional'
+
+AUTHENTICATION_BACKENDS = (
+ "django.contrib.auth.backends.ModelBackend",
+ "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Internationalization
 
 LANGUAGE_CODE = 'ja'
+#LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Tokyo'
 

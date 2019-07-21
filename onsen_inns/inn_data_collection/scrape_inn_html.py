@@ -11,6 +11,8 @@ output : single inn's data, like, innA(a, b, c..)
 import os
 import sys, getopt
 import urllib.request
+import requests
+import http.cookiejar
 from bs4 import BeautifulSoup
 
 sys.path.append("..")
@@ -26,13 +28,29 @@ def removeBadChars(str):
        str = str.replace(i,"")
    return str
 
-def scrapeInnHtml(url):
+def safeToInt(str):
+    bad_chars = ["-","\n"," ",""]
+    for i in bad_chars:
+        if str == i:
+            str = 0
+    return int(str)
+
+def scrapeInnHtml(url, session, headers, cookies):
     try:
         inn_data = []
-        html = urllib.request.urlopen("https://www.jalan.net/yad321542")
-        soup = BeautifulSoup(html, "html.parser")
+        #html = urllib.request.urlopen("https://www.jalan.net/yad321542")
+        #html = urlib.request.urlopen(url, cookiejar)
+        #html = requests.get(url, cookiejar)
+        #session.headers.update({'referer': referer})
+        res = session.get(url, headers=headers, cookies=cookies)
+        soup = BeautifulSoup(res.content, "html.parser")
+        #print(res.content)
+        #soup = BeautifulSoup(html.content, "html.parser")
         for link in soup.find_all("td", {"class": "jlnpc-td05 s12_30 fb"}):
             text = link.get_text()
+            #print(text)
+            if text == "-":
+                text = 0
             text = float(text)
             inn_data.append(text)
 
@@ -42,57 +60,78 @@ def scrapeInnHtml(url):
             text = l.get_text()
             text = removeBadChars(text)
             text = text[:-1]
-            text = int(text)
+            text = safeToInt(text)
             if i == 4:
                 inn_data.append(text)
 
 
 
         links = soup.find_all("div", {"class": "shisetsu-main04 jlnpc-table-col-layout"})
-        link = links[2]
-        num = 0
-        for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
-            text = l.get_text()
-            text = removeBadChars(text)
-            text = int(text)
-            if i==0 or i==3 or i==6:
-                num = num + text
-        inn_data.append(num)
+        if link != None:
+            link = links[-1]
+        #link = soup.find("table", {"class": "jlnpc-shisetsu-bath"})
+        #if link != None:
+            num = 0
+            for i, l in enumerate(link.find_all("td", {"class": "jlnpc-td03"})):
+                text = l.get_text()
+                text = removeBadChars(text)
+                text = safeToInt(text)
+                if i==0 or i==3 or i==6:
+                    num = num + text
+            inn_data.append(num)
+        else:
+            inn_data.append(0)
+            print("No bath total information")
 
         #サービス、レジャー
-        for i, l in enumerate(soup.find("div", {"class": "shisetsu-main03 shisetsu-amenityservice_body_wrap"}).find_all("td", {"class": "jlnpc-td03"})):
-            text = l.get_text()
-            text = removeBadChars(text)
-            if i==2:
+        added = False
+        service_leisure_link = soup.find("div", {"class": "shisetsu-main03 shisetsu-amenityservice_body_wrap"})
+        for flag, link in zip(service_leisure_link.find_all("td", {"class": "jlnpc-td01 s11_30"}), service_leisure_link.find_all("td", {"class": "jlnpc-td03 s12_30"})):
+
+            if "サービス&レジャー" in flag.get_text():
+                text = link.get_text()
+                text = removeBadChars(text)
                 p = [x.strip() for x in text.split('・')]
                 inn_data.append(p)
+                added = True
+                break
+        if added==False:
+            inn_data.append([])
 
-        links = soup.find("div", {"class": "jlnpc-table-row-layout"}).find_all("td", {"class":"jlnpc-td03 s12_30"})
-        text = links[-1].get_text()
-        text = removeBadChars(text)
-        text2 = "インターネット"
-        #ネット無料なら0を、そうでないと1を返す
-        if text2 in text:
-            text = 1
-        else:
-            text = 0
+        text = 0
+        link = soup.find("div", {"class": "jlnpc-table-row-layout"})
+        if link != None:
+            links = link.find_all("td", {"class":"jlnpc-td03 s12_30"})
+            if links != None:
+                text = links[-1].get_text()
+                text = removeBadChars(text)
+                text2 = "インターネット"
+                #ネット無料なら0を、そうでないと1を返す
+                if text2 in text:
+                    text = 1
+                else:
+                    text = 0
         inn_data.append(text)
 
-        imgs = soup.find("div",{"class":"iconbox"}).find_all("img")
-        konbini = False
-        for img in imgs:
-            text = img["alt"]
-            text2 = "コンビニ"
-            #コンビニまで5分以内なら0を、そうでないと1を返す
-            if text2 in text:
-                #text = 0
-                konbini = True
-            '''else:
-                text = 1'''
-        if konbini:
-            text = 1
-        else:
-            text = 0
+        text = 0
+        link = soup.find("div",{"class":"iconbox"})
+        if link != None:
+            imgs = link.find_all("img")
+            #konbini = False
+            for img in imgs:
+                text = img["alt"]
+                text2 = "コンビニ"
+                #コンビニまで5分以内なら0を、そうでないと1を返す
+                if text2 in text:
+                    #text = 0
+                    text = 1
+                    #konbini = True
+                else:
+                    text = 0
+                #if konbini:
+                #   text = 1
+                #else:
+                #    text = 0
         inn_data.append(text)
 
         links = soup.find_all("table", {"class": "s12_30 shisetsu-amenityspec_body jlnpc-table-basic-layout"})
@@ -114,11 +153,21 @@ def scrapeInnHtml(url):
     except Exception as e:
         print("Error URL: ", url)
         print("Error Message(scrape_inn_html.py): ", e )
+        #print("Response", res.content)
 
     return inn_data
 
 if __name__ == "__main__":
 
     url = "https://www.jalan.net/yad321542/"
-    inn_data = scrapeInnHtml(url)
-    print(inn_data)
+    urls = ["https://www.jaran.net/yad369086/", 
+            "https://www.jaran.net/yad390005/",
+            "https://www.jaran.net/yad358725/",
+            "https://www.jaran.net/yad324535/",
+            "https://www.jaran.net/yad358886/",
+            "https://www.jaran.net/yad348131/",
+            "https://www.jaran.net/yad386844/",
+            "https://www.jaran.net/yad332032/"]
+    '''for url in urls:
+        inn_data = scrapeInnHtml(url)
+        print(inn_data)'''

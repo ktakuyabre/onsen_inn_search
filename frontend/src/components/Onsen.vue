@@ -14,6 +14,7 @@
           </v-card-title>
           <v-card-actions>
             <v-btn flat color="orange" href='/#/onsenlist/'> 温泉リストに戻る </v-btn>
+            <VoteButton v-bind:innId="this.$route.params.id"></VoteButton>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -22,10 +23,15 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from 'axios'
+import VoteButton from './VoteButton.vue'
 
 export default {
   name: 'Onsen',
+  components: {
+    VoteButton
+  },
   data () {
     return {
       msg: 'Onsen Page',

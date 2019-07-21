@@ -6,7 +6,11 @@ pandas
 sklearn
 matplotlib
 beautifulsoup4
-djangorestframework
+djangorestframework==3.9.4 
+#djangorestframework
 django-filter
 django-cors-headers
 django-mysql
+django-rest-auth
+django-allauth
+django-vote

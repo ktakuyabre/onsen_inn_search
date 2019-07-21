@@ -31,6 +31,14 @@
               </v-card>
             </v-flex>
 
+          <v-spacer></v-spacer>
+
+          <v-btn icon>
+            <v-icon>search</v-icon>
+          </v-btn>
+
+          <v-spacer></v-spacer>
+
           </v-layout>
         </v-flex>
       </v-layout>
@@ -39,6 +47,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from 'axios'
 
 export default {
@@ -49,6 +58,7 @@ export default {
       items: [],
     }
   },
+
   created () {
     this.getList(this.page)
     this.getPathes(this.category)
@@ -70,7 +80,6 @@ export default {
           console.error(err)
         })
     },
-
     getPathes: function (category) {
       const path = require('path')
       const fs = require('fs')
