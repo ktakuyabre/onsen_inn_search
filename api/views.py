@@ -1,3 +1,5 @@
+#from django.conf import settings
+from rest_framework.settings import api_settings
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from api.permissions import IsLoggedInUserOrAdmin, IsAdminUser
@@ -6,6 +8,7 @@ from django.urls import include, path
 from rest_framework import viewsets, generics
 from .serializers import UserSerializer, OnsenSerializer, OnsenInnSerializer, VoteSerializer
 from onsen_inns.models import Onsen, OnsenInn
+from django.core import serializers
 from users.models import CustomUser
 from vote.models import Vote
 from rest_framework import filters
@@ -14,6 +17,18 @@ from rest_framework.decorators import list_route
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from collections import Counter
+
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
+
+from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
+from rest_auth.registration.views import SocialLoginView
+from rest_auth.social_serializers import TwitterLoginSerializer
+
+from django.core.serializers.json import DjangoJSONEncoder
+
+from django_filters import Filter
+from django_filters.fields import Lookup
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -43,16 +58,39 @@ class OnsenViewSet(viewsets.ModelViewSet):
     serializer_class = OnsenSerializer
 
 class OnsenInnViewSet(viewsets.ModelViewSet):
+#class OnsenInnViewSet(generics.ListAPIView):
     """
     API endpoint that allows onsen inns to be viewed or edited.
     """
     queryset = OnsenInn.objects.all()
     serializer_class = OnsenInnSerializer
+    '''filter_backends = (DjangoFilterBackend, filters.OrderingFilter,)
+    #filter_fields = ('id', 'category')
+    filter_fields = ('id')
+    ordering_fields = ('vote_score', 'num_vote_up', 'num_vote_down' )'''
     #filter_backends = (django_filters.rest_framwork.DjangoFilterBackend, filters.OrderingFilter,)
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter,)
-    filter_fields = ('id', 'category')
-    ordering_fields = ('vote_score', 'num_vote_up', 'num_vote_down' )
     #ordering = ('-vote_score', '-num_vote_up', '-num_vote_down' )
+    def get_queryset(self):
+        queryset = OnsenInn.objects.all()
+        id_value = self.request.query_params.get('id', None)
+        if id_value is not None:
+            queryset = queryset.filter(id__in=id_value)
+
+        category_value = self.request.query_params.get('category', None)
+        if category_value is not None:
+            category_list = category_value.split(',')
+            queryset = queryset.filter(category__in=category_list)
+
+        ordering_value = self.request.query_params.get('ordering', None)
+        if ordering_value is not None:
+            queryset = queryset.order_by(ordering_value)
+
+        return queryset
+
+
+'''class ListFilter(Filter):
+  def filter(self, qs, value):
+    return super(ListFilter, self).filter(qs, Lookup(value.split(u","), "in"))'''
 
 '''class OnsenInnViewSet(viewsets.ModelViewSet):
     """
@@ -65,6 +103,13 @@ class OnsenInnViewSet(viewsets.ModelViewSet):
     filter_fields = ('id', 'category')
     filter_backends = (filters.OrderingFilter,)
     ordering_fields = ('inn_name', 'vote_count' )'''
+
+class FacebookLogin(SocialLoginView):
+    adapter_class = FacebookOAuth2Adapter
+
+class TwitterLogin(SocialLoginView):
+    serializer_class = TwitterLoginSerializer
+    adapter_class = TwitterOAuthAdapter
 
 
 class VoteQueryViewSet(viewsets.ModelViewSet):
@@ -85,11 +130,11 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         id = request.query_params.get("id", None)
         onsen_inn = OnsenInn.objects.get(pk=id)
         voted = onsen_inn.votes.exists(user_id)
-        message = "Already voted"
-        if voted == "false":
+        message = "Already voted"        
+        if voted == False:
             onsen_inn.votes.up(user_id)
             message = "Successfully voted"            
-        #message = "Please provide a like or dislike parameter."
+            #message = "Please provide a like or dislike parameter."
         return Response({'message': message})
 
     @list_route(methods=["POST", "GET"])
@@ -112,21 +157,85 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
 
         return Response({'voted': voted})
 
-    '''@list_route(methods=["GET"])
-    def all(self, request):
+    @list_route(methods=["GET"])
+    def favorites(self, request):
         try:
             user_id = request.user.id
-            id = request.query_params.get("id")
-            #onsen_inns = OnsenInn.objects.get(pk=id)
-            #onsen_inns = OnsenInn.objects.get(pk=id)
-            all_onsen_inns = onsen_inn.votes.all(user_id)
-            #all_onsen_inns = OnsenInn.votes.all(user_id)
+            onsen_inn = OnsenInn.objects.first()
+            queryset = onsen_inn.votes.all(user_id)
+            serializer_class = OnsenInnSerializer
+            #favorites = OnsenInnSerializer(queryset, many=True)
+            favorites = OnsenInnSerializer(queryset, many=True).data
+            count = len(favorites)
+            page_size = api_settings.PAGE_SIZE
+            index = 0
+            next_page = 2
+            next = None
+            previous_page = 0
+            previous = None
+
+            page_value = self.request.query_params.get('page', None)
+            if page_value is not None:
+                page_value = int(page_value)
+                index = (page_value-1)*10
+                next_page = page_value + 1
+                previous_page = page_value - 1
+
+            if (next_page-1)*page_size > count:
+                next = None
+            else:
+                next = "http://localhost:8000/api/votes/all/?page="+str(next_page)
+
+            if previous_page == 0:
+                previous = None                
+            else:
+                previous = "http://localhost:8000/api/votes/all/?page="+str(previous_page)
+            if previous is not None:
+                favorites = favorites[index:index+page_size-1]
+            else:
+                favorites = favorites[index:]
+            response = { "count": count, "next": next, "previous": previous, "results": favorites}
+            #response = json.dumps(response, cls=CustomEncoder)
+            '''queryset = OnsenInn.objects.all()
+            id_value = self.request.query_params.get('id', None)
+            if id_value is not None:
+                queryset = queryset.filter(id__in=id_value)
+
+                category_value = self.request.query_params.get('category', None)
+            if category_value is not None:
+                category_list = category_value.split(',')
+                queryset = queryset.filter(category__in=category_list)'''
+                                         
+
+        #return queryset
+            #message = queryset
+            #favorites = [obj.as_dict() for obj in queryset]
+            #favorites = [model_to_dict(obj) for obj in queryset]
+            #favorites = json.dumps({"data": favorites})
+            #favorites = serializer_class.serialize('json', queryset)
+            #favorites = serializer.serialize('json', queryset, cls=CustomEncoder)
+            #favorites = serializer.serialize('json', favorites, cls=CustomEncoder)
+            #favorites = serializer_class.serialize('json', queryset, cls=CustomEncoder)
+            #for onsen_inn in all_onsen_inns:
+            #    favorites.append(onsen_inn.__dict__)
+            #return HttpReponse(favorites, content_type='application/json', encoder=CustomEncoder)
+            #return Response(status=200, data=favorites)
+            #return JsonResponse(response)
+            return Response(response)
+            #return favorites
+                                           
+                                           
+                                          
+        
+            
         except Exception as e:
             message = e
             return Response({'message': message})
 
-        return Response({'all': all_onsen_inns})
-        #return all_onsen_inns'''
+        #return (all_onsen_inns)
+        #return Response({'message': message})
+        #return Response({'results': favorites})
+        #return Response({'results': 'test'})'''
 
     @list_route(methods=["GET"])
     def count(self, request):
@@ -165,11 +274,11 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
         return Response({'message': 'Successfully deleted'})
 
 
-#class AuthInfoDeleteView(generics.DestroyAPIView):
+class AuthInfoDeleteView(generics.DestroyAPIView):
     """
     API endpoint that allows users to delete their own accounts.
     """
-    '''permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     lookup_field = 'email'
     queryset = CustomUser.objects.all()
@@ -179,4 +288,20 @@ class VoteQueryViewSet(viewsets.ModelViewSet):
             instance = self.queryset.get(email=self.request.user.email)
             return instance
         except Account.DoesNotExist:
-            raise Http404'''
+            raise Http404
+
+'''class VoteFavoritesViewSet(viewsets.ModelViewSet):
+    user_id = self.context['request'].query_params.user.id
+    onsen_inn = OnsenInn.objects.first()    
+    queryset = onsen_inn.votes.all(user_id)
+    serializer_class = OnsenInnSerializer
+    permission_classes = (IsAuthenticated,)'''
+
+class CustomEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ImageFieldFile):
+            return obj.url
+        if isinstance(obj, NameError):
+            return None
+        
+        return super(LazyEncoder, self).default(obj)

@@ -38,8 +38,8 @@ class OnsenInnSerializer(serializers.ModelSerializer):
             'vote_count',
         ]'''
     
-    def get_votes(self, obj):
-        return OnsenInn.objects.get(pk=obj.id).votes.count()
+    '''def get_votes(self, obj):
+        return OnsenInn.objects.get(pk=obj.id).votes.count()'''
 
     '''def get_iamge_url(self, obj):
         return obj.image.url'''
