@@ -67,6 +67,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 # Add IP addresses to enable them to bypass the Same Origin Policy
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8080',
+    'http://localhost:8081',
 )
 
 # Database
