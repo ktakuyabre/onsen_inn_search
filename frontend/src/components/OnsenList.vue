@@ -90,14 +90,11 @@ export default {
         .catch(err => {
           console.error(err)
         })
-<<<<<<< HEAD
     ),
   )
-=======
     },
  },
 }
->>>>>>> a3a477412b27b82bdb56b003ebdba23353988885
 </script>
 
 <style scoped>
