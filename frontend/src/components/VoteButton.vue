@@ -40,7 +40,7 @@ export default {
       })
     },
     voteDown () {
-      axios.post('http://localhost:8000/api/votes/down/?id='+this.innId)
+      axios.post('http://localhost:8000/api/votes/delete/?id='+this.innId)
       .then(response => {
         console.log(response.data)
         this.voted = false
