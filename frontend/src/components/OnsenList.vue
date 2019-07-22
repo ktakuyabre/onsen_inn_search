@@ -19,12 +19,10 @@
             <v-flex xs6>
               <v-card>
                 <v-list>
-                  <v-list-tile v-for="item in items" :key="item.inn_name" avatar>
-                  <router-link v-bind:to="{ name: 'Onsen', params: { id: item.id }}" >
+                  <v-list-tile v-for="item in items" :key="item.inn_name" @click="go(item.id)" >
                     <v-list-tile-content>
                       <v-list-tile-title v-text="item.inn_name"></v-list-tile-title>
                     </v-list-tile-content>
-                  </router-link>
                   </v-list-tile>
                 </v-list>
                 <v-pagination v-model="page" :length="6" ></v-pagination>
@@ -45,12 +43,20 @@ export default {
   name: 'OnsenList',
   data () {
     return {
-      category: this.$route.query.category,
+      category: 1,
       items: [],
+      page: 1
     }
   },
 
   created () {
+    if (this.$route.query.page != null) {
+      this.page = this.$route.query.page
+    }
+    if (this.$route.query.category != null){
+      this.category = this.$route.query.category
+    }
+
     this.getList(this.page)
     this.getPathes(this.category)
   },
@@ -62,9 +68,9 @@ export default {
           category: this.category,
           page: page,
         },
-        data: {},
       })
         .then(response => {
+          console.log(response.data.results)
           this.items = response.data.results
         })
         .catch(err => {
@@ -75,15 +81,22 @@ export default {
       const path = require('path')
       const fs = require('fs')
       const assetsPath = '../assets/images_cate'
-      const dirPath = path.resolve(assetsPath, category)
-
+      const dirPath = path.resolve(assetsPath, category.toString())
+      // console.log(dirPath)
       /*
       const list = fs.readdirSync(dirPath)
       list.forEach(console.log)
       */
     },
-
+    go: function (itemid) {
+      this.$router.push({ name: 'Onsen', params: { id: itemid }})
+    }
   },
+  watch: {
+    page : function (newNumber) {
+      this.$router.push({ path: '/onsenlist', query: { category: this.category, page: newNumber } })
+    }
+  }
 }
 </script>
 

@@ -39,7 +39,7 @@
               </v-flex>
               <v-flex xs6>
                 <h2>{{ texts[category] }}</h2>
-                <v-btn large href='/#/onsenlist/'>推しを探す</v-btn>
+                <v-btn large @click='goToOnsenList'>推しを探す</v-btn>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -121,6 +121,9 @@ export default {
         .catch(err => {
           console.error(err)
         })
+    },
+    goToOnsenList () {
+      this.$router.push({ path: '/onsenlist', query: { category: this.category, page: 1 } })
     },
   },
 
