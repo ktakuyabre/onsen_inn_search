@@ -59,12 +59,10 @@ export default {
     }
   },
 
-<<<<<<< HEAD
   created (this.getList(this.page)
   ),
   methods(
     getList (page) (
-=======
   created () {
     this.getList(this.page)
     this.getPathes(this.category)
@@ -72,7 +70,6 @@ export default {
 
   methods: {
     getList: function (page) {
->>>>>>> 57dabba48b41ad49dd73602df06d6e8add5fd187
       axios.get('http://localhost:8000/api/onsen_inns/', {
         params: {
           category: this.category,
