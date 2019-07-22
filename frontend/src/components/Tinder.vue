@@ -25,15 +25,17 @@
               </v-flex>
               <v-flex xs6>
                 <v-card dark color="success">
-                  <v-card-text v-for="text in makeText(items[count])" :key="text">{{text}}</v-card-text>
+                  <v-card-text class="font-weight-bold">{{makeText(items[count])}}</v-card-text>
                 </v-card>
               </v-flex>
             </v-layout>
           </v-flex>
 
           <v-flex xs12>
-            <v-btn large @click="increment('like')" color="info">Like</v-btn>
-            <v-btn large @click="increment('nope')" color="error">Nope</v-btn>
+            <v-layout row wrap>
+              <v-btn block large @click="increment('nope')" color="error">Nope</v-btn>
+              <v-btn block large @click="increment('like')" color="info">Like</v-btn>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-container>
@@ -79,11 +81,10 @@ export default {
       items: [],
       likes: {},
       nopes: {},
-      check: {},
     }
   },
 
-  created () {
+  mounted () {
     this.getTwenty()
   },
 
@@ -120,96 +121,147 @@ export default {
       }
     },
 
-    getTwenty () {
+    getTwenty: function () {
       for (var i = 0; i < 20; i++) {
         var randId = this.getRandomInt(1000)
+        console.log(randId)
         axios.get('http://localhost:8000/api/onsen_inns/', {
           params: {
             id: randId,
           },
         })
           .then(response => {
-            console.log(response.data)
-            this.items.push(response.data.results[0])
+            try {
+              var res = response.data
+              console.log(res)
+              this.items.push(res.results[0])
+            } catch (e) {
+              var res1 = response.data.results[0]
+              console.log(res1['category'])
+              this.items.push(res1)
+            }
           })
           .catch(err => {
             console.error(err)
           })
       }
-      /* var point = true
-      while (point) {
-        var randId = this.getRandomInt(10000)
-        axios.get('http://localhost:8000/api/onsen_inns/', {
-          params: {
-            id: randId,
-          },
-        })
-          .then(response => {
-            var res = response.data.results[0]
-            var cate = res['category']
-            this.check[cate] = (this.check[cate] || 0) + 1
-            if (this.check[cate] < 2) {
-              this.items.push(res)
-            }
-            if (this.items.length > 20) {
-              point = false
-            }
-            console.log(this.check)
-            console.log(point)
-          })
-          .catch(err => {
-            console.error(err)
-          })
-      }
-      */
-    },
-
-    getImg: function () {
-      var category = this.items[this.count]['category']
-      var src = this.idles[category][0]
-      return src
     },
 
     makeText: function (oneItem) {
       var price = oneItem['inn_min_price']
-      /*
       var capacity = oneItem['rooms_total']
       var bathes = oneItem['baths_total']
-      var bathes = oneItem['baths_total']
       var convenience = oneItem['convenience_store']
-      var leisure = oneItem['service_leisure']
-      */
+      var leisure = oneItem['service_leisure'].length
       var category = oneItem['category']
-      var text = []
+      var rate = oneItem['review_room'] + oneItem['review_bath'] + oneItem['review_breakfast'] + oneItem['review_dinner'] + oneItem['review_service'] + oneItem['review_cleaness']
+      var text = ''
 
       if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
-        text.push('エヘヘ, じゃあ自己紹介させてもらいますね! 私達')
+        text = text + ' エヘヘ, じゃあ自己紹介させてもらいますね! 私達'
       } else if (category === 1 || category === 2) {
-        text.push('ウェッ!? 自己紹介ですか……? 参ったなぁ，うちら')
+        text = text + ' ウェッ!? 自己紹介ですか……? 参ったなぁ，うちら'
       } else if (category === 4 || category === 6 || category === 8) {
-        text.push('ウィース，じゃ自己紹介な!　ウチんとこ')
-      } else {
-        text.push('いがい')
+        text = text + ' ウィース，じゃ自己紹介な!　ウチんとこ'
       }
 
-      text.push('の所の入場料は')
+      text = text + ' の所の入場料は'
 
       if (price >= 10000) {
-        text.push('結構高い')
+        text = text + ' 結構高い'
       } else if (price >= 8000) {
-        text.push('高い')
+        text = text + ' 高い'
       } else if (price >= 7000) {
-        text.push('普通な')
+        text = text + ' 普通な'
       } else if (price >= 6000) {
-        text.push('安い')
+        text = text + ' 安い'
       } else {
-        text.push('結構安い')
+        text = text + ' 結構安い'
+      }
+
+      text = text + ' 動員数は毎回'
+
+      if (capacity >= 100) {
+        text = text + ' 結構多く'
+      } else if (capacity < 100 && capacity >= 70) {
+        text = text + ' 多く'
+      } else if (capacity < 70 && capacity >= 50) {
+        text = text + ' 多くも少なくもなく'
+      } else {
+        text = text + ' 少なく'
+      }
+
+      text = text + ' て,ファンのみんなに楽しんでもらえる温泉は'
+
+      if (bathes >= 100) {
+        text = text + ' 種類豊富'
+      } else {
+        text = text + ' 少数精鋭'
+      }
+
+      if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
+        text = text + 'なんです'
+      } else if (category === 1 || category === 2) {
+        text = text + 'んだけど平気かな？'
+      } else if (category === 4 || category === 6 || category === 8) {
+        text = text + 'って感じだわ'
+      } else {
+        text = text + 'いがい'
+      }
+
+      text = text + '周りにコンビニは'
+
+      if (convenience) {
+        text = text + 'ある'
+      } else {
+        text = text + 'ない'
+      }
+
+      if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
+        text = text + 'んです!'
+      } else if (category === 1 || category === 2) {
+        text = text + 'かな、確か'
+      } else if (category === 4 || category === 6 || category === 8) {
+        text = text + 'って感じか!'
+      }
+
+      text = text + 'レジャー施設は'
+
+      if (leisure >= 5) {
+        text = text + '充実'
+      } else if (leisure < 5 && leisure >= 1) {
+        text = text + '多少は充実'
+      } else {
+        text = text + '無いけどファンも満足'
+      }
+
+      if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
+        text = text + 'して頂いているんで楽しんでくださいね!'
+      } else if (category === 1 || category === 2) {
+        text = text + 'してるから安心してほしい…'
+      } else if (category === 4 || category === 6 || category === 8) {
+        text = text + 'してんだから楽しめよ!'
+      }
+
+      text = text + 'ファンの評判は'
+
+      if (rate >= 25) {
+        text = text + '上々'
+      } else if (rate < 25 && rate >= 20) {
+        text = text + 'ぼちぼち'
+      } else {
+        text = text + 'あんまり良くないけど気にしない'
+      }
+
+      if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
+        text = text + 'って感じです! ふぅ……これで１通り終わりましたかね? 是非私達に会いに来て下さいね!'
+      } else if (category === 1 || category === 2) {
+        text = text + 'って感じなのでよろしく… こ,こんな感じでどうかな? もし興味持ったら来てほしい…'
+      } else if (category === 4 || category === 6 || category === 8) {
+        text = text + 'って感じだからな! どうだ，絶対興味出たろ?　ウチらんとこ絶対来いよ!'
       }
 
       return text
-    },
-
-    count_amenity (oneItem) {
     },
 
   },
