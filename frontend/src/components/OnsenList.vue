@@ -71,8 +71,7 @@ export default {
     }
   },
 
-  created (
-    this.getList(this.page)
+  created (this.getList(this.page)
   ),
   methods(
     getList (page) (
