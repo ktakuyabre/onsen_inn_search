@@ -94,6 +94,7 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp/email')
 # Add IP addresses to enable them to bypass the Same Origin Policy
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8080',
+    'http://localhost:8081',
 )
 
 # Database

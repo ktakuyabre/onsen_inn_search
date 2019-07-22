@@ -4,6 +4,7 @@ import OnsenHome from '@/components/OnsenHome'
 import Onsen from '@/components/Onsen'
 import Tinder from '@/components/Tinder'
 import OnsenList from '@/components/OnsenList'
+import Category from '@/components/Category'
 import Login from '@/components/Login'
 import NotFound from '@/components/NotFound'
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/onsenlist',
       name: 'OnsenList',
       component: OnsenList,
+    },
+    {
+      path: '/category',
+      name: 'Category',
+      component: Category,
     },
     {
       path: '/login',
