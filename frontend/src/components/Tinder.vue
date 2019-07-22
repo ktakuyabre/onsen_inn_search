@@ -4,27 +4,28 @@
       <v-container fluid grid-list-md text-xs-center>
         <v-layout row wrap>
           <v-flex xs12>
-            <h1>{{ likes }} Max {{getMost(likes)}}</h1>
             <h1> 残り {{ 20 - count }} </h1>
+            {{items[count]['category']}}
           </v-flex>
 
           <v-flex xs6>
             <img class="onsenPhoto" :src="items[count]['inn_photo']"/>
             <v-layout column wrap>
               <v-flex xs3>
-                <img class="onsenPhoto2" :src="items[count]['inn_photo']"/>
-                <img class="onsenPhoto2" :src="items[count]['inn_photo']"/>
+                <img class="onsenPhoto2" :src="items[count]['inn_photo_2']"/>
+                <img class="onsenPhoto2" :src="items[count]['inn_photo_3']"/>
               </v-flex>
             </v-layout>
           </v-flex>
+
           <v-flex xs6>
             <v-layout column wrap>
               <v-flex xs6>
-                <img class="onei" :src="require('../assets/images_cate0/download20190702162626.png')"/>
+                <img class="onei" :src="idles[items[count]['category']][0]"/>
               </v-flex>
               <v-flex xs6>
                 <v-card dark color="success">
-                  <v-card-text v-for="text in makeText(items[count])">{{text}}</v-card-text>
+                  <v-card-text v-for="text in makeText(items[count])" :key="text">{{text}}</v-card-text>
                 </v-card>
               </v-flex>
             </v-layout>
@@ -49,28 +50,36 @@ export default {
     return {
       msg: 'Onsender Page',
       count: 0,
-      tests: [
-        require('../assets/onei.jpg'),
+      idles: [
+        [
+          require('../assets/images/0/download20190702162626.png'),
+          require('../assets/images/0/download20190702162720.png'),
+        ],
+        [
+          require('../assets/images/1/download20190702160655.png'),
+          require('../assets/images/1/download20190702160926.png'),
+        ],
+        [
+          require('../assets/images/2/download20190702190822.png'),
+          require('../assets/images/2/download20190702191000.png'),
+        ],
+        [
+          require('../assets/images/3/download20190702154224.png'),
+          require('../assets/images/3/download20190702154710.png'),
+        ],
+        [
+          require('../assets/images/4/download20190702155543.png'),
+          require('../assets/images/4/download20190702155955.png'),
+        ],
+        [
+          require('../assets/images/5/download20190702182749.png'),
+          require('../assets/images/5/download20190702182924.png'),
+        ],
       ],
       items: [],
       likes: {},
       nopes: {},
-      leaders: [
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-        require('../assets/images_cate0/download20190702162626.png'),
-      ],
+      check: {},
     }
   },
 
@@ -120,12 +129,45 @@ export default {
           },
         })
           .then(response => {
+            console.log(response.data)
             this.items.push(response.data.results[0])
           })
           .catch(err => {
             console.error(err)
           })
       }
+      /* var point = true
+      while (point) {
+        var randId = this.getRandomInt(10000)
+        axios.get('http://localhost:8000/api/onsen_inns/', {
+          params: {
+            id: randId,
+          },
+        })
+          .then(response => {
+            var res = response.data.results[0]
+            var cate = res['category']
+            this.check[cate] = (this.check[cate] || 0) + 1
+            if (this.check[cate] < 2) {
+              this.items.push(res)
+            }
+            if (this.items.length > 20) {
+              point = false
+            }
+            console.log(this.check)
+            console.log(point)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
+      */
+    },
+
+    getImg: function () {
+      var category = this.items[this.count]['category']
+      var src = this.idles[category][0]
+      return src
     },
 
     makeText: function (oneItem) {
@@ -140,7 +182,6 @@ export default {
       var category = oneItem['category']
       var text = []
 
-      console.log(category)
       if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
         text.push('エヘヘ, じゃあ自己紹介させてもらいますね! 私達')
       } else if (category === 1 || category === 2) {

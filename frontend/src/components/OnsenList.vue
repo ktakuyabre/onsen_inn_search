@@ -8,7 +8,7 @@
             <v-flex xs12>
               <v-layout column wrap>
                 <v-flex xs6>
-                  <img class="onei" :src="require('../assets/images_cate0/download20190702162626.png')"/>
+                  <img class="onei" :src="require('../assets/images/0/download20190702162626.png')"/>
                 </v-flex>
                 <v-flex xs6>
                   好きなの選んでね!
@@ -84,9 +84,7 @@ export default {
       const path = require('path')
       const fs = require('fs')
       const assetsPath = '../assets/images_cate'
-
       const dirPath = path.resolve(assetsPath, category)
-      console.log(require(dirPath))
 
       /*
       const list = fs.readdirSync(dirPath)
