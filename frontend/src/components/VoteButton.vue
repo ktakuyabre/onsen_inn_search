@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="isLoggedIn">
     <v-btn color="blue-grey lighten-1" v-if="voted" @click='voteDown'> 取消 </v-btn>
     <v-btn color="orange darken-2" v-else @click='voteUp'> 投票 </v-btn>
   </div>
@@ -14,19 +14,24 @@ export default {
   data: () => {
     return {
       voted: false,
-      innid: this.innId
+      innid: this.innId,
+      isLoggedIn: false
     }
   },
   mounted () {
-    axios.defaults.headers.common['Authorization'] = 'Token ' + this.$store.state.token
-    axios.get('http://localhost:8000/api/votes/exists/?id='+this.innId)
-    .then(response => {
-      console.log(response.data)
-      this.voted = response.data.voted
-    })
-    .catch(err => {
-      console.error(err)
-    })
+    if (this.$store.state.token != null) {
+      axios.defaults.headers.common['Authorization'] = 'Token ' + this.$store.state.token
+      axios.get('http://localhost:8000/api/votes/exists/?id='+this.innId)
+      .then(response => {
+        this.isLoggedIn = true
+        console.log(response.data)
+        this.voted = response.data.voted
+      })
+      .catch(err => {
+        this.isLoggedIn = false
+        console.error(err)
+      })
+    }
   },
   methods: {
     voteUp () {

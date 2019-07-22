@@ -30,15 +30,6 @@
                 <v-pagination v-model="page" :length="6" ></v-pagination>
               </v-card>
             </v-flex>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>search</v-icon>
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
           </v-layout>
         </v-flex>
       </v-layout>
