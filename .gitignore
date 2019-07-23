@@ -8,4 +8,4 @@ __pycache__
 *.log
 .DS_Store
 /media/images/*
-/frontend/src/assets/*
+/frontend/src/assets/images/*
