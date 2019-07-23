@@ -205,6 +205,9 @@ export default {
           console.error(err)
         })
     },
+    goToOnsenList () {
+      this.$router.push({ path: '/onsenlist', query: { category: this.category, page: 1 } })
+    },
   },
 
 }

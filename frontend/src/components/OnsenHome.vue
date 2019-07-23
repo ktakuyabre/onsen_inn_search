@@ -10,6 +10,7 @@
           </v-flex>
           <v-flex xs12>
             <v-btn large href='/#/tinder/'>Tinder</v-btn>
+            <LoginButton></LoginButton>
           </v-flex>
         </v-layout>
       </v-container>
@@ -18,8 +19,14 @@
 </template>
 
 <script>
+/* eslint-disable */
+import LoginButton from './LoginButton.vue'
+
 export default {
   name: 'OnsenHome',
+  components: {
+    LoginButton
+  },
   data () {
     return {
       msg: 'Onsender♨️',
