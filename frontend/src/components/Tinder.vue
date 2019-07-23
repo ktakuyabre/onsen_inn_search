@@ -2,31 +2,26 @@
   <div>
     <v-app>
       <v-container fluid grid-list-md text-xs-center>
-        <v-layout row wrap>
+        <v-layout column wrap>
           <v-flex xs12>
-            <h1> 残り {{ 20 - count }} </h1>
-            {{items[count]['category']}}
+            <h1 class=display-1> 残り {{ 20 - count }} </h1>
           </v-flex>
 
-          <v-flex xs6>
-            <img class="onsenPhoto" :src="items[count]['inn_photo']"/>
-            <v-layout column wrap>
-              <v-flex xs3>
+          <v-flex xs12>
+              <h1 class=display-2>{{items[count]['inn_name']}}</h1>
+              <img class="onei" :src="idles[items[count]['category']][0]"/>
+              <v-card>
+                <v-card-text class=display-2>{{makeText(items[count])}}</v-card-text>
+              </v-card>
+            <v-layout row wrap>
+              <v-flex xs4>
+                <img class="onsenPhoto" :src="items[count]['inn_photo']"/>
+              </v-flex>
+              <v-flex xs4>
                 <img class="onsenPhoto2" :src="items[count]['inn_photo_2']"/>
+              </v-flex>
+              <v-flex xs4>
                 <img class="onsenPhoto2" :src="items[count]['inn_photo_3']"/>
-              </v-flex>
-            </v-layout>
-          </v-flex>
-
-          <v-flex xs6>
-            <v-layout column wrap>
-              <v-flex xs6>
-                <img class="onei" :src="idles[items[count]['category']][0]"/>
-              </v-flex>
-              <v-flex xs6>
-                <v-card dark color="primary">
-                  <v-card-text class=display-2>{{makeText(items[count])}}</v-card-text>
-                </v-card>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -77,6 +72,26 @@ export default {
           require('../assets/images/5/download20190702182749.png'),
           require('../assets/images/5/download20190702182924.png'),
         ],
+        [
+          require('../assets/images/6/41329_8OvJrEIM.png'),
+          require('../assets/images/6/41329_Fyd07c2N.png'),
+        ],
+        [
+          require('../assets/images/7/6883_7zvmG9y9.png'),
+          require('../assets/images/7/6883_I2K9RxM6.png'),
+        ],
+        [
+          require('../assets/images/8/11906_34klo33w.png'),
+          require('../assets/images/8/11906_6nHLpFMo.png'),
+        ],
+        [
+          require('../assets/images/9/46940_AlgnJrJp.png'),
+          require('../assets/images/9/46940_DzOQsSnl.png'),
+        ],
+        [
+          require('../assets/images/3/download20190702154224.png'),
+          require('../assets/images/3/download20190702154710.png'),
+        ],
       ],
       items: [],
       likes: {},
@@ -84,7 +99,7 @@ export default {
     }
   },
 
-  mounted () {
+  created () {
     this.getTwenty()
   },
 
@@ -122,28 +137,42 @@ export default {
     },
 
     getTwenty: function () {
-      for (var i = 0; i < 20; i++) {
-        var randId = this.getRandomInt(1000)
-        console.log(randId)
-        axios.get('http://localhost:8000/api/onsen_inns/', {
-          params: {
-            id: randId,
-          },
-        })
-          .then(response => {
-            try {
-              var res = response.data
-              console.log(res)
-              this.items.push(res.results[0])
-            } catch (e) {
-              var res1 = response.data.results[0]
-              console.log(res1['category'])
-              this.items.push(res1)
-            }
-          })
-          .catch(err => {
-            console.error(err)
-          })
+      for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 2; j++) {
+          if (i === 3) {
+            axios.get('http://localhost:8000/api/onsen_inns/', {
+              params: {
+                category: i + ',10',
+                ordering: '?',
+              },
+            })
+              .then(response => {
+                var res = response.data.results
+                var len = res.length
+                var randId = this.getRandomInt(len)
+                this.items.push(res[randId])
+              })
+              .catch(err => {
+                console.error(err)
+              })
+          } else {
+            axios.get('http://localhost:8000/api/onsen_inns/', {
+              params: {
+                category: i,
+                ordering: '?',
+              },
+            })
+              .then(response => {
+                var res = response.data.results
+                var len = res.length
+                var randId = this.getRandomInt(len)
+                this.items.push(res[randId])
+              })
+              .catch(err => {
+                console.error(err)
+              })
+          }
+        }
       }
     },
 
@@ -283,9 +312,9 @@ img.onsenPhoto {
   zoom: 3.0
 }
 img.onsenPhoto2 {
-  zoom: 1.5
+  zoom: 3.0
 }
 img.onei {
-  zoom: 0.8
+  zoom: 1.0
 }
 </style>

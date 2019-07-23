@@ -186,25 +186,23 @@ export default {
 
       text = text + ' の所の入場料は'
 
-      if (price >= 10000) {
-        text = text + ' 結構高い'
-      } else if (price >= 8000) {
+      if (price >= 15000) {
+        text = text + ' かなり高い'
+      } else if (price >= 10000) {
         text = text + ' 高い'
-      } else if (price >= 7000) {
+      } else if (price >= 10000) {
         text = text + ' 普通な'
-      } else if (price >= 6000) {
+      } else if (price >= 8000) {
         text = text + ' 安い'
       } else {
-        text = text + ' 結構安い'
+        text = text + ' かなり安い'
       }
 
       text = text + ' 動員数は毎回'
 
-      if (capacity >= 100) {
-        text = text + ' 結構多く'
-      } else if (capacity < 100 && capacity >= 70) {
+      if (capacity >= 120) {
         text = text + ' 多く'
-      } else if (capacity < 70 && capacity >= 50) {
+      } else if (120 > capacity && capacity >= 50) {
         text = text + ' 多くも少なくもなく'
       } else {
         text = text + ' 少なく'
