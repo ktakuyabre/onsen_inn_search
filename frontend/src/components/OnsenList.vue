@@ -18,7 +18,13 @@
 
             <v-flex xs6>
               <v-card>
-                <Page v-bind:category="category" v-bind:page="page"></Page>
+                <v-list>
+                  <v-list-tile v-for="item in items[page]" :key="item.inn_name" @click="goToOnsenPage(item.id)" >
+                    <v-list-tile-content>
+                      <v-list-tile-title v-text="item.inn_name"></v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
                 <v-pagination v-model="page" :length="6" ></v-pagination>
               </v-card>
             </v-flex>
@@ -32,34 +38,50 @@
 <script>
 /* eslint-disable */
 import axios from 'axios'
-import Page from './Page.vue'
 
 export default {
   name: 'OnsenList',
-  components: {
-    Page,
-  },
   data () {
     return {
-      category: this.$route.query.category,
-      page: this.$route.query.page
+      category: 0,
+      page: 1,
+      items: []
     }
   },
 
-  mounted () {
+  created () {
+    if (this.$route.query.category != null) {
+      this.category = this.$route.query.category
+    }
+
     if (this.$route.query.page != null) {
-      this.page = 1
+      this.page = this.$route.query.page
     }
-    if (this.$route.query.category != null){
-      this.category = 0
+    console.log("Called")
+    console.log(this.category)
+    console.log(this.page)
+    for (  var i = 0;  i < 6;  i++  ) {
+      axios.get('http://localhost:8000/api/onsen_inns/', {
+        params: {
+          category: this.category,
+          page: i+1,
+        },
+      })
+        .then(response => {
+          console.log(response.data.results)
+          this.items.push(response.data.results)
+        })
+        .catch(err => {
+          console.error(err)
+        })
     }
   },
 
-  watch: {
-    page : function (newNumber) {
-      this.$router.push({ path: '/onsenlist', query: { category: this.category, page: newNumber } })
+  methods:{
+    goToOnsenPage : function (itemid) {
+      this.$router.push({ name: 'Onsen', params: { id: itemid }})
     }
-  }
+  },
 }
 </script>
 
