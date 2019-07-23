@@ -19,26 +19,15 @@
             <v-flex xs6>
               <v-card>
                 <v-list>
-                  <v-list-tile v-for="item in items" :key="item.inn_name" avatar>
-                  <router-link v-bind:to="{ name: 'Onsen', params: { id: item.id }}" >
+                  <v-list-tile v-for="item in items[page]" :key="item.inn_name" @click="goToOnsenPage(item.id)" >
                     <v-list-tile-content>
                       <v-list-tile-title v-text="item.inn_name"></v-list-tile-title>
                     </v-list-tile-content>
-                  </router-link>
                   </v-list-tile>
                 </v-list>
                 <v-pagination v-model="page" :length="6" ></v-pagination>
               </v-card>
             </v-flex>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>search</v-icon>
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
           </v-layout>
         </v-flex>
       </v-layout>
@@ -54,8 +43,9 @@ export default {
   name: 'OnsenList',
   data () {
     return {
-      category: this.$route.query.category,
-      items: [],
+      category: 0,
+      page: 1,
+      items: []
     }
   },
 
@@ -64,40 +54,37 @@ export default {
   methods(
     getList (page) (
   created () {
-    this.getList(this.page)
-    this.getPathes(this.category)
-  },
+    if (this.$route.query.category != null) {
+      this.category = this.$route.query.category
+    }
 
-  methods: {
-    getList: function (page) {
+    if (this.$route.query.page != null) {
+      this.page = this.$route.query.page
+    }
+    console.log("Called")
+    console.log(this.category)
+    console.log(this.page)
+    for (  var i = 0;  i < 6;  i++  ) {
       axios.get('http://localhost:8000/api/onsen_inns/', {
         params: {
           category: this.category,
-          page: page,
+          page: i+1,
         },
-        data: {},
       })
         .then(response => {
-          this.items = response.data.results
+          console.log(response.data.results)
+          this.items.push(response.data.results)
         })
         .catch(err => {
           console.error(err)
         })
-    ),
-  )
-    },
-    getPathes: function (category) {
-      const path = require('path')
-      const fs = require('fs')
-      const assetsPath = '../assets/images_cate'
-      const dirPath = path.resolve(assetsPath, category)
+    }
+  },
 
-      /*
-      const list = fs.readdirSync(dirPath)
-      list.forEach(console.log)
-      */
-    },
-
+  methods:{
+    goToOnsenPage : function (itemid) {
+      this.$router.push({ name: 'Onsen', params: { id: itemid }})
+    }
   },
 }
 </script>

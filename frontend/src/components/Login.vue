@@ -55,8 +55,9 @@ export default {
               this.$router.push({ path: '/' })
           })
           .catch((error) => {
-             console.log(error);
-             this.loading = false
+            console.log(params)
+            console.log(error)
+            this.loading = false
           })
         }
       }).catch(e => {
