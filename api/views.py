@@ -74,7 +74,7 @@ class OnsenInnViewSet(viewsets.ModelViewSet):
         queryset = OnsenInn.objects.all()
         id_value = self.request.query_params.get('id', None)
         if id_value is not None:
-            queryset = queryset.filter(id__in=id_value)
+            queryset = queryset.filter(id=id_value)
 
         category_value = self.request.query_params.get('category', None)
         if category_value is not None:
