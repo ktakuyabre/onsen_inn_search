@@ -24,8 +24,8 @@
                 <img class="onei" :src="idles[items[count]['category']][0]"/>
               </v-flex>
               <v-flex xs6>
-                <v-card dark color="success">
-                  <v-card-text class="font-weight-bold">{{makeText(items[count])}}</v-card-text>
+                <v-card dark color="primary">
+                  <v-card-text class=display-2>{{makeText(items[count])}}</v-card-text>
                 </v-card>
               </v-flex>
             </v-layout>
@@ -158,25 +158,25 @@ export default {
       var text = ''
 
       if (category === 0 || category === 3 || category === 5 || category === 7 || category === 9 || category === 10) {
-        text = text + ' エヘヘ, じゃあ自己紹介させてもらいますね! 私達'
+        text = text + 'エヘヘ, じゃあ自己紹介させてもらいますね! 私達'
       } else if (category === 1 || category === 2) {
-        text = text + ' ウェッ!? 自己紹介ですか……? 参ったなぁ，うちら'
+        text = text + 'ウェッ!? 自己紹介ですか…? 参ったなぁ, うちら'
       } else if (category === 4 || category === 6 || category === 8) {
-        text = text + ' ウィース，じゃ自己紹介な!　ウチんとこ'
+        text = text + 'ウィース, じゃ自己紹介な! ウチんとこ'
       }
 
-      text = text + ' の所の入場料は'
+      text = text + 'の所の入場料は'
 
       if (price >= 10000) {
-        text = text + ' 結構高い'
+        text = text + '結構高い!'
       } else if (price >= 8000) {
-        text = text + ' 高い'
+        text = text + '高い!'
       } else if (price >= 7000) {
-        text = text + ' 普通な'
+        text = text + '普通!'
       } else if (price >= 6000) {
-        text = text + ' 安い'
+        text = text + ' 安い!'
       } else {
-        text = text + ' 結構安い'
+        text = text + ' 結構安い!'
       }
 
       text = text + ' 動員数は毎回'
@@ -191,7 +191,7 @@ export default {
         text = text + ' 少なく'
       }
 
-      text = text + ' て,ファンのみんなに楽しんでもらえる温泉は'
+      text = text + 'て, ファンのみんなに楽しんでもらえる温泉は'
 
       if (bathes >= 100) {
         text = text + ' 種類豊富'
