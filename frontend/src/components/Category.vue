@@ -6,15 +6,15 @@
 
           <v-flex xs12>
             <br>
-            <h1 class=display-4>あなたにぴったりなのはチーム{{category}}</h1>
+            <h1 class=display-3>あなたにぴったりなのはチーム{{category}}</h1>
             <br>
           </v-flex>
           <v-flex xs12>
-            <h2 class=display-3>現在の神3!!!!!!!</h2>
+            <h2 class=display-2>現在の神3!!!!!!!</h2>
             <v-layout row wrap>
 
               <v-flex v-for="i in 3" xs4 :key=i>
-                <v-card>
+                <v-card :href="'/#/onsen/' + items[i-1]['id']">
                   <v-layout column wrap>
                     <v-flex xs4>
                       <h1 class=display-2>{{i}}位</h1>
@@ -23,7 +23,7 @@
                       <img class="box" :src="imgpath[category][i-1]" :key="path"/>
                     </v-flex>
                     <v-flex xs4>
-                      <h1 class=display-2>{{items[i-1]['inn_name']}}</h1>
+                      <h1 class=display-1>{{items[i-1]['inn_name']}}</h1>
                     </v-flex>
                     <v-flex xs4>
                     </v-flex>
@@ -43,11 +43,11 @@
             <v-layout align-center justify-center row wrap>
               <v-flex xs6>
                 <img class="otaku" :src="require('../assets/otaku.jpg')"/>
-                <v-btn class=display-1 block large dark color='deep-orange' :href="'/#/onsenlist/?category=' + category + '&page=1'">推しを見つける</v-btn>
               </v-flex>
               <v-flex xs6>
                 <v-card>
-                  <h2 class=display-3>{{ texts[category] }}</h2>
+                  <h2 class=display-2>{{ texts[category] }}</h2>
+                  <v-btn class=display-1 block large dark color='deep-orange' :href="'/#/onsenlist/?category=' + category + '&page=1'">推しを見つける</v-btn>
                 </v-card>
               </v-flex>
             </v-layout>
